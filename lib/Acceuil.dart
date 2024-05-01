@@ -4,6 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:op/MedelinkMessage.dart';
 import 'package:op/ProfileSettings.dart';
 import 'package:op/SearchDoctor.dart';
+import 'package:op/SearchLabo.dart';
+import 'package:op/my_appointments.dart';
+import 'package:op/searchpharmac.dart';
 
 class Med extends StatefulWidget {
   const Med({Key? key}) : super(key: key);
@@ -40,7 +43,7 @@ int _selectedIndex = 0;
     case 1:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>     MedelinkMessage(),),
+        MaterialPageRoute(builder: (context) =>     MyAppointments(),),
       );
       break;
     case 2:
@@ -60,6 +63,7 @@ int _selectedIndex = 0;
   }
   }
  List <String> imgo=[
+  'lib/Images/imge.png',
  'lib/Images/l1.jpeg',
     'lib/Images/l2.jpeg',
     'lib/Images/l3.jpeg',
@@ -134,9 +138,9 @@ int _selectedIndex = 0;
                                             Row(
                                               children: [
                                                 Text('Hello, ',style:TextStyle(color: Color(0xff0A0B0C),     fontFamily: 'Roboto',
-   fontStyle: FontStyle.italic,fontSize: 18)),
+   fontSize: 18)),
                                                 Text('Ahmed !',style:TextStyle(color:Color(0xff0099E5),     fontFamily: 'Roboto',
-   fontStyle: FontStyle.italic,fontSize: 18),)
+   fontSize: 18),)
                                               ],
                                             ),
                                             SizedBox(height: 3.h,),
@@ -234,19 +238,27 @@ int _selectedIndex = 0;
                             ,child: Image.asset('lib/Images/test.png',fit:BoxFit.fill,)),
                         
                             ],
-                          ))  , Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('Analysis lab',style:TextStyle(color: Colors.black,     fontFamily: 'Roboto',
-   fontSize: 18),),
-                                      TextButton(onPressed:(){
-                                        
-                                      },child:Text('See All',style:TextStyle(color: Colors.blue)),)
-                                    ],
+                          ))  , GestureDetector(
+                               onTap: (){
+                                                      Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchLabo()),
+            );
+                                            },
+                            child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 10),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('Analysis lab',style:TextStyle(color: Colors.black,     fontFamily: 'Roboto',
+                               fontSize: 18),),
+                                        TextButton(onPressed:(){
+                                          
+                                        },child:Text('See All',style:TextStyle(color: Colors.blue)),)
+                                      ],
+                                    ),
                                   ),
-                                )
+                          )
                             
                              
                                   , Container(
@@ -257,7 +269,7 @@ int _selectedIndex = 0;
                 children: [
                    Container(
                     height: 30.h,
-                    width: 100.w,
+                    width: 95.w,
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     decoration: BoxDecoration(
                       color:Colors.white,
@@ -269,59 +281,92 @@ int _selectedIndex = 0;
                       ),
                       borderRadius: BorderRadius.circular(10)
                     ),
-                    child:Center(child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    child:Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset('lib/Images/stethoscope.png',height: 22,),
+                        SizedBox(width: 10,),
                         Text('Doctor',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
-                  ),
-              SizedBox(width: 10.w,),
-                       Container(
-                    height: 30.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                      color:Colors.white,
-                        border: Border.all(
-                        color:Color(0xff6db0d0),
-                        width: 0.5
-                      ),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child:Center(child: Text('Pharmacy',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
-                  ),
-                  ),
-                           SizedBox(width: 5,),
-                    Container(
-                    height: 30.h,
-                    width: 100.w,
-                    decoration: BoxDecoration(
-                      color:Colors.white,
-                        border: Border.all(
-                        color:Color(0xff6db0d0),
-                                                width: 0.5
-
-                      ),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child:Center(child: Text('Questions',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
-                  ),
-                  ),
-                SizedBox(width: 10.w,),
+              SizedBox(width: 15.w,),
+                       GestureDetector(onTap: (){
+                          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchPharmaciee()),
+            );},
+                         child: Container(
+                                             height: 23.h,
+                                             width: 115.w,
+                                             padding: EdgeInsets.symmetric(horizontal: 15),
+                                             decoration: BoxDecoration(
+                                               color:Colors.white,
+                          border: Border.all(
+                          color:Color(0xff6db0d0),
+                          width: 0.4
+                                               ),
+                                               borderRadius: BorderRadius.circular(10)
+                                             ),
+                                             child:Row(
+                                               mainAxisAlignment: MainAxisAlignment.center,
+                                               children: [
+                          Image.asset('lib/Images/medicament.png',height: 22,),
+                          SizedBox(width: 10,),
+                          Text('Pharmacy',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
+                                               ],
+                                             ),
+                                           ),
+                       ),
+                           SizedBox(width: 15.w,),
+                  
                   Container(
-                    height: 30.h,
+                    height: 23.h,
                     width: 100.w,
-                    decoration: BoxDecoration(
+                   decoration: BoxDecoration(
                       color:Colors.white,
                         border: Border.all(
                         color:Color(0xff6db0d0),
+                        width: 0.4
                       ),
                       borderRadius: BorderRadius.circular(10)
                     ),
-                    child:Center(child: Text('Questions',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
+                    child:Row(
+                      mainAxisAlignment: MainAxisAlignment.center
+                      ,children: [
+                      Image.asset('lib/Images/prescription.png',height: 22,),
+                      SizedBox(width: 10,),
+                      Text('Medicine',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
+                    ],),
                   ),
+                          SizedBox(width: 15.w,),
+                  
+                  GestureDetector(
+                      onTap: (){
+                                                      Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchLabo()),
+            );
+                                            },
+                    child: Container(
+                      height: 23.h,
+                      width: 100.w,
+                     decoration: BoxDecoration(
+                        color:Colors.white,
+                          border: Border.all(
+                          color:Color(0xff6db0d0),
+                          width: 0.4
+                        ),
+                        borderRadius: BorderRadius.circular(10)
+                      ),
+                      child:Row(
+                        mainAxisAlignment: MainAxisAlignment.center
+                        ,children: [
+                        Image.asset('lib/Images/prescription.png',height: 22,),
+                        SizedBox(width: 10,),
+                        Text('Analysis lab',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
+                      ],),
+                    ),
                   ),
                ],
                            ),
@@ -486,7 +531,7 @@ int _selectedIndex = 0;
                     } else if (index==1){
                       return Column(
                         children: [
-                   
+                              SizedBox(height:15,),
                             Container(
                                   color: Colors.white,
                                   padding: EdgeInsets.symmetric(horizontal: 10),
@@ -495,13 +540,10 @@ int _selectedIndex = 0;
                                     children: [
                                       Text('Recent Posts',style:TextStyle(color:Colors.black,     fontFamily: 'Roboto',
    fontSize: 18)),
-                                      TextButton(onPressed:(){
-                                        
-                                      },child:Text('See All',style:TextStyle(color: Colors.blue)),)
-                                    ],
+                                       ],
                                   ),
                                 ),
-                                SizedBox(height: 5.h,),
+                                SizedBox(height: 15.h,),
                           Container(
                             height: 390.h,
                             margin: EdgeInsets.only(

@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:op/MakeAppoinment.dart';
-class SearchDoct extends StatefulWidget {
-  const SearchDoct({super.key});
+
+class SearchLabo extends StatefulWidget {
+  const SearchLabo({super.key});
 
   @override
-  State<SearchDoct> createState() => _SearchDoctState();
+  State<SearchLabo> createState() => _SearchLaboState();
 }
 
-class _SearchDoctState extends State<SearchDoct> {
-  List<String> imagePaths = [
-  'lib/Images/sed1.png',
-    'lib/Images/sed1.png',
-      'lib/Images/sed1.png',
-        'lib/Images/sed1.png',
-  'lib/Images/sed3.png',
+class _SearchLaboState extends State<SearchLabo> {
+    List<String> imagePaths = [
+      'lib/Images/a1.png',
+    'lib/Images/pharm1.jpeg',
+    'lib/Images/a2.jpg',
+    'lib/Images/a3.jpg',
+     'lib/Images/phar.jpg',
+  'lib/Images/pha1.png',
+    'lib/Images/pha2.png',
   'lib/Images/sed2.png',
-   'lib/Images/sed3.png',
-  'lib/Images/sed2.png',
-    'lib/Images/sed2.png',
+    'lib/Images/pha1.png',
 ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Colors.white,
+         backgroundColor:Colors.white,
           appBar: AppBar(
             toolbarHeight: 35,
             leading:  Icon(Icons.arrow_back_outlined,color: Colors.black,),
             backgroundColor: Colors.white,
             elevation: 0,
             centerTitle: true,
-            title: const Text('All Doctors',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
+            title: const Text('all pharmacies',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
   fontStyle: FontStyle.italic,fontSize: 20,
 ),),       ),
   
@@ -75,16 +75,16 @@ class _SearchDoctState extends State<SearchDoct> {
               children: [
                 Container(
                   height: 25,
-                  width: 80,
+                  width: 45,
                   decoration: BoxDecoration(
                     color:Color(0xff6db0d0),
                     borderRadius: BorderRadius.circular(10)
                   ),
-                  child:Center(child: Text('Doctors',style:TextStyle(color: Colors.white),)),
+                  child:Center(child: Text('All',style:TextStyle(color: Colors.white),)),
                 ),
             Container(
                   height: 25,
-                  width: 90,
+                  width: 80,
                   decoration: BoxDecoration(
                     color:Colors.white,
                     border: Border.all(
@@ -92,11 +92,11 @@ class _SearchDoctState extends State<SearchDoct> {
                     ),
                     borderRadius: BorderRadius.circular(10)
                   ),
-                  child:Center(child: Text('Pharmacy',style:TextStyle(color:Color(0xff6db0d0)),)),
+                  child:Center(child: Text('Location',style:TextStyle(color:Color(0xff6db0d0)),)),
                 ),
-                Container(
+                     Container(
                   height: 25,
-                  width: 80,
+                  width: 50,
                   decoration: BoxDecoration(
                     color:Colors.white,
                       border: Border.all(
@@ -104,12 +104,26 @@ class _SearchDoctState extends State<SearchDoct> {
                     ),
                     borderRadius: BorderRadius.circular(10)
                   ),
-                  child:Center(child: Text('Medicine',style:TextStyle(color:Color(0xff6db0d0)),)),
+                  child:Center(child: Text('open',style:TextStyle(color:Color(0xff6db0d0),)),
+                ),
+                ),
+          
+                Container(
+                  height: 25,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color:Colors.white,
+                      border: Border.all(
+                      color:Color(0xff6db0d0)
+                    ),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child:Center(child: Text('Day',style:TextStyle(color:Color(0xff6db0d0)),)),
                 ),
 
                 Container(
                   height: 25,
-                  width: 100,
+                  width: 60,
                   decoration: BoxDecoration(
                     color:Colors.white,
                       border: Border.all(
@@ -117,7 +131,7 @@ class _SearchDoctState extends State<SearchDoct> {
                     ),
                     borderRadius: BorderRadius.circular(10)
                   ),
-                  child:Center(child: Text('Analysis lab',style:TextStyle(color:Color(0xff6db0d0),)),
+                  child:Center(child: Text('Night',style:TextStyle(color:Color(0xff6db0d0),)),
                 ),
                 ),
              ],
@@ -128,7 +142,8 @@ class _SearchDoctState extends State<SearchDoct> {
                  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('323 Doctors',style:TextStyle(fontWeight:FontWeight.bold),),
+                        Text('121 Pharmacy',style:TextStyle(fontWeight:FontWeight.bold),),
+                    
                       ],
                     ),
                       SizedBox(height: 5,),
@@ -139,7 +154,7 @@ class _SearchDoctState extends State<SearchDoct> {
               itemCount:6,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  height: 140,
+                  height: 110,
                   margin: EdgeInsets.only(bottom:15),
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -166,22 +181,24 @@ class _SearchDoctState extends State<SearchDoct> {
               Column(
                 children: [
                   Container(
-                    height: 100,
-                    width: 100,
-                    padding: EdgeInsets.only(top: 15),
+                    height: 110,
+                    width: 120,
+                    padding: EdgeInsets.only(top: 5),
  decoration:BoxDecoration(
                         borderRadius:BorderRadius.circular(15),
-                        color:Color.fromRGBO(243, 249, 249, 1),
-                      ),                    child:Image.asset(imagePaths[index],fit:BoxFit.fill,),
+                        color:  Color.fromRGBO(253, 255, 255, 1),
+                      ),                    child:ClipRRect(
+                        borderRadius: BorderRadius.circular(15)
+                        ,child: Image.asset(imagePaths[index],fit:BoxFit.cover,)),
                   ),
               ],
               )
                  ,Column(
                   children: [
                      Container(
-                      padding: EdgeInsets.only(top: 15,right:15,left: 15,bottom: 10),
+                      padding: EdgeInsets.only(top: 5,right:15,left: 15,bottom: 5),
                       width: 255
-                      ,height: 140,
+                      ,height: 110,
                       decoration:BoxDecoration(
                         borderRadius:BorderRadius.circular(15),
                         color:  Color.fromRGBO(253, 255, 255, 1),
@@ -195,88 +212,61 @@ class _SearchDoctState extends State<SearchDoct> {
                             children: [
                               Row(
                                 children: [
-                                  Text('Dr ',style:TextStyle(color:Colors.black)),
-                                  Text('Ahmed Abdelaziz',style:TextStyle(color: Color(0xff0099E5),),)
+                                  Text('Pharmacy Charle Benz',style:TextStyle(color: Color(0xff0099E5),),)
                                 ],
                               ),
                             Icon(Icons.favorite_border_outlined,color: Color(0xff7BC1B7),)],
                           ),
                           Divider(color: Colors.white,height: 1.5,)                          ,
-                       Text('Médecin Angiologue Phlébologue',style:TextStyle(color:Colors.black54),),
-                                              SizedBox(height: 2.5,),
-                       RatingBar.builder(
-                                         
-                        initialRating: 3,
-                        minRating: 1,
-                        direction: Axis.horizontal,
-                        allowHalfRating: true,
-                        itemCount: 4,
-                        itemSize:  16,
-                        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                        itemBuilder: (context, _) => Icon(
-                          Icons.star,
-                          color: Color(0xffffa04b),
-                        ),
-                        onRatingUpdate: (rating) {
-                          print(rating);
-                        },
-                       ),
-                                                                     SizedBox(height: 2.5,),
-                           Row(children: [
-                            
-                            Row(
+        Row(
                               children: [
                                 Icon(Icons.place_outlined,color:Colors.black54,size: 15,),
                                 SizedBox(width: 4,),
-                                Text('Monastir',style:TextStyle(color:Colors.black54),),
+                                Text('Monastir Avenue bourguiba',style:TextStyle(color:Colors.black54),),
+                             
                               ],
                             ),
-                                                                       
+                            Row(children: [
+                                                              Text('Status: ',style:TextStyle(color:Colors.black54),),
 
+                                                          index%2==0?Text('Open Now',style:TextStyle(color:Colors.green),): Text('Close now',style:TextStyle(color:Colors.red),),                                                          
+
+                            ],),                                                                       
+                                              SizedBox(height: 2.5,),
+                     Row(
+                              mainAxisAlignment: MainAxisAlignment.start
+                              ,children: [
+                            
+                RatingBar.builder(
+                                               
+                              initialRating: 3,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 1,
+                              itemSize:  20,
+                              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Color(0xffffa04b),
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                             ),
+                             SizedBox(width:5,),
+                              Text('5.0',style:TextStyle(color: Color(0xff5d6062),fontWeight: FontWeight.bold,))
+                                   ],),
+                                                                 SizedBox(height: 2.5,),
+                       
+
+                           Row(children: [
+                            
+                    
                           
                           ],),           
                                                                                   Expanded(child:Container()),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween
-                          ,children: [
-                        Container(
-                          padding: 
-                          EdgeInsets.symmetric(horizontal: 10)
-                          ,
-                          height: 25,
-                          decoration: BoxDecoration(
-                            color:Colors.white,
-                            border:Border.all(
-                              color: Color(0xff7BC1B7),
-                            ),
-                                                                          borderRadius:BorderRadius.circular(5),
-                          )
-                          ,child:Center(child: Text('08:30 - 02:00 AM',style:TextStyle(color: Color(0xff7BC1B7),fontWeight: FontWeight.w600),)),),
-                          GestureDetector(
-                            onTap:(){
-                              
-                                    Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => makeappoinment()),
-      );
-                            },
-                            child: Container(
-                                 height: 25,
-                            width: 80,
-                              decoration: BoxDecoration(
-                                                            color:  Colors.white,
-                                                            border: Border.all(
-                                                              color: Color(0xff0099E5)
-                                                            ),
-                                                                borderRadius:BorderRadius.circular(5)
-                            
-                              ),
-                               
-                              
-                            child:Center(child: Text('Book',style:TextStyle(color:Color(0xff0099E5),fontWeight: FontWeight.bold),))),
-                          )
-                        ],)
-                   
+                     
                         ],
                       ),
                       ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:op/SplashScreen.dart';
-
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:op/ProfileDoctor.dart';
 
 void main() {
-  runApp(MyApp());
+  initializeDateFormatting().then((_) => runApp(MyApp()));
 }
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_ , child) {
         return MaterialApp(
-
           debugShowCheckedModeBanner: false,
-          home:IntroductionScreen(),
+          home:ProfileDoctor(),
         );
       },
     ); }

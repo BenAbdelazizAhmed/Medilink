@@ -119,6 +119,26 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                 child: Column(
                   children: 
                   [
+                     SizedBox(height: 15.h),
+                    
+                          Container(
+                      margin: EdgeInsets.only(left: 15,right: 15,),
+                      padding: EdgeInsets.only(left: 15,right: 15,),
+                      height: 43.h,
+                      
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.03),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.search),
+                          SizedBox(width: 8.w),
+                          Text('Find Your Doctor...', style: TextStyle(color: Colors.black38)),
+                        ],
+                      ),
+                    ),
                     Padding(
                       padding: EdgeInsets.only(top: 15, right: 15, left: 15),
                       child: Row(
@@ -130,27 +150,43 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                         ],
                       ),
                     ),
-                    SizedBox(height: 8.h),
-                    
-                          Container(
-                      margin: EdgeInsets.only(left: 15,right: 15,bottom: 10),
-                      padding: EdgeInsets.only(left: 15,right: 15,),
-                      height: 40.h,
-                      
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.05),
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.search),
-                          SizedBox(width: 8.w),
-                          Text('Find Your Doctor...', style: TextStyle(color: Colors.black38)),
-                        ],
+                 
+                  Container(
+                height: 100.h,
+                width: double.infinity,
+                color: Color(0xfff9f9f9),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      imagePathsClient.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(left: 10.0, bottom: 10),
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 27,
+                              backgroundColor: Colors.blue,
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundColor: Colors.white,
+                                child: CircleAvatar(
+                                  radius: 23,
+                                  backgroundImage: AssetImage(imagePathsClient[index]),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 5,),
+                            Text('Ahmed'),
+                            Text('Abdeaziz')
+                          ],
+                        ),
                       ),
                     ),
-              
+                  ),
+                ),
+              ),
+           
                     Expanded(
                       child: ListView.builder(
                         itemCount: imagePathsClient.length,

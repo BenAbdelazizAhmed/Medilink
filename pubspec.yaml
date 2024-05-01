@@ -40,7 +40,13 @@ dependencies:
   carousel_slider: ^4.2.1
   dot_navigation_bar: ^1.0.2
   flutter_screenutil: ^5.9.0
-
+  flutter_chat_ui: ^1.6.12
+  file_picker: ^8.0.2
+  image_picker: ^1.1.0
+  open_filex: ^4.4.0
+  path_provider: ^2.1.3
+  uuid: ^4.4.0
+  fluttertoast: ^8.2.5
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,11 +75,31 @@ flutter:
     - lib/Images/l1.jpeg
     - lib/Images/stethoscop.png
     - lib/Images/Doc1.jpg
+    - lib/Images/rpc.png
+    - lib/Images/maps.png
     - lib/Images/aa2.jpg
+    - lib/Images/dr.png
+    - lib/Images/imge.png
+    - lib/Images/ha.png
+    - lib/Images/hama.jpg
+    - lib/Images/a1.png
+    - lib/Images/jour.png
+    - lib/Images/pharm1.jpeg
+    - lib/Images/a2.jpg
+    - lib/Images/agen.png
+    - lib/Images/a3.jpg
+    - lib/Images/pharm.jpg
+    - lib/Images/phar.jpg
+    - lib/Images/Capt.png
+    - lib/Images/pha1.png
+    - lib/Images/pha2.png
+    - lib/Images/dolip.jpg
     - lib/Images/aa3.jpg
+    - lib/Images/pharma.jpg
     - lib/Images/im1.png
     - lib/Images/im2.png
     - lib/Images/im3.png
+    - lib/Images/capti.png
     - lib/Images/im4.png
     - lib/Images/aa4.jpg
     - lib/Images/Doc2.jpg
@@ -89,16 +115,21 @@ flutter:
     - lib/Images/heart.png
     - lib/Images/ahmede.jpg
     - lib/Images/raa.png 
+    - lib/Images/prescription.png
+    - lib/Images/medicament.png
     - lib/Images/raaa.png
     - lib/Images/notification.png
     - lib/Images/raaaa.jpg
     - lib/Images/stethoscope.png
     - lib/Images/diag.png
     - lib/Images/chat.png
+    - lib/Images/mac.png
     - lib/Images/user.png
+    - lib/Images/team.jpg
     - lib/Images/imagz.png
     - lib/Images/l3.jpeg
     - lib/Images/icon1.png
+    - lib/Images/facebook.png
     - lib/Images/pngegg.png
     - lib/Images/icon2.png
     - lib/Images/l4.jpeg

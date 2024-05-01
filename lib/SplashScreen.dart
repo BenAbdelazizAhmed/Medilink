@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:op/InscriptionCorrect.dart';
-import 'package:op/LoginCorrect.dart';
+import 'package:op/Login.dart';
 class IntroductionScreen extends StatefulWidget {
   @override
   _IntroductionScreenState createState() => _IntroductionScreenState();
@@ -200,7 +200,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                         ,child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             elevation: 0,
-                            backgroundColor: Colors.blueAccent,
+                            backgroundColor: Color(0xff4491f9),
                             shape:RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)
                             )
@@ -208,7 +208,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                           ,onPressed:(){
                                                      Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>LoginCorrect()),
+              MaterialPageRoute(builder: (context) =>Login()),
             );
                         }, child:Text('Get started',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),))),
                         SizedBox(height: 5.h,),
@@ -223,7 +223,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
               MaterialPageRoute(builder: (context) =>InscriptionCorrect()),
             );
                         }, child:Text('Sign Up',style:TextStyle(
-          fontFamily:'ABeeZee',fontSize: 20),))
+          fontFamily:'ABeeZee',fontSize: 20,color: Color(0xff4491f9)),))
                        ],)
             ],
           ),
@@ -266,12 +266,13 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     
                                  style: ElevatedButton.styleFrom(      
                     elevation: 0,
+                    backgroundColor: Color(0xff4491f9),
                         shape:RoundedRectangleBorder(
                           borderRadius:BorderRadius.circular(10)
                         )),
                     onPressed: goToNextPage,
                     
-                    child: Text('Next',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.blueAccent),),
+                    child: Text('Next',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
                   ),
                 ),
               ],
