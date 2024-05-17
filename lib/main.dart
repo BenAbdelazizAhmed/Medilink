@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:op/ProfileDoctor.dart';
+import 'package:op/All_specialities.dart';
 
 void main() {
   initializeDateFormatting().then((_) => runApp(MyApp()));
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       builder: (_ , child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home:ProfileDoctor(),
+          home:specialities(),
         );
       },
     ); }

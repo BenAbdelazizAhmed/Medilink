@@ -75,10 +75,16 @@ flutter:
     - lib/Images/l1.jpeg
     - lib/Images/stethoscop.png
     - lib/Images/Doc1.jpg
+    - lib/Images/imo.png
     - lib/Images/rpc.png
+    - lib/Images/Plan.png
     - lib/Images/maps.png
     - lib/Images/aa2.jpg
+    - lib/Images/report.png
+    - lib/Images/imp.png
     - lib/Images/dr.png
+    - lib/Images/Groupz.png
+    - lib/Images/Group.png
     - lib/Images/imge.png
     - lib/Images/ha.png
     - lib/Images/hama.jpg
