@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/Medical_RecordsPage1.dart';
 
 class medical_record extends StatefulWidget {
   const medical_record({super.key});
@@ -32,10 +33,14 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             ),
           ),
           child:ListView.builder(itemBuilder:(context,id){
-            return Container(
-
-              padding:EdgeInsets.only(top:10,left: 20,right:5),
-              margin:EdgeInsets.only(top: 20,left: 20,right: 20),
+            if(id==0)  return           Container(
+              height: 250.h
+              ,child: Image.asset('lib/Images/Plan.png',fit:BoxFit.cover,))
+;
+            else return Container(
+            
+              padding:EdgeInsets.only(top:10.h,left: 20.w,right:5.w),
+              margin:EdgeInsets.only(top: 20.h,left: 20.w,right: 20.w),
               decoration: BoxDecoration(borderRadius:BorderRadius.circular(10),
                             color: Colors.white,
                             boxShadow:[
@@ -55,7 +60,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                 children: [
                 Column(
                   children: [
-                    Container(height: 50,width: 60,
+                    Container(height: 50.h,width: 60.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),color:Color(0xff0EBE7F).withOpacity(0.9),
                     ),
@@ -64,21 +69,29 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                       Text('April',style:TextStyle(fontWeight: FontWeight.bold,color:Colors.white),)
                     ],)
                     ),
-                    SizedBox(height: 10,),
-                    Container(height: 20,width: 60, decoration: BoxDecoration(
+                    SizedBox(height: 10.h,),
+                    Container(height: 20.h,width: 60.w, decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(1),color:Color(0xff0EBE7F).withOpacity(0.1),
                     ),child:Column(children: [
                       Text('New',style:TextStyle(fontWeight: FontWeight.bold,color:Color(0xff0EBE7F)),)
                     ],),),
                   ],
                 )
-            ,  SizedBox(width: 20,)
+            ,  SizedBox(width: 20.w,)
           ,  Column(
             crossAxisAlignment: CrossAxisAlignment.start
             ,children: [
-            Text('Records added by you',style:TextStyle(fontWeight: FontWeight.bold),),
-          Text('Record for Abdullah mamun',style:TextStyle(color: Colors.green),),
-          SizedBox(height: 4,),
+            GestureDetector(
+              onTap:(){
+                
+                 Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+      );
+              }
+              ,child: Text('Records added by you',style:TextStyle(fontWeight: FontWeight.bold),)),
+          Text('Record for Abdullah mamun',style:TextStyle(color: Colors.green,fontSize: 12.sp),),
+          SizedBox(height: 4.h,),
          Text('1 Prescription',style:TextStyle(color: Color(0xff677294)),),
             ],)
            ,Expanded(child: Container()) ,  IconButton(icon: Icon(Icons.more_vert),onPressed: (){},)

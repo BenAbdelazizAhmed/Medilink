@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyAppointments extends StatefulWidget {
   const MyAppointments({super.key});
@@ -30,18 +31,15 @@ class _MyAppointmentsState extends State<MyAppointments> {
             backgroundColor: Colors.white,
             elevation: 0,
             centerTitle: true,
-            title: const Text('My Appointments',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
-  fontStyle: FontStyle.italic,fontSize: 20,
+            title:  Text('My Appointments',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
+  fontStyle: FontStyle.italic,fontSize: 20.sp,
 ),),       ),
 body: Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-  child: Container(
-    height: double.infinity,
-    width: double.infinity,
-   
+  padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
+  child: Container(  
     child: Column(children: [
-      SizedBox(height: 20,),
-      Container(height: 35,
+      SizedBox(height: 20.h,),
+      Container(height: 35.h,
       width: double.infinity,
       decoration:BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -51,36 +49,36 @@ body: Padding(
         Expanded(
           child: Container(
           decoration:BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color(0xff6db0d0),),
-          height: 40,
+          height: 40.h,
           child:Center(child: Text('Upcoming',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)),),
         ),
          Expanded(
-           child: Container(width: 120,
-                 height: 40,color:Colors.blueAccent.withOpacity(0.03),
+           child: Container(width: 120.w,
+                 height: 40.h,color:Colors.blueAccent.withOpacity(0.03),
                  child:Center(child: Text('Canceled',style:TextStyle(color: Colors.black.withOpacity(0.7),fontWeight: FontWeight.w500),)),),
          ),
       Expanded(
-           child: Container(width: 120,
-                 height: 40,color:Colors.blueAccent.withOpacity(0.03),
+           child: Container(width: 120.w,
+                 height: 40.h,color:Colors.blueAccent.withOpacity(0.03),
                  child:Center(child: Text('Completed',style:TextStyle(color: Colors.black.withOpacity(0.7),fontWeight: FontWeight.w500),)),),
          ),  ],),
       )
     ,Container(
-          height:600,
+          height:600.h,
           width: double.infinity,
           child:Column(
             children: [
             
-            SizedBox(height: 15,),
+            SizedBox(height: 15.h,),
                   
               Container(
-                height: 529,
+                height: 529.h,
                 child: ListView.builder(
                 itemCount:3,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    height: 160,
-                    margin: EdgeInsets.only(top:15),
+                    height: 160.h,
+                    margin: EdgeInsets.only(top:15.h),
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius:BorderRadius.circular(15),
@@ -107,8 +105,8 @@ body: Padding(
                    Column(
                     children: [
                        Container(
-                        padding: EdgeInsets.only(top: 5,left: 10,bottom: 5),
-                        width: 355,
+                        padding: EdgeInsets.only(top: 5.h,left: 10.w,bottom: 5.w),
+                        width: 355.w,
                                               decoration:BoxDecoration(
                           borderRadius:BorderRadius.circular(15),
                           color:  Color.fromRGBO(253, 255, 255, 1),
@@ -126,17 +124,17 @@ body: Padding(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Container(
-                                          height: 90,
-                                          width: 90,
+                                          height: 90.h,
+                                          width: 90.w,
                                           decoration: BoxDecoration(
                                             borderRadius:BorderRadius.circular(15),
                                             color:Colors.white,
                                           ),
                                           child: ClipRRect(
                                             borderRadius:BorderRadius.circular(15)
-                                            ,child: Image.asset(imagePaths[index],height: 90,width: 80,fit:BoxFit.fill,)),
+                                            ,child: Image.asset(imagePaths[index],height: 90.h,width: 80.w,fit:BoxFit.fill,)),
                                         ),
-                                        SizedBox(width: 15,),
+                                        SizedBox(width: 15.w,),
                                         Container(
                                           
                                           child: Column(
@@ -148,33 +146,33 @@ body: Padding(
                                                   Row(
                                                                         children: [
                                                                           Icon(Icons.place_outlined,color:Colors.black54,size: 15,),
-                                                                          SizedBox(width: 4,),
+                                                                          SizedBox(width: 4.w,),
                                                                           Text('Monastir Avenue bourguiba',style:TextStyle(color:Colors.black54,fontWeight: FontWeight.w200),),
                                                                        
                                                                         ],
                                                                       ),
-                                                       SizedBox(height: 10,),
+                                                       SizedBox(height: 10.h,),
                                               Row(children: [
-                                                SizedBox(width: 30,),
+                                                SizedBox(width: 30.w,),
                                                 Column(
                                                   children: [
                                                     Image.asset('lib/Images/agen.png'),
-                                                    SizedBox(height: 5,),
+                                                    SizedBox(height: 5.h,),
                                                     Text('01/05/2024',style:TextStyle(color:Colors.black54),)
                                                   ],
                                                 ),
                                                 
                                                 Divider(
-                                                  height: 30,
+                                                  height: 30.h,
                                                 color: Colors.red,
                                                 thickness: 100,),
                                                 Column(
                                                   children: [
                                                     Image.asset('lib/Images/jour.png'),
-                                                      SizedBox(height: 5,),
+                                                      SizedBox(height: 5.h,),
                                                     Row(
                                                       children: [
-                                                        SizedBox(width: 10,),
+                                                        SizedBox(width: 10.w,),
                                                         Text('08-15-10:30',style:TextStyle(color:Colors.black54),),
                                                       ],
                                                     )
@@ -191,16 +189,16 @@ body: Padding(
                                 ),
                                   
                                                     ]                          ),
-                                                SizedBox(height: 10,),
-                                                    Divider(height: 4,color: Colors.black.withOpacity(0.09),),
-                                                    SizedBox(height: 10,),
+                                                SizedBox(height: 10.h,),
+                                                    Divider(height: 4.h,color: Colors.black.withOpacity(0.09),),
+                                                    SizedBox(height: 10.h,),
 
                                            Row(
                                                               children: [ 
                                                                 Expanded(child:Container()),
                                                                 Container(
-                                   height: 30,
-                              width: 120,
+                                   height: 30.h,
+                              width: 120.w,
                                 decoration: BoxDecoration(
     color:Colors.blueAccent.withOpacity(0.06),
                                                               border: Border.all(
@@ -212,10 +210,10 @@ body: Padding(
                                  
                                 
                               child:Center(child: Text('Cancel',style:TextStyle(color: Colors.black.withOpacity(0.7),fontWeight: FontWeight.w500),))),
-                          SizedBox(width: 15,),
+                          SizedBox(width: 15.w,),
                           Container(
-                                   height: 30,
-                              width: 120,
+                                   height: 30.h,
+                              width: 120.w,
                                 decoration: BoxDecoration(
                                                               color:Color(0xff6db0d0),
                                                               border: Border.all(

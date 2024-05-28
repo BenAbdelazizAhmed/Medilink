@@ -8,6 +8,8 @@ import 'package:op/SearchLabo.dart';
 import 'package:op/my_appointments.dart';
 import 'package:op/searchpharmac.dart';
 
+import 'Medical_RecordsPage2.dart';
+
 class Med extends StatefulWidget {
   const Med({Key? key}) : super(key: key);
 
@@ -90,11 +92,12 @@ int _selectedIndex = 0;
       debugShowCheckedModeBanner: false,
       title: "Medelink",
       home: Scaffold(
+       drawer: AppDrawer(),
         key: _scaffoldKey, 
         backgroundColor: Colors.white,
        body: Container(
           height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.only(top: 0, left: 5, right: 5),
+          padding: EdgeInsets.only( left:ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
           width: double.infinity,
           child: ListView(
             children: [
@@ -110,25 +113,30 @@ int _selectedIndex = 0;
                       return Column(
                         children: [
                           Container(
-                            height: 390.h,
+                            height: 400.h,
                             width: double.infinity,
                             child:Column(
                               children: [
                                 Container(
-                                  padding: EdgeInsets.only(left: 10,right: 10,top: 20),
-                                  height: 145.h,
+                                  padding: EdgeInsets.only(left: ScreenUtil().setWidth(10),right: ScreenUtil().setWidth(10),top: ScreenUtil().setHeight(20)),
+                                  height: 142.h,
                                   color: Colors.white,
                                   width: double.infinity,
                                   child: Column(
                                     children: [
                                       Row(children: [
-                                        Container(
-                                          
-                                          height: 55.h,width: 55.w,
-                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                                        child:ClipRRect(
-                                          borderRadius: BorderRadius.circular(10)
-                                          ,child: Image.asset('lib/Images/sed1.png',fit: BoxFit.fill,)),
+                                      GestureDetector(
+                                        onTap:(){
+                                                      _scaffoldKey.currentState?.openDrawer();
+                                        },
+                                          child: Container(
+                                            
+                                            height: 55.h,width: 55.w,
+                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                                          child:ClipRRect(
+                                            borderRadius: BorderRadius.circular(10)
+                                            ,child: Image.asset('lib/Images/sed1.png',fit: BoxFit.fill,)),
+                                          ),
                                         ),
                                         SizedBox(width: 10.w,),
                                         Column(
@@ -138,13 +146,13 @@ int _selectedIndex = 0;
                                             Row(
                                               children: [
                                                 Text('Hello, ',style:TextStyle(color: Color(0xff0A0B0C),     fontFamily: 'Roboto',
-   fontSize: 18)),
+   fontSize: 18.sp)),
                                                 Text('Ahmed !',style:TextStyle(color:Color(0xff0099E5),     fontFamily: 'Roboto',
-   fontSize: 18),)
+   fontSize: 18.sp),)
                                               ],
                                             ),
                                             SizedBox(height: 3.h,),
-                                            Text('Welcome To Medilink',style:TextStyle(fontFamily: 'Roboto',fontSize:15,color:Colors.black54,))
+                                            Text('Welcome To Medilink',style:TextStyle(fontFamily: 'Roboto',fontSize:15.sp,color:Colors.black54,))
                                           ],
                                         ),
                                         Expanded(child:Container()),
@@ -161,55 +169,72 @@ int _selectedIndex = 0;
                                         ),
                                     
                                       ],),
-                                          GestureDetector(
-                                            onTap: (){
-                                                      Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchDoct()),
-            );
-                                            },
-                                            child: Row(
-                                              children: [
-                                                Container(
-                                                                  margin: EdgeInsets.only(top: 15),
-                                                                  padding: EdgeInsets.symmetric(horizontal: 15),
-                                                                  height: 45.h,
-                                                                  width: 255.w,                  decoration: BoxDecoration(
-                                                                    
-                                                            color: Colors.white,
-                                                                boxShadow: [
-                              BoxShadow(
-                                offset: Offset(1, 1),
-                                blurRadius:4,spreadRadius:4,color:Colors.black.withOpacity(0.03)
-                              ),
-                                BoxShadow(
-                                offset: Offset(-1, -1),
-                                blurRadius: 4,spreadRadius: 4,color: Colors.black.withOpacity(0.03)
-                              )
-                            ],
-                                                                        borderRadius: BorderRadius.circular(10)
-                                                                  ),
-                                                                  child:Row(
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                                        children: [
-                                                                          Row(
-                                                                            children: [
-                                                                              Icon(Icons.search),
-                                                                              SizedBox(width:8.w,),
-                                                                               Text('find Your Doctor,pharmacie...',style:TextStyle(color: Colors.black45,),)
-                                                                                   ],
-                                                                          ),
-                                                                          
-                                                                 ],
-                                                                  ),
-                                                                ),
-                                             TextButton(onPressed:(){}, child:Text('Map View',style:TextStyle(fontWeight: FontWeight.bold,color:Color(0xff0099E5)),))
-                  
-                                              ],
-                                            ),
+                       GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SearchDoct()),
+    );
+  },
+  child: Row(
+    children: [
+      Expanded(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(10)),
+          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
+          height: ScreenUtil().setHeight(45),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                offset: Offset(1, 1),
+                blurRadius: ScreenUtil().setWidth(4),
+                spreadRadius: ScreenUtil().setWidth(4),
+                color: Colors.black.withOpacity(0.03),
+              ),
+              BoxShadow(
+                offset: Offset(-1, -1),
+                blurRadius: ScreenUtil().setWidth(4),
+                spreadRadius: ScreenUtil().setWidth(4),
+                color: Colors.black.withOpacity(0.03),
+              )
+            ],
+            borderRadius: BorderRadius.circular(ScreenUtil().setWidth(10)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Icon(Icons.search),
+                  SizedBox(width: ScreenUtil().setWidth(8)),
+                  Text(
+                    'Find Your Doctor, Phar...',
+                    style: TextStyle(
+                      color: Colors.black45,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      SizedBox(width: ScreenUtil().setWidth(5)),
+      TextButton(
+        onPressed: () {},
+        child: Text(
+          'Map View',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Color(0xff0099E5),
+          ),
+        ),
+      )
+    ],
+  ),
+),
 
-                                          ),SizedBox(width: 5.w,),
-                
                     
                    ],
                                   ),
@@ -222,7 +247,7 @@ int _selectedIndex = 0;
                             ,borderRadius: BorderRadius.circular(10)),
                           height: 160.h,width: double.infinity,
                           padding: EdgeInsets.symmetric(
-                            horizontal: 10
+                            horizontal: 10.w
                           )
                           ,child:ListView(
                             scrollDirection: Axis.horizontal,
@@ -246,12 +271,12 @@ int _selectedIndex = 0;
             );
                                             },
                             child: Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
+                                    padding: EdgeInsets.symmetric(horizontal: 10.w),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text('Analysis lab',style:TextStyle(color: Colors.black,     fontFamily: 'Roboto',
-                               fontSize: 18),),
+                               fontSize: 18.sp),),
                                         TextButton(onPressed:(){
                                           
                                         },child:Text('See All',style:TextStyle(color: Colors.blue)),)
@@ -260,118 +285,132 @@ int _selectedIndex = 0;
                                   ),
                           )
                             
-                             
-                                  , Container(
-              height: 40.h,width: double.infinity,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-               child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                   Container(
-                    height: 30.h,
-                    width: 95.w,
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    decoration: BoxDecoration(
-                      color:Colors.white,
-                      
-                        border: Border.all(
-                        color:Color(0xff6db0d0),
-                                                width: 0.5
+                               ,Container(
+                                    color: Colors.white,
+  height: MediaQuery.of(context).size.height * 0.08,
+  width: double.infinity,
+  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02),
+  child: ListView(
+    scrollDirection: Axis.horizontal,
+    children: [
+      Container(
+        height: MediaQuery.of(context).size.height * 0.06,
+        width: MediaQuery.of(context).size.width * 0.3,
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: Color(0xff6db0d0),
+            width: 0.5.w,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('lib/Images/stethoscope.png', height: MediaQuery.of(context).size.height * 0.045),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.015),
+            Text(
+              'Doctor',
+              style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+      SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SearchPharmaciee()),
+          );
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.055,
+          width: MediaQuery.of(context).size.width * 0.34,
+          padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Color(0xff6db0d0),
+              width: 0.4,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('lib/Images/medicament.png', height: MediaQuery.of(context).size.height * 0.045),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.015),
+              Text(
+                'Pharmacy',
+                style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+      ),
+      SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+      Container(
+        height: MediaQuery.of(context).size.height * 0.055,
+        width: MediaQuery.of(context).size.width * 0.3,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: Color(0xff6db0d0),
+            width: 0.4,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('lib/Images/prescription.png', height: MediaQuery.of(context).size.height * 0.045),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.015),
+            Text(
+              'Medicine',
+              style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+      SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+      GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SearchLabo()),
+          );
+        },
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.055,
+          width: MediaQuery.of(context).size.width * 0.32,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Color(0xff6db0d0),
+              width: 0.4,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('lib/Images/prescription.png', height: MediaQuery.of(context).size.height * 0.045),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.015),
+              Text(
+                'Analysis lab',
+                style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ],
+  ),
+),
 
-                      ),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child:Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('lib/Images/stethoscope.png',height: 22,),
-                        SizedBox(width: 10,),
-                        Text('Doctor',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-              SizedBox(width: 15.w,),
-                       GestureDetector(onTap: (){
-                          Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchPharmaciee()),
-            );},
-                         child: Container(
-                                             height: 23.h,
-                                             width: 115.w,
-                                             padding: EdgeInsets.symmetric(horizontal: 15),
-                                             decoration: BoxDecoration(
-                                               color:Colors.white,
-                          border: Border.all(
-                          color:Color(0xff6db0d0),
-                          width: 0.4
-                                               ),
-                                               borderRadius: BorderRadius.circular(10)
-                                             ),
-                                             child:Row(
-                                               mainAxisAlignment: MainAxisAlignment.center,
-                                               children: [
-                          Image.asset('lib/Images/medicament.png',height: 22,),
-                          SizedBox(width: 10,),
-                          Text('Pharmacy',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
-                                               ],
-                                             ),
-                                           ),
-                       ),
-                           SizedBox(width: 15.w,),
-                  
-                  Container(
-                    height: 23.h,
-                    width: 100.w,
-                   decoration: BoxDecoration(
-                      color:Colors.white,
-                        border: Border.all(
-                        color:Color(0xff6db0d0),
-                        width: 0.4
-                      ),
-                      borderRadius: BorderRadius.circular(10)
-                    ),
-                    child:Row(
-                      mainAxisAlignment: MainAxisAlignment.center
-                      ,children: [
-                      Image.asset('lib/Images/prescription.png',height: 22,),
-                      SizedBox(width: 10,),
-                      Text('Medicine',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
-                    ],),
-                  ),
-                          SizedBox(width: 15.w,),
-                  
-                  GestureDetector(
-                      onTap: (){
-                                                      Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SearchLabo()),
-            );
-                                            },
-                    child: Container(
-                      height: 23.h,
-                      width: 100.w,
-                     decoration: BoxDecoration(
-                        color:Colors.white,
-                          border: Border.all(
-                          color:Color(0xff6db0d0),
-                          width: 0.4
-                        ),
-                        borderRadius: BorderRadius.circular(10)
-                      ),
-                      child:Row(
-                        mainAxisAlignment: MainAxisAlignment.center
-                        ,children: [
-                        Image.asset('lib/Images/prescription.png',height: 22,),
-                        SizedBox(width: 10,),
-                        Text('Analysis lab',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
-                      ],),
-                    ),
-                  ),
-               ],
-                           ),
-             ),
-          
+                                
                           ],
                             ),
                           )
@@ -408,7 +447,7 @@ int _selectedIndex = 0;
                                 scrollDirection:Axis.horizontal
                                 ,itemBuilder:(context,id){
                                 return Container(
-                                  margin: EdgeInsets.only(left: 10),
+                                  margin: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
                                   padding: EdgeInsets.all(10),
                                   height: 190.h,
                                   width: 220.w,
@@ -429,7 +468,7 @@ int _selectedIndex = 0;
                                           Text(
                                               'Dr Albert Ambro',
                                               style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: 14.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff48555B),
@@ -458,7 +497,7 @@ int _selectedIndex = 0;
                     
                      else if (index == 7) {
                       return Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                        padding:EdgeInsets.only(top:ScreenUtil().setHeight(10)),
                         child: CarouselSlider(
                           options: CarouselOptions(
                             height: 170.0.h,
@@ -502,14 +541,15 @@ int _selectedIndex = 0;
                                       ),
                                     ),
                                     Positioned(
-                                      bottom: 30,
-                                      right: 40,
+                                      bottom: 30.h,
+                                      right: 40.w,
                                       child: ElevatedButton(
                                         onPressed: () {},
                                         child: Text(
                                           'Acheter',
                                           style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 16.sp,
+                                            
                                           ),
                                         ),
                                         style: ElevatedButton.styleFrom(
@@ -531,187 +571,12 @@ int _selectedIndex = 0;
                     } else if (index==1){
                       return Column(
                         children: [
-                              SizedBox(height:15,),
+                              SizedBox(height:15.h,),
                             Container(
-                                  color: Colors.white,
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('Recent Posts',style:TextStyle(color:Colors.black,     fontFamily: 'Roboto',
-   fontSize: 18)),
-                                       ],
-                                  ),
-                                ),
-                                SizedBox(height: 15.h,),
-                          Container(
                             height: 390.h,
                             margin: EdgeInsets.only(
-                                bottom: 15, left: 5, right: 5),
-                            padding: EdgeInsets.only(top: 10, left: 5, right: 5),
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                               boxShadow: [
-                              BoxShadow(
-                                offset: Offset(1, 1),
-                                blurRadius:4,spreadRadius:4,color:Colors.black.withOpacity(0.03)
-                              ),
-                                BoxShadow(
-                                offset: Offset(-1, -1),
-                                blurRadius: 4,spreadRadius: 4,color: Colors.black.withOpacity(0.03)
-                              )
-                            ],
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 25,
-                                      backgroundColor:
-                                          Colors.transparent,
-                                      backgroundImage:
-                                          AssetImage('lib/Images/pexels-andrea-piacquadio-733872.jpg'),
-                                    ),
-                                    SizedBox(width: 15.w),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Dr Albert Ambrose',
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                    fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.bold,
-                                                color: Color(0xff48555B),
-                                              ),
-                                            ),
-                                            SizedBox(width: 130.w),
-                                            Icon(
-                                              Icons.more_horiz,
-                                              color: Colors.black87,
-                                              size: 22,
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(width: 10.w),
-                                        Text(
-                                          '10 minutes ago',
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                          
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 8.h), Expanded(child:Container(
-                              width: double.infinity,
-                              decoration:BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              margin: EdgeInsets.symmetric(horizontal: 5),
-                              child: Column(
-                                children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Text(
-                                      "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                       fontFamily: 'Poppins',
-                                          color: Colors.black87)),
-                                ),
-                                SizedBox(height: 4.h),
-                                Container(
-                                  width: double.infinity,
-                                  height: 160.h,
-                                  padding: EdgeInsets.only(right: 5),
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.circular(15),
-                                    child: Image.asset(
-                                imgo[index],
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(15),
-                                    color:
-                                        Colors.black.withOpacity(0.07),
-                                  ),
-                                ),
-                                SizedBox(height: 5.h),
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor:
-                                          Colors.black.withOpacity(0.05),
-                                      child: Center(
-                                          child: Image.asset('lib/Images/icon1.png')),
-                                    ),
-                                    SizedBox(width:5.w),
-                                    Text("2k"),
-                                    SizedBox(width: 15.w),
-                                    CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor:
-                                          Colors.black.withOpacity(0.05),
-                                      child: Center(
-                                          child: Image.asset('lib/Images/icon2.png')),
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    Text("23"),
-                                    SizedBox(width: 15.w),
-                                 
-                                  ],
-                                ),
-                                SizedBox(height: 5.h,),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal:10.0),
-                                  child: Row(children: [
-                              
-                                    SizedBox(width: 10.w,),
-                                    Text('Write your Opinion',style:TextStyle(color:Colors.black54)),
-                          Expanded(child:Container()),                                                            Text('(275 comments)',style:TextStyle(color:Colors.black,fontWeight: FontWeight.bold),),
-                                  ],),
-                                )  
-                                ],
-                              ),
-                             ))
-                                
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    }else {
-                      return Column(
-                        children: [
-                          Divider(                        color:Colors.black.withOpacity(0.2),
-                          height: 15.h,
-)                   ,   
-                          
-                          Container(
-                            height: 390.h,
-                            margin: EdgeInsets.only(
-                                bottom: 15, left: 5, right: 5),
-                            padding: EdgeInsets.only(top: 10, left: 5, right: 5),
+                                bottom:ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
+                            padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                               color: Colors.white,
@@ -757,7 +622,7 @@ int _selectedIndex = 0;
                                             Text(
                                               'Dr Albert Ambrose',
                                               style: TextStyle(
-                                                fontSize: 14,
+                                                fontSize: 14.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff48555B),
@@ -773,7 +638,7 @@ int _selectedIndex = 0;
                                         ),
                                         SizedBox(width: 10.w),
                                         Text(
-                                          '10 minutes ago',
+                                          '10 minutes ag',
                                           style: TextStyle(
                                             color: Colors.black54,
                           
@@ -789,15 +654,15 @@ int _selectedIndex = 0;
                                 borderRadius: BorderRadius.circular(10),
                                 color: Color(0xfff9f9f9),
                               ),
-                              margin: EdgeInsets.symmetric(horizontal: 5),
+                              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
                               child: Column(
                                 children: [
                                 Padding(
-                                  padding: const EdgeInsets.all(8),
+                                  padding:EdgeInsets.all(ScreenUtil().setWidth(8)),
                                   child: Text(
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: 15.sp,
                                        fontFamily: 'Poppins',
                                           color: Colors.black87)),
                                 ),
@@ -805,7 +670,7 @@ int _selectedIndex = 0;
                                 Container(
                                   width: double.infinity,
                                   height: 160.h,
-                                  padding: EdgeInsets.only(right: 5),
+                                  padding: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
                                   child: ClipRRect(
                                     borderRadius:
                                         BorderRadius.circular(15),
@@ -849,7 +714,328 @@ int _selectedIndex = 0;
                                 ),
                                 SizedBox(height: 5.h,),
                                 Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal:10.0),
+                                  padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
+                                  child: Row(children: [
+                              
+                                    SizedBox(width: 10.w,),
+                                    Text('Write your Opinion',style:TextStyle(color:Colors.black54)),
+                          Expanded(child:Container()),                                                            Text('(275 comments)',style:TextStyle(color:Colors.black,fontWeight: FontWeight.bold),),
+                                  ],),
+                                )  
+                                ],
+                              ),
+                             ))
+                                
+                              ],
+                            ),
+                          ),
+                         SizedBox(height: 15.h,),
+                          Container(
+                            height: 390.h,
+                            margin: EdgeInsets.only(
+                                bottom: ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
+                            padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right:ScreenUtil().setWidth(5)),
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                               boxShadow: [
+                              BoxShadow(
+                                offset: Offset(1, 1),
+                                blurRadius:4,spreadRadius:4,color:Colors.black.withOpacity(0.03)
+                              ),
+                                BoxShadow(
+                                offset: Offset(-1, -1),
+                                blurRadius: 4,spreadRadius: 4,color: Colors.black.withOpacity(0.03)
+                              )
+                            ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor:
+                                          Colors.transparent,
+                                      backgroundImage:
+                                          AssetImage('lib/Images/pexels-andrea-piacquadio-733872.jpg'),
+                                    ),
+                                    SizedBox(width: 15.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Dr Albert Ambrose',
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                    fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xff48555B),
+                                              ),
+                                            ),
+                                            SizedBox(width: 110.w),
+                                            Icon(
+                                              Icons.more_horiz,
+                                              color: Colors.black87,
+                                              size: 22.h,
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(width: 10.w),
+                                        Text(
+                                          '10 minutes ago',
+                                          style: TextStyle(
+                                            color: Colors.black54,
+                          
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 8.h), Expanded(child:Container(
+                              width: double.infinity,
+                              decoration:BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
+                              child: Column(
+                                children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Text(
+                                      "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
+                                      style: TextStyle(
+                                          fontSize: 17.sp,
+                                       fontFamily: 'Poppins',
+                                          color: Colors.black87)),
+                                ),
+                                SizedBox(height: 4.h),
+                                Container(
+                                  width: double.infinity,
+                                  height: 160.h,
+                                  padding: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.circular(15),
+                                    child: Image.asset(
+                                imgo[index],
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.circular(15),
+                                    color:
+                                        Colors.black.withOpacity(0.07),
+                                  ),
+                                ),
+                                SizedBox(height: 5.h),
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor:
+                                          Colors.black.withOpacity(0.05),
+                                      child: Center(
+                                          child: Image.asset('lib/Images/icon1.png')),
+                                    ),
+                                    SizedBox(width:5.w),
+                                    Text("2k"),
+                                    SizedBox(width: 15.w),
+                                    CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor:
+                                          Colors.black.withOpacity(0.05),
+                                      child: Center(
+                                          child: Image.asset('lib/Images/icon2.png')),
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    Text("23"),
+                                    SizedBox(width: 15.w),
+                                 
+                                  ],
+                                ),
+                                SizedBox(height: 5.h,),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
+                                  child: Row(children: [
+                              
+                                    SizedBox(width: 10.w,),
+                                    Text('Write your Opinion',style:TextStyle(color:Colors.black54)),
+                          Expanded(child:Container()),                                                            Text('(275 comments)',style:TextStyle(color:Colors.black,fontWeight: FontWeight.bold),),
+                                  ],),
+                                )  
+                                ],
+                              ),
+                             ))
+                                
+                              ],
+                            ),
+                          ),
+                        ],
+                      );
+                    }else {
+                      return Column(
+                        children: [
+                          Divider(                        color:Colors.black.withOpacity(0.2),
+                          height: 15.h,
+)                   ,   
+                          
+                          Container(
+                            height: 390.h,
+                            margin: EdgeInsets.only(
+                                bottom:ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
+                            padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
+                            width: MediaQuery.of(context).size.width,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                                  boxShadow: [
+                              BoxShadow(
+                                offset: Offset(1, 1),
+                                blurRadius:4,spreadRadius:4,color:Colors.black.withOpacity(0.03)
+                              ),
+                                BoxShadow(
+                                offset: Offset(-1, -1),
+                                blurRadius: 4,spreadRadius: 4,color: Colors.black.withOpacity(0.03)
+                              )
+                            ],
+                              borderRadius: BorderRadius.circular(15),
+                             
+                              
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor:
+                                          Colors.transparent,
+                                      backgroundImage:
+                                          AssetImage('lib/Images/pexels-andrea-piacquadio-733872.jpg'),
+                                    ),
+                                    SizedBox(width: 15.w),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment
+                                                  .spaceBetween,
+                                          children: [
+                                            Text(
+                                              'Dr Albert Ambrose',
+                                              style: TextStyle(
+                                                fontSize: 14.sp,
+                                                    fontFamily: 'Poppins',
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xff48555B),
+                                              ),
+                                            ),
+                                            SizedBox(width: 130.w),
+                                            Icon(
+                                              Icons.more_horiz,
+                                              color: Colors.black87,
+                                              size: 22,
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(width: 10.w),
+                                        Text(
+                                          '10 minutes ag',
+                                          style: TextStyle(
+                                            color: Colors.black54,
+                          
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 8.h), Expanded(child:Container(
+                              width: double.infinity,
+                              decoration:BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xfff9f9f9),
+                              ),
+                              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
+                              child: Column(
+                                children: [
+                                Padding(
+                                  padding:EdgeInsets.all(ScreenUtil().setWidth(8)),
+                                  child: Text(
+                                      "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
+                                      style: TextStyle(
+                                          fontSize: 15.sp,
+                                       fontFamily: 'Poppins',
+                                          color: Colors.black87)),
+                                ),
+                                SizedBox(height: 4.h),
+                                Container(
+                                  width: double.infinity,
+                                  height: 160.h,
+                                  padding: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
+                                  child: ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.circular(15),
+                                    child: Image.asset(
+                                imgo[index],
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.circular(15),
+                                    color:
+                                        Colors.black.withOpacity(0.07),
+                                  ),
+                                ),
+                                SizedBox(height: 5.h),
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 15,
+                                      backgroundColor:
+                                          Colors.black.withOpacity(0.05),
+                                      child: Center(
+                                          child: Image.asset('lib/Images/icon1.png')),
+                                    ),
+                                    SizedBox(width:5.w),
+                                    Text("2k"),
+                                    SizedBox(width: 15.w),
+                                    CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor:
+                                          Colors.black.withOpacity(0.05),
+                                      child: Center(
+                                          child: Image.asset('lib/Images/icon2.png')),
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    Text("23"),
+                                    SizedBox(width: 15.w),
+                                 
+                                  ],
+                                ),
+                                SizedBox(height: 5.h,),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
                                   child: Row(children: [
                               
                                     SizedBox(width: 10.w,),
@@ -895,6 +1081,170 @@ int _selectedIndex = 0;
                   
         ],),
      ),
+    );
+  }
+}
+
+
+
+class AppDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      width: 220,
+      backgroundColor:Color(0xff657496),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          SizedBox(
+            height: 120,
+            child: DrawerHeader(
+              
+              decoration: BoxDecoration(
+                image:DecorationImage(image:AssetImage('lib/Images/imagd.png',))
+              ),
+              child: Text(
+                'Peter JHonson',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ),
+          ListTile(
+            
+            leading: Icon(Icons.home),
+            title: Text('My Doctor',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Med()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Medical Records',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Pharmacy',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SearchPharmaciee()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Medicine',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Analysis lab',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('My Appointments',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => MyAppointments()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Medical questions',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Help Center',style:TextStyle(color:Colors.white)),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Privacy & Policy',style:TextStyle(color:Colors.white),),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+              );
+            },
+          ),
+       
+          ListTile(
+            leading: Icon(Icons.contact_page),
+            title: Text('Contact'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ContactScreen()),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SettingsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+      ),
+      body: Center(
+        child: Text('Settings Screen Content'),
+      ),
+    );
+  }
+}
+
+class ContactScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contact'),
+      ),
+      body: Center(
+        child: Text('Contact Screen Content'),
+      ),
     );
   }
 }

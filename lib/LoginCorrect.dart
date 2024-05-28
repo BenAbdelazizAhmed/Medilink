@@ -14,6 +14,7 @@ class _LoginCorrectState extends State<LoginCorrect> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:Container(
+        padding: EdgeInsets.only(right: ScreenUtil().setWidth(30),left: ScreenUtil().setWidth(30)),
         height: double.infinity,
         width: double.infinity,
       decoration: BoxDecoration(
@@ -21,16 +22,11 @@ class _LoginCorrectState extends State<LoginCorrect> {
         AssetImage('lib/Images/imagz.png'),fit: BoxFit.cover)
       ),
       child:Column(children: [
-        SizedBox(height: 100,),
-        CircleAvatar(radius: 70,
-        backgroundColor: Colors.white,
-        child:CircleAvatar(
-          radius: 65,
-          backgroundColor:Color(0xffE2E6FF)
-        ),),
-        SizedBox(height: 50,),
+        SizedBox(height: 70.h,),
+                   Image.asset('lib/Images/immmmmmm.png',height: 120.h,width: 160.w,fit: BoxFit.fill,),
+   SizedBox(height: 40.h,),
         Container(width: 340.w,
-        height: 45,
+        height: 45.h,
         decoration:BoxDecoration(
           color: Color(0xffE2E6FF),
           borderRadius:BorderRadius.circular(10)
@@ -43,7 +39,7 @@ class _LoginCorrectState extends State<LoginCorrect> {
             prefixIcon:Icon(Icons.email,color: Color(0xff596FFF),),
             label:Text('Email Address'),labelStyle:TextStyle
             (color: Color(0xff050551), fontFamily:'ABeeZee',
-          fontSize: 18,)
+          fontSize: 18.sp,)
           ),
          ),
         )
@@ -62,11 +58,11 @@ class _LoginCorrectState extends State<LoginCorrect> {
             prefixIcon:Icon(Icons.lock,color: Color(0xff596FFF),),
             label:Text('Password'),labelStyle:TextStyle
             (color: Color(0xff050551), fontFamily:'ABeeZee',
-          fontSize: 18,)
+          fontSize: 18.sp,)
           ),
          ),
         )
-        ,TextButton(onPressed:(){}, child:Text('Forget password?',style:TextStyle(color: Color(0xff050551), fontFamily:'ABeeZee',fontSize: 20),))
+        ,TextButton(onPressed:(){}, child:Text('Forget password?',style:TextStyle(color: Color(0xff050551), fontFamily:'ABeeZee',fontSize: 20.sp),))
       ,SizedBox(height: 15.h,),
       GestureDetector(
         onTap:(){
@@ -75,21 +71,23 @@ class _LoginCorrectState extends State<LoginCorrect> {
               MaterialPageRoute(builder: (context) =>Med()),
             );
         },
-        child: Container(height: 55.h,width: 150.w,
+        child: Container(height: 50.h,width: 155.w,
         decoration:BoxDecoration(
           color:Colors.blue,borderRadius: BorderRadius.circular(10)
         ),
-        child:Center(child:Text('LOGIN',style:TextStyle(color: Colors.white,fontSize: 20),),),
+        child:Center(child:Text('LOGIN',style:TextStyle(color: Colors.white,fontSize: 20.sp),),),
         ),
       ),
-      SizedBox(height: 20.h,),
-        Container(width: 340.w,
-        padding: EdgeInsets.symmetric(horizontal: 15),
+      SizedBox(height: 15.h,),
+        Container(width: 310.w,
+        padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(15)),
         height: 50.h,
         decoration:BoxDecoration(
           color: Color(0xffE2E6FF),
           borderRadius:BorderRadius.circular(10)
-        ),child:Row(children: [
+        ),child:Row(
+          mainAxisAlignment:MainAxisAlignment.center
+          ,children: [
              CircleAvatar(radius: 15,backgroundColor: Colors.white,
             backgroundImage:AssetImage('lib/Images/pngegg.png'),
             ),

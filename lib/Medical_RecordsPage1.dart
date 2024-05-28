@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/All_specialities.dart';
 
 class Medical_RecordsPage1 extends StatefulWidget {
   const Medical_RecordsPage1({super.key});
@@ -60,17 +61,36 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             ],)
           ],),
           Divider()
-         ,SizedBox(height: 30,)  ,Container(
-                margin:EdgeInsets.only(left: 30,right: 30,),
+         ,SizedBox(height: 30,)  ,GestureDetector(
+          onTap:(){
+            
+             Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => specialities()),
+      );
+          },
+           child: GestureDetector(
+            onTap:(){
+                   Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+      );
               
-                height: 60,
-                decoration:BoxDecoration(
-                            color:Color(0xff0099E5) ,
-                            borderRadius: BorderRadius.circular(5)
-                ),
-              width: double.infinity,
-              child:Center(child:Text('Upload  record',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
-              )        
+        
+            },
+             child: Container(
+                    margin:EdgeInsets.only(left: 30,right: 30,),
+                  
+                    height: 60,
+                    decoration:BoxDecoration(
+                                color:Color(0xff0099E5) ,
+                                borderRadius: BorderRadius.circular(5)
+                    ),
+                  width: double.infinity,
+                  child:Center(child:Text('Upload  record',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
+                  ),
+           ),
+         )        
               ],),
         
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:op/MedicalConfirm.dart';
 
 class specialities extends StatefulWidget {
   const specialities({super.key});
@@ -71,7 +72,15 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("General",style:TextStyle(color:Color(0xff333333),fontWeight: FontWeight.w500),),
+            GestureDetector(
+              onTap:(){
+                
+                 Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MedicalConfirm()),
+      );
+              }
+              ,child: Text("General",style:TextStyle(color:Color(0xff333333),fontWeight: FontWeight.w500),)),
             Text(
               'Cardiology is a medical specialty and a branch of internal medicine concerned with disorders of the heart.',
               style: TextStyle(fontSize: 12,fontFamily: 'Poppins',color:Color(0xff000000)),
