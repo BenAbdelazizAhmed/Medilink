@@ -60,7 +60,11 @@ class _ProfileSettingsState extends State<ProfileSettings> {
 fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
 ),),
       centerTitle: true,
-      leading:        Icon(Icons.arrow_back_ios),
+      leading: IconButton(
+              onPressed: () {
+  Navigator.pop(context);
+}
+              ,icon:Icon(Icons.arrow_back_outlined,color: Colors.black,)),
 
       ),
       body:Container(

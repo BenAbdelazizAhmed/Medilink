@@ -223,8 +223,11 @@ class _ChatPageState extends State<ChatPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
-                 Row(
+ IconButton(
+              onPressed: () {
+  Navigator.pop(context);
+}
+              ,icon:Icon(Icons.arrow_back_outlined,color: Colors.black,)),                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
 
                   children: [

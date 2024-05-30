@@ -25,7 +25,11 @@ class _SearchPharmacieeState extends State<SearchPharmaciee> {
         backgroundColor:Colors.white,
           appBar: AppBar(
             toolbarHeight: 35,
-            leading:  Icon(Icons.arrow_back_outlined,color: Colors.black,),
+            leading:  IconButton(
+              onPressed: () {
+  Navigator.pop(context);
+}
+              ,icon:Icon(Icons.arrow_back_outlined,color: Colors.black,)),
             backgroundColor: Colors.white,
             elevation: 0,
             centerTitle: true,
