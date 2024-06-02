@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
@@ -233,21 +234,21 @@ class _ChatPageState extends State<ChatPage> {
                   children: [
                     CircleAvatar(radius: 20,
                     backgroundImage:AssetImage('lib/Images/sed1.png'),),
-                    SizedBox(width: 15,),
+                    SizedBox(width: 15.w,),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center
                       ,children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Dr Ahmed Abdelaziz',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 17,color: Color(0xff6db0d0),),),
+                          Text('Dr Ahmed Abdelaziz',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 12.sp,color: Color(0xff6db0d0),),),
                           Text('Last seen today at 04:13',style:TextStyle(fontSize: 12,color: Colors.black54))
                         ],
                       ),
                     
                     ],),
-                    SizedBox(width: 65,),
-                    Icon(Icons.phone),
+                    SizedBox(width: 35.w,),
+                    Icon(Icons.phone,size: 20.w,),
                     SizedBox(width: 10,),
                     Icon(Icons.more_horiz)
                   ],

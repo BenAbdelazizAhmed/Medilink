@@ -178,49 +178,50 @@ int _selectedIndex = 0;
   },
   child: Row(
     children: [
-      Expanded(
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: ScreenUtil().setHeight(10)),
-          padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
-          height: ScreenUtil().setHeight(45),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(1, 1),
-                blurRadius: ScreenUtil().setWidth(4),
-                spreadRadius: ScreenUtil().setWidth(4),
-                color: Colors.black.withOpacity(0.03),
-              ),
-              BoxShadow(
-                offset: Offset(-1, -1),
-                blurRadius: ScreenUtil().setWidth(4),
-                spreadRadius: ScreenUtil().setWidth(4),
-                color: Colors.black.withOpacity(0.03),
-              )
-            ],
-            borderRadius: BorderRadius.circular(ScreenUtil().setWidth(10)),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.search),
-                  SizedBox(width: ScreenUtil().setWidth(8)),
-                  Text(
-                    'Find Your Doctor, Phar...',
-                    style: TextStyle(
-                      color: Colors.black45,
+     Expanded(
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 15.w),
+            height: 45.h,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(1, 1),
+                  blurRadius: 4.w,
+                  spreadRadius: 4.w,
+                  color: Colors.black.withOpacity(0.03),
+                ),
+                BoxShadow(
+                  offset: Offset(-1, -1),
+                  blurRadius: 4.w,
+                  spreadRadius: 4.w,
+                  color: Colors.black.withOpacity(0.03),
+                )
+              ],
+              borderRadius: BorderRadius.circular(10.w),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.search),
+                    SizedBox(width: 8.w),
+                    Text(
+                      'Find Your Doctor, Phar...',
+                      style: TextStyle(
+                        color: Colors.black45,
+                        fontSize: 12.sp, 
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-      SizedBox(width: ScreenUtil().setWidth(5)),
+         SizedBox(width: ScreenUtil().setWidth(5)),
       TextButton(
         onPressed: () {},
         child: Text(
@@ -287,16 +288,16 @@ int _selectedIndex = 0;
                             
                                ,Container(
                                     color: Colors.white,
-  height: MediaQuery.of(context).size.height * 0.08,
+  height: MediaQuery.of(context).size.height * 0.06,
   width: double.infinity,
   padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02),
   child: ListView(
     scrollDirection: Axis.horizontal,
     children: [
       Container(
-        height: MediaQuery.of(context).size.height * 0.06,
+        height: MediaQuery.of(context).size.height * 0.04,
         width: MediaQuery.of(context).size.width * 0.3,
-        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.03),
+        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.02),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
@@ -308,11 +309,11 @@ int _selectedIndex = 0;
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('lib/Images/stethoscope.png', height: MediaQuery.of(context).size.height * 0.045),
+            Image.asset('lib/Images/stethoscope.png', height: MediaQuery.of(context).size.height * 0.030),
             SizedBox(width: MediaQuery.of(context).size.width * 0.015),
             Text(
               'Doctor',
-              style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+              style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold,fontSize: 10.sp),
             ),
           ],
         ),
@@ -344,7 +345,7 @@ int _selectedIndex = 0;
               SizedBox(width: MediaQuery.of(context).size.width * 0.015),
               Text(
                 'Pharmacy',
-                style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+                style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold,fontSize: 10.sp),
               ),
             ],
           ),
@@ -369,7 +370,7 @@ int _selectedIndex = 0;
             SizedBox(width: MediaQuery.of(context).size.width * 0.015),
             Text(
               'Medicine',
-              style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+              style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold,fontSize: 12.sp),
             ),
           ],
         ),
@@ -383,8 +384,8 @@ int _selectedIndex = 0;
           );
         },
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.055,
-          width: MediaQuery.of(context).size.width * 0.32,
+          height: MediaQuery.of(context).size.height * 0.030,
+          width: MediaQuery.of(context).size.width * 0.42,
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(
@@ -400,7 +401,7 @@ int _selectedIndex = 0;
               SizedBox(width: MediaQuery.of(context).size.width * 0.015),
               Text(
                 'Analysis lab',
-                style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold),
+                style: TextStyle(color: Color(0xff6db0d0), fontWeight: FontWeight.bold,fontSize: 12.sp),
               ),
             ],
           ),
@@ -468,8 +469,9 @@ int _selectedIndex = 0;
                                           Text(
                                               'Dr Albert Ambro',
                                               style: TextStyle(
-                                                fontSize: 14.sp,
+                                                fontSize: 13.sp,
                                                     fontFamily: 'Poppins',
+                                                    
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff48555B),
                                               ),
@@ -573,7 +575,7 @@ int _selectedIndex = 0;
                         children: [
                               SizedBox(height:15.h,),
                             Container(
-                            height: 390.h,
+                            height: 365.h,
                             margin: EdgeInsets.only(
                                 bottom:ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
                             padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
@@ -622,13 +624,13 @@ int _selectedIndex = 0;
                                             Text(
                                               'Dr Albert Ambrose',
                                               style: TextStyle(
-                                                fontSize: 14.sp,
+                                                fontSize: 12.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff48555B),
                                               ),
                                             ),
-                                            SizedBox(width: 130.w),
+                                            SizedBox(width: 110.w),
                                             Icon(
                                               Icons.more_horiz,
                                               color: Colors.black87,
@@ -662,7 +664,7 @@ int _selectedIndex = 0;
                                   child: Text(
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
-                                          fontSize: 15.sp,
+                                          fontSize: 12.sp,
                                        fontFamily: 'Poppins',
                                           color: Colors.black87)),
                                 ),
@@ -731,7 +733,7 @@ int _selectedIndex = 0;
                           ),
                          SizedBox(height: 15.h,),
                           Container(
-                            height: 390.h,
+                            height: 365.h,
                             margin: EdgeInsets.only(
                                 bottom: ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
                             padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right:ScreenUtil().setWidth(5)),
@@ -778,13 +780,13 @@ int _selectedIndex = 0;
                                             Text(
                                               'Dr Albert Ambrose',
                                               style: TextStyle(
-                                                fontSize: 14.sp,
+                                                fontSize: 12.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff48555B),
                                               ),
                                             ),
-                                            SizedBox(width: 110.w),
+                                            SizedBox(width: 100.w),
                                             Icon(
                                               Icons.more_horiz,
                                               color: Colors.black87,
@@ -817,7 +819,7 @@ int _selectedIndex = 0;
                                   child: Text(
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
-                                          fontSize: 17.sp,
+                                          fontSize: 12.sp,
                                        fontFamily: 'Poppins',
                                           color: Colors.black87)),
                                 ),
@@ -894,7 +896,7 @@ int _selectedIndex = 0;
 )                   ,   
                           
                           Container(
-                            height: 390.h,
+                            height: 365.h,
                             margin: EdgeInsets.only(
                                 bottom:ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
                             padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
@@ -943,13 +945,13 @@ int _selectedIndex = 0;
                                             Text(
                                               'Dr Albert Ambrose',
                                               style: TextStyle(
-                                                fontSize: 14.sp,
+                                                fontSize: 12.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff48555B),
                                               ),
                                             ),
-                                            SizedBox(width: 130.w),
+                                            SizedBox(width: 110.w),
                                             Icon(
                                               Icons.more_horiz,
                                               color: Colors.black87,
@@ -983,7 +985,7 @@ int _selectedIndex = 0;
                                   child: Text(
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
-                                          fontSize: 15.sp,
+                                          fontSize: 13.sp,
                                        fontFamily: 'Poppins',
                                           color: Colors.black87)),
                                 ),
@@ -1090,132 +1092,175 @@ int _selectedIndex = 0;
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      width: 220,
-      backgroundColor:Color(0xff657496),
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          SizedBox(
-            height: 120,
-            child: DrawerHeader(
-              
-              decoration: BoxDecoration(
-                image:DecorationImage(image:AssetImage('lib/Images/imagd.png',))
-              ),
-              child: Text(
-                'Peter JHonson',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 24,
+    return SafeArea(
+      child: Drawer(
+        width: 250,
+        backgroundColor:Color(0xff657496).withOpacity(0.9),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            SizedBox(
+              height: 100,
+              child: DrawerHeader(
+                
+                decoration: BoxDecoration(
+                  image:DecorationImage(image:AssetImage('lib/Images/imagd.png',),fit:BoxFit.fill)
+                ),
+                child: Text(
+                  'Peter JHonson',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
               ),
             ),
-          ),
-          ListTile(
-            
-            leading: Icon(Icons.home),
-            title: Text('My Doctor',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Med()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Medical Records',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Pharmacy',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SearchPharmaciee()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Medicine',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Analysis lab',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('My Appointments',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyAppointments()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Medical questions',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Help Center',style:TextStyle(color:Colors.white)),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-              );
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Privacy & Policy',style:TextStyle(color:Colors.white),),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-              );
-            },
-          ),
-       
-          ListTile(
-            leading: Icon(Icons.contact_page),
-            title: Text('Contact'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ContactScreen()),
-              );
-            },
-          ),
-        ],
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                
+                leading: Icon(Icons.person,color:Colors.white,),
+                title: Text('My Doctor',style:TextStyle(color:Colors.white)),
+                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Med()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.medical_information,color: Colors.white,),
+                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                title: Text('Medical Records',style:TextStyle(color:Colors.white)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.local_pharmacy,color: Colors.white,),
+                title: Text('Pharmacy',style:TextStyle(color:Colors.white)),
+                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchPharmaciee()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.medical_information_outlined,color:Colors.white,),
+                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                title: Text('Medicine',style:TextStyle(color:Colors.white)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.search,color:Colors.white,),
+                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                title: Text('Analysis lab',style:TextStyle(color:Colors.white,fontSize: 10.sp)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SearchLabo()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                 trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                leading: Icon(Icons.calendar_month,color: Colors.white,),
+                title: Text('Appointment',style:TextStyle(color:Colors.white)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyAppointments()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.chat,color: Colors.white,),
+                                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                title: Text('questions',style:TextStyle(color:Colors.white)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.help,color:Colors.white,),
+                title: Text('Help Center',style:TextStyle(color:Colors.white)),
+                                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.privacy_tip,color: Colors.white,),
+                title: Text('Privacy & Policy',style:TextStyle(color:Colors.white),),
+                                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              height: 40
+              ,child:    ListTile(
+              leading: Icon(Icons.settings,color: Colors.white,),
+                                                              trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+              title: Text('Settings',style:TextStyle(color: Colors.white),),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ContactScreen()),
+                );
+              },
+            ),
+     )
+
+             ],
+        ),
       ),
     );
   }
@@ -1224,12 +1269,14 @@ class AppDrawer extends StatelessWidget {
 class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Settings'),
-      ),
-      body: Center(
-        child: Text('Settings Screen Content'),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Settings'),
+        ),
+        body: Center(
+          child: Text('Settings Screen Content'),
+        ),
       ),
     );
   }

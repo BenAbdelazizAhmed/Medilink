@@ -52,7 +52,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                               )
                             ]
               ),
-              height: 100,width: double.infinity,
+              height: 90.h,width: double.infinity,
               child:Row(
                 mainAxisAlignment: MainAxisAlignment.start
                 ,
@@ -60,7 +60,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                 children: [
                 Column(
                   children: [
-                    Container(height: 50.h,width: 60.w,
+                    Container(height: 40.h,width: 60.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5),color:Color(0xff0EBE7F).withOpacity(0.9),
                     ),
@@ -90,7 +90,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
       );
               }
               ,child: Text('Records added by you',style:TextStyle(fontWeight: FontWeight.bold),)),
-          Text('Record for Abdullah mamun',style:TextStyle(color: Colors.green,fontSize: 12.sp),),
+          Text('Record for Abdullah mamun',style:TextStyle(color: Colors.green,fontSize: 10.sp),),
           SizedBox(height: 4.h,),
          Text('1 Prescription',style:TextStyle(color: Color(0xff677294)),),
             ],)

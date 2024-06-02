@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/pharmaciee.dart';
 
 class SearchPharmaciee extends StatefulWidget {
   const SearchPharmaciee({super.key});
@@ -46,33 +48,37 @@ class _SearchPharmacieeState extends State<SearchPharmaciee> {
             Container(
               height: 85,
             child:Column(children: [
-                    Row(
-                      children: [
-                        Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15),
-                  height: 45,
-                  width: 270,                  decoration: BoxDecoration(
-                        color:Colors.black.withOpacity(0.03),
-                        borderRadius: BorderRadius.circular(10)
+                  Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 15.w), // Using ScreenUtil for horizontal padding
+                        height: 40.h, // Using ScreenUtil for height
+                        width: 240.w, // Using ScreenUtil for width
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.03),
+                          borderRadius: BorderRadius.circular(10.r), // Using ScreenUtil for border radius
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.search),
+                                SizedBox(width: 8.w), // Using ScreenUtil for width
+                                Text('find Your Doctor,pharma', style: TextStyle(color: Colors.black38,fontSize: 13.sp),)
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(width: 4.w), // Using ScreenUtil for width
+                      TextButton(
+                        onPressed: () {},
+                        child: Text('Map View', style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xff7BC1B7),fontSize: 11.sp),),
+                      )
+                    ],
                   ),
-                  child:Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.search),
-                              SizedBox(width:8,),
-                               Text('find Your Doctor,pharmacie...',style:TextStyle(color: Colors.black38),)
-
-                            ],
-                          ),
-                 ],
-                  ),
-                ),SizedBox(width: 5,),
-                  TextButton(onPressed:(){}, child:Text('Map View',style:TextStyle(fontWeight: FontWeight.bold,color: Color(0xff7BC1B7)),))
-                      ],
-                    ),
-                    SizedBox(height: 10,),
+                  SizedBox(height: 10,),
                                Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -151,134 +157,180 @@ class _SearchPharmacieeState extends State<SearchPharmaciee> {
                     ),
                       SizedBox(height: 5,),
 
-            Container(
-              height: 529,
-              child: ListView.builder(
-              itemCount:6,
+      Expanded(
+          child: Container(
+            child: ListView.builder(
+              itemCount: 6,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  height: 110,
-                  margin: EdgeInsets.only(bottom:15),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius:BorderRadius.circular(15),
-                        color:  Color.fromRGBO(253, 255, 255, 1),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.06),
-                      spreadRadius: 0,
-                      blurRadius: 2,
-                      offset: Offset(1,2)
-                    ), BoxShadow(
-                      color: Colors.black.withOpacity(0.06),
-                      spreadRadius: 0,
-                      blurRadius: 2,
-                      offset: Offset(-1,-2)
-                    )
-                  ]
-
-                  ),
-                  child:Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-              Column(
-                children: [
-                  Container(
-                    height: 110,
-                    width: 120,
-                    padding: EdgeInsets.only(top: 5),
- decoration:BoxDecoration(
-                        borderRadius:BorderRadius.circular(15),
-                        color:  Color.fromRGBO(253, 255, 255, 1),
-                      ),                    child:ClipRRect(
-                        borderRadius: BorderRadius.circular(15)
-                        ,child: Image.asset(imagePaths[index],fit:BoxFit.cover,)),
-                  ),
-              ],
-              )
-                 ,Column(
-                  children: [
-                     Container(
-                      padding: EdgeInsets.only(top: 5,right:15,left: 15,bottom: 5),
-                      width: 255
-                      ,height: 110,
-                      decoration:BoxDecoration(
-                        borderRadius:BorderRadius.circular(15),
-                        color:  Color.fromRGBO(253, 255, 255, 1),
-                      ),
-                      child:Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
+                return GestureDetector(
+                  onTap:(){
+                    
+                        Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Pharmaciee()),
+      );
+                  },
+                  child: Container(
+                    height: 90.h, // Utilisation de ScreenUtil pour la hauteur
+                    margin: EdgeInsets.only(bottom: 15.h), // Utilisation de ScreenUtil pour la marge
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.r), // Utilisation de ScreenUtil pour le rayon de bordure
+                      color: Color.fromRGBO(253, 255, 255, 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.06),
+                          spreadRadius: 0,
+                          blurRadius: 2,
+                          offset: Offset(1, 2),
+                        ),
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.06),
+                          spreadRadius: 0,
+                          blurRadius: 2,
+                          offset: Offset(-1, -2),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          children: [
+                            Container(
+                              height: 90.h, // Utilisation de ScreenUtil pour la hauteur
+                              width: 100.w, // Utilisation de ScreenUtil pour la largeur
+                              padding: EdgeInsets.only(top: 5.h), // Utilisation de ScreenUtil pour le padding
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.r), // Utilisation de ScreenUtil pour le rayon de bordure
+                                color: Color.fromRGBO(253, 255, 255, 1),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15.r), // Utilisation de ScreenUtil pour le rayon de bordure
+                                child: Image.asset(imagePaths[index], fit: BoxFit.cover),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(
+                                  top: 5.h, right: 5.w, left: 15.w, bottom: 5.h), // Utilisation de ScreenUtil pour le padding
+                              width: 200.w, // Utilisation de ScreenUtil pour la largeur
+                              height: 90.h, // Utilisation de ScreenUtil pour la hauteur
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.r), // Utilisation de ScreenUtil pour le rayon de bordure
+                                color: Color.fromRGBO(253, 255, 255, 1),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Pharmacy Charle Benz',style:TextStyle(color: Color(0xff0099E5),),)
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Pharmacy Charle Benz',
+                                        style: TextStyle(
+                                            color: Color(0xff0099E5),
+                                            fontSize: 12.sp), // Utilisation de ScreenUtil pour la taille de police
+                                      ),
+                                      Icon(Icons.favorite_border_outlined,
+                                          color: Color(0xff7BC1B7)),
+                                    ],
+                                  ),
+                                  Divider(
+                                    color: Colors.white,
+                                    height: 1.5.h, // Utilisation de ScreenUtil pour la hauteur
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.place_outlined,
+                                        color: Colors.black54,
+                                        size: 15.sp, // Utilisation de ScreenUtil pour la taille de l'icône
+                                      ),
+                                      SizedBox(width: 4.w), // Utilisation de ScreenUtil pour la largeur
+                                      Text(
+                                        'Monastir Avenue bourguiba',
+                                        style: TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 11.sp), // Utilisation de ScreenUtil pour la taille de police
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        'Status: ',
+                                        style: TextStyle(
+                                            color: Colors.black54,
+                                            fontSize: 10.sp), // Utilisation de ScreenUtil pour la taille de police
+                                      ),
+                                      index % 2 == 0
+                                          ? Text(
+                                              'Open Now',
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontSize: 10.sp), // Utilisation de ScreenUtil pour la taille de police
+                                            )
+                                          : Text(
+                                              'Close now',
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize: 10.sp), // Utilisation de ScreenUtil pour la taille de police
+                                            ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 2.5.h), // Utilisation de ScreenUtil pour la hauteur
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      RatingBar.builder(
+                                        initialRating: 3,
+                                        minRating: 1,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: true,
+                                        itemCount: 1,
+                                        itemSize: 20.sp, // Utilisation de ScreenUtil pour la taille des étoiles
+                                        itemPadding: EdgeInsets.symmetric(
+                                            horizontal: 4.0.w), // Utilisation de ScreenUtil pour le padding
+                                        itemBuilder: (context, _) => Icon(
+                                          Icons.star,
+                                          color: Color(0xffffa04b),
+                                        ),
+                                        onRatingUpdate: (rating) {
+                                          print(rating);
+                                        },
+                                      ),
+                                      SizedBox(width: 5.w), // Utilisation de ScreenUtil pour la largeur
+                                      Text(
+                                        '5.0',
+                                        style: TextStyle(
+                                            color: Color(0xff5d6062),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10.sp), // Utilisation de ScreenUtil pour la taille de police
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 2.5.h), // Utilisation de ScreenUtil pour la hauteur
+                                  Row(
+                                    children: [],
+                                  ),
+                                  Expanded(child: Container()),
                                 ],
                               ),
-                            Icon(Icons.favorite_border_outlined,color: Color(0xff7BC1B7),)],
-                          ),
-                          Divider(color: Colors.white,height: 1.5,)                          ,
-        Row(
-                              children: [
-                                Icon(Icons.place_outlined,color:Colors.black54,size: 15,),
-                                SizedBox(width: 4,),
-                                Text('Monastir Avenue bourguiba',style:TextStyle(color:Colors.black54),),
-                             
-                              ],
                             ),
-                            Row(children: [
-                                                              Text('Status: ',style:TextStyle(color:Colors.black54),),
-
-                                                          index%2==0?Text('Open Now',style:TextStyle(color:Colors.green),): Text('Close now',style:TextStyle(color:Colors.red),),                                                          
-
-                            ],),                                                                       
-                                              SizedBox(height: 2.5,),
-                     Row(
-                              mainAxisAlignment: MainAxisAlignment.start
-                              ,children: [
-                            
-                RatingBar.builder(
-                                               
-                              initialRating: 3,
-                              minRating: 1,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: 1,
-                              itemSize:  20,
-                              itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Color(0xffffa04b),
-                              ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                             ),
-                             SizedBox(width:5,),
-                              Text('5.0',style:TextStyle(color: Color(0xff5d6062),fontWeight: FontWeight.bold,))
-                                   ],),
-                                                                 SizedBox(height: 2.5,),
-                       
-
-                           Row(children: [
-                            
-                    
-                          
-                          ],),           
-                                                                                  Expanded(child:Container()),
-                     
-                        ],
-                      ),
-                      ),
-                ],
-                 ) ]),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
-            ),
+          ),
+        ),
           ],
         )
       ),

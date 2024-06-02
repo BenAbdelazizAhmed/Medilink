@@ -109,145 +109,146 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
           
-              Container(
-                height: 530.h,
-                 decoration: BoxDecoration(
-                        color:Colors.white,
-                        borderRadius: BorderRadius.circular(10)
-                  ),
-                width: double.infinity,
-                child: Column(
-                  children: 
-                  [
-                    Padding(
-                      padding: EdgeInsets.only(top: 15, right: 15, left: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Find your doctor',style:TextStyle(color:Colors.black,     fontFamily: 'Roboto',
-   fontSize: 18)),
-                          Icon(Icons.more_horiz, size: 30),
-                        ],
-                      ),
+              Expanded(
+                child: Container(
+                   decoration: BoxDecoration(
+                          color:Colors.white,
+                          borderRadius: BorderRadius.circular(10)
                     ),
-                    SizedBox(height: 8.h),
-                    
-                          Container(
-                      margin: EdgeInsets.only(left: 15,right: 15,bottom: 10),
-                      padding: EdgeInsets.only(left: 15,right: 15,),
-                      height: 40.h,
+                  width: double.infinity,
+                  child: Column(
+                    children: 
+                    [
+                      Padding(
+                        padding: EdgeInsets.only(top: 15, right: 15, left: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('Find your doctor',style:TextStyle(color:Colors.black,     fontFamily: 'Roboto',
+                   fontSize: 18)),
+                            Icon(Icons.more_horiz, size: 30),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 8.h),
                       
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.05),
-                        borderRadius: BorderRadius.circular(15),
+                            Container(
+                        margin: EdgeInsets.only(left: 15,right: 15,bottom: 10),
+                        padding: EdgeInsets.only(left: 15,right: 15,),
+                        height: 40.h,
+                        
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.search),
+                            SizedBox(width: 8.w),
+                            Text('Find Your Doctor...', style: TextStyle(color: Colors.black38)),
+                          ],
+                        ),
                       ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.search),
-                          SizedBox(width: 8.w),
-                          Text('Find Your Doctor...', style: TextStyle(color: Colors.black38)),
-                        ],
-                      ),
-                    ),
-              
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: imagePathsClient.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => ChatPage()),
-                              );
-                            },
-                            child: Container(
-                              height: 65.h,
-                              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                              margin: EdgeInsets.only(left: 15, right: 15, top: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: index == 0 ? Color.fromARGB(255, 242, 245, 247): Colors.white,
-                                border: Border.all(
-                                color: index == 0 ? Color(0xff6db0d0): Colors.white,
-
-                                )
+                
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: imagePathsClient.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ChatPage()),
+                                );
+                              },
+                              child: Container(
+                                height: 65.h,
+                                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                                margin: EdgeInsets.only(left: 15, right: 15, top: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: index == 0 ? Color.fromARGB(255, 242, 245, 247): Colors.white,
+                                  border: Border.all(
+                                  color: index == 0 ? Color(0xff6db0d0): Colors.white,
+                
+                                  )
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 50.w,
+                                      height: 50.h,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.transparent,
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 30,
+                                            backgroundColor: Colors.transparent,
+                                            backgroundImage: AssetImage(imagePathsClient[index]),
+                                          ),
+                                          index % 2 == 0
+                                              ? Positioned(
+                                                  right: 2,
+                                                  bottom: 2,
+                                                  child: CircleAvatar(
+                                                    radius: 7,
+                                                    backgroundColor: Colors.green,
+                                                  ),
+                                                )
+                                              : Container(),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(width: 10.w),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'Dr. Ahmed Ben Abdelaziz',
+                                                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 12.sp),
+                                              ),
+                                              Expanded(child: Container()),
+                                              Text('18:23', style: TextStyle(color: Colors.black45)),
+                                            ],
+                                          ),
+                                          SizedBox(height: 2.h),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'Bonjour John, voici votre prescription',
+                                                style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black54,fontSize: 11.sp),
+                                              ),
+                                              Expanded(child: Container()),
+                                              index == 0
+                                                  ? CircleAvatar(
+                                                      radius: 10,
+                                                      backgroundColor: Colors.red,
+                                                      child: Text("3", style: TextStyle(color: Colors.white)),
+                                                    )
+                                                  : SizedBox(),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 50.w,
-                                    height: 50.h,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.transparent,
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 30,
-                                          backgroundColor: Colors.transparent,
-                                          backgroundImage: AssetImage(imagePathsClient[index]),
-                                        ),
-                                        index % 2 == 0
-                                            ? Positioned(
-                                                right: 2,
-                                                bottom: 2,
-                                                child: CircleAvatar(
-                                                  radius: 7,
-                                                  backgroundColor: Colors.green,
-                                                ),
-                                              )
-                                            : Container(),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: 10.w),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Dr. Ahmed Ben Abdelaziz',
-                                              style: TextStyle(fontWeight: FontWeight.bold),
-                                            ),
-                                            Expanded(child: Container()),
-                                            Text('18:23', style: TextStyle(color: Colors.black45)),
-                                          ],
-                                        ),
-                                        SizedBox(height: 2.h),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Bonjour John, voici votre prescription',
-                                              style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black54),
-                                            ),
-                                            Expanded(child: Container()),
-                                            index == 0
-                                                ? CircleAvatar(
-                                                    radius: 10,
-                                                    backgroundColor: Colors.red,
-                                                    child: Text("3", style: TextStyle(color: Colors.white)),
-                                                  )
-                                                : SizedBox(),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
