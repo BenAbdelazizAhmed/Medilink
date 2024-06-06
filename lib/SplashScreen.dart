@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:op/InscriptionCorrect.dart';
-import 'package:op/LoginCorrect.dart';
+import 'package:op/Inscription.dart';
+import 'package:op/Login.dart';
 class IntroductionScreen extends StatefulWidget {
   @override
   _IntroductionScreenState createState() => _IntroductionScreenState();
@@ -187,7 +187,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-             Image.asset('lib/Images/immmmmmm.png',height: 130.h,width: 200.w,),
+             Image.asset('lib/Images/lg.png',height: 130.h,width: 200.w,),
               SizedBox(height: 30.h,),
               Text("The range of home health care services a patient can receive at home is limitless.",textAlign:TextAlign.center,style: TextStyle(fontSize: 20.sp,letterSpacing: 1,  color: Color(0xff050551),
           fontFamily:'ABeeZee',),)
@@ -206,7 +206,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                           ,onPressed:(){
                                                      Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>LoginCorrect()),
+              MaterialPageRoute(builder: (context) =>Login()),
             );
                         }, child:Text('Get started',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20.sp),))),
                         SizedBox(height: 5.h,),
@@ -216,12 +216,11 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                          Text('Have an account?',style:TextStyle(   color: Color(0xff050551),
           fontFamily:'ABeeZee',fontSize: 20.sp),),
                         TextButton(onPressed:(){
-                             Navigator.push(
+                   Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>InscriptionCorrect()),
-            );
+              MaterialPageRoute(builder: (context) =>Inscri()));
                         }, child:Text('Sign Up',style:TextStyle(
-          fontFamily:'ABeeZee',fontSize: 20.sp,color: Color(0xff4491f9)),))
+          fontFamily:'ABeeZee',fontSize: 14.sp,color: Colors.white),))
                        ],)
             ],
           ),

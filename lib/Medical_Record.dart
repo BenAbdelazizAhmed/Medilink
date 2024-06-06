@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:op/Medical_RecordsPage1.dart';
@@ -33,11 +34,174 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             ),
           ),
           child:ListView.builder(itemBuilder:(context,id){
-            if(id==0)  return           Container(
-              height: 250.h
-              ,child: Image.asset('lib/Images/Plan.png',fit:BoxFit.cover,))
-;
-            else return Container(
+            if(id==0) {
+              return  Container(
+        width: 350,
+        height: 250,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+        color: Colors.white
+        ),
+        padding: EdgeInsets.all(16),
+        child: LineChart(
+          LineChartData(
+            gridData: FlGridData(
+              show: true,
+              drawVerticalLine: false,
+              getDrawingHorizontalLine: (value) {
+                return FlLine(
+                  color: Color(0xffe7e8ec),
+                  strokeWidth: 1,
+                );
+              },
+            ),
+            titlesData: FlTitlesData(
+              leftTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  interval: 1,
+                  reservedSize: 28,
+                  getTitlesWidget: (value, meta) {
+                    return Text(
+                      value.toString(),
+                      style: TextStyle(
+                        color: Color(0xff67727d),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
+                    );
+                  },
+                ),
+              ),
+              bottomTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  reservedSize: 22,
+                  getTitlesWidget: (value, meta) {
+                    switch (value.toInt()) {
+                      case 0:
+                        return Text('Mon',style:TextStyle(fontWeight: FontWeight.w500),);
+                      case 1:
+                        return Text('Tue');
+                      case 2:
+                        return Text('Wed');
+                      case 3:
+                        return Text('Thu');
+                      case 4:
+                        return Text('Fri');
+                      case 5:
+                        return Text('Sat');
+                      case 6:
+                        return Text('Sun');
+                      default:
+                        return Text('');
+                    }
+                  },
+                ),
+              ),
+              topTitles: AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+              rightTitles: AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+            ),
+            borderData: FlBorderData(
+              show: true,
+              border: Border.all(
+                color: Color(0xffe7e8ec),
+                width: 1,
+              ),
+            ),
+            minX: 0,
+            maxX: 6,
+            minY: 0,
+            maxY: 5,
+            lineBarsData: [
+              LineChartBarData(
+                spots: [
+                  FlSpot(0, 3),
+                  FlSpot(1, 1),
+                  FlSpot(2, 4),
+                  FlSpot(3, 2),
+                  FlSpot(4, 5),
+                  FlSpot(5, 2),
+                  FlSpot(6, 4),
+                ],
+                isCurved: true,
+                gradient: LinearGradient(
+                  colors: [Colors.blue, Colors.purple],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+                barWidth: 2,
+                isStrokeCapRound: true,
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.blue.withOpacity(0.3),
+                      Colors.purple.withOpacity(0.3),
+                    ],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                dotData: FlDotData(
+                  show: true,
+                  getDotPainter: (spot, percent, barData, index) =>
+                      FlDotCirclePainter(
+                    radius: 6,
+                    color: Colors.white,
+                    strokeWidth: 2,
+                    strokeColor: Colors.deepPurple,
+                  ),
+                ),
+              ),
+              LineChartBarData(
+                spots: [
+                  FlSpot(0, 2),
+                  FlSpot(1, 2.5),
+                  FlSpot(2, 1.5),
+                  FlSpot(3, 3),
+                  FlSpot(4, 2.2),
+                  FlSpot(5, 4),
+                  FlSpot(6, 3),
+                ],
+                isCurved: true,
+                gradient: LinearGradient(
+                  colors: [Colors.orange, Colors.red],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+                barWidth:2,
+                isStrokeCapRound: true,
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.orange.withOpacity(0.3),
+                      Colors.red.withOpacity(0.3),
+                    ],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                dotData: FlDotData(
+                  show: true,
+                  getDotPainter: (spot, percent, barData, index) =>
+                      FlDotCirclePainter(
+                    radius: 6,
+                    color: Colors.white,
+                    strokeWidth: 2,
+                    strokeColor: Colors.red,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );   } else return Container(
             
               padding:EdgeInsets.only(top:10.h,left: 20.w,right:5.w),
               margin:EdgeInsets.only(top: 20.h,left: 20.w,right: 20.w),

@@ -2,7 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:op/MedelinkMessage.dart';
+import 'package:op/MyDoctor.dart';
 import 'package:op/ProfileSettings.dart';
+import 'package:op/Questions.dart';
 import 'package:op/SearchDoctor.dart';
 import 'package:op/SearchLabo.dart';
 import 'package:op/my_appointments.dart';
@@ -162,10 +164,17 @@ int _selectedIndex = 0;
                                           backgroundImage:AssetImage('lib/Images/heart.png'),
                                         ),
                                         SizedBox(width: 15.w,),
-                                        CircleAvatar(
-                                          radius: 12,
-                                          backgroundColor: Colors.white,
-                                          backgroundImage:AssetImage('lib/Images/notification.png'),
+                                        GestureDetector(
+                                          onTap:(){
+                             
+      
+    
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 12,
+                                            backgroundColor: Colors.white,
+                                            backgroundImage:AssetImage('lib/Images/notification.png'),
+                                          ),
                                         ),
                                     
                                       ],),
@@ -1095,23 +1104,46 @@ class AppDrawer extends StatelessWidget {
     return SafeArea(
       child: Drawer(
         width: 250,
-        backgroundColor:Color(0xff657496).withOpacity(0.9),
+        
+        backgroundColor:Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            SizedBox(
-              height: 100,
-              child: DrawerHeader(
-                
-                decoration: BoxDecoration(
-                  image:DecorationImage(image:AssetImage('lib/Images/imagd.png',),fit:BoxFit.fill)
+        SizedBox(height: 130,
+        child:   UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('lib/Images/imagd.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                child: Text(
-                  'Peter JHonson',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
+            accountName:Text('',style:TextStyle(color:Colors.blueAccent),), accountEmail:Text('AhmedBenAbdelaziz@gmail.com',style:TextStyle(color:Colors.blueAccent))
+          ,currentAccountPicture:CircleAvatar(
+            backgroundColor:Colors.white
+            ,radius: 15,backgroundImage:AssetImage('lib/Images/sed1.png')),
+          
+          ),
+          ),
+          SizedBox(
+              height: 45,
+              child: Container(
+                margin: EdgeInsets.only(right:15),
+                decoration:BoxDecoration(
+                                  color: Colors.blueAccent.withOpacity(0.1),
+                                  borderRadius:BorderRadius.only(bottomRight: Radius.circular(20),topRight: Radius.circular(20))
+                ),
+                child: Center(
+                  child: ListTile(
+                    
+                    leading: Icon(Icons.person,color:Color(0xff48555B),),
+                    title: Text('Doctors',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontFamily: 'Roboto',fontWeight: FontWeight.w400)),
+                     trailing:Text('+12',style:TextStyle(fontWeight:FontWeight.bold),),
+                    onTap: () {
+                         Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyDoctor()),
+                      );
+                    },
                   ),
                 ),
               ),
@@ -1119,24 +1151,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                
-                leading: Icon(Icons.person,color:Colors.white,),
-                title: Text('My Doctor',style:TextStyle(color:Colors.white)),
-                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Med()),
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              height: 40,
-              child: ListTile(
-                leading: Icon(Icons.medical_information,color: Colors.white,),
-                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                title: Text('Medical Records',style:TextStyle(color:Colors.white)),
+                leading: Icon(Icons.medical_information,color: Color(0xff48555B),),
+                                 
+                title: Text('Medical Records',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1148,9 +1165,16 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.local_pharmacy,color: Colors.white,),
-                title: Text('Pharmacy',style:TextStyle(color:Colors.white)),
-                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                leading: Icon(Icons.local_pharmacy,color: Color(0xff48555B),),
+                title: Text('Pharmacy',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                               trailing:Container(
+                  height: 25,width: 50,
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(color: Colors.green,
+                  borderRadius:BorderRadius.circular(10)
+                  ),
+                  child:Center(child: Text('8 new',style:TextStyle(color:Colors.white)),)
+                  ),    
 
                 onTap: () {
                   Navigator.push(
@@ -1163,9 +1187,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.medical_information_outlined,color:Colors.white,),
-                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                title: Text('Medicine',style:TextStyle(color:Colors.white)),
+                leading: Icon(Icons.medical_information_outlined,color:Color(0xff48555B),),
+                                                 
+                title: Text('Medicine',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1177,9 +1201,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.search,color:Colors.white,),
-                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                title: Text('Analysis lab',style:TextStyle(color:Colors.white,fontSize: 10.sp)),
+                leading: Icon(Icons.search,color:Color(0xff48555B),),
+                                                 
+                title: Text('Analysis lab',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1188,12 +1212,20 @@ class AppDrawer extends StatelessWidget {
                 },
               ),
             ),
+            
             SizedBox(
               height: 40,
               child: ListTile(
-                 trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                leading: Icon(Icons.calendar_month,color: Colors.white,),
-                title: Text('Appointment',style:TextStyle(color:Colors.white)),
+                  trailing:Container(
+                  height: 25,width: 50,
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(color: Colors.blue,
+                  borderRadius:BorderRadius.circular(10)
+                  ),
+                  child:Center(child: Text('2 new',style:TextStyle(color:Colors.white),),)
+                  ),
+                leading: Icon(Icons.calendar_month,color: Color(0xff48555B),),
+                title: Text('Appointment',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1205,9 +1237,26 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.chat,color: Colors.white,),
-                                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                title: Text('questions',style:TextStyle(color:Colors.white)),
+                leading: Icon(Icons.chat,color: Color(0xff48555B),),
+                                                                 
+                title: Text('questions',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Questions()),
+                  );
+                },
+              ),
+            ),
+ SizedBox(height: 10,),
+            Container(height:10,color:Color(0xff48555B).withOpacity(0.05),),
+            SizedBox(height: 10,),
+            SizedBox(
+              height: 40,
+              child: ListTile(
+                leading: Icon(Icons.help,color:Color(0xff48555B),),
+                title: Text('Help Center',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                                                                 
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1219,23 +1268,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.help,color:Colors.white,),
-                title: Text('Help Center',style:TextStyle(color:Colors.white)),
-                                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              height: 40,
-              child: ListTile(
-                leading: Icon(Icons.privacy_tip,color: Colors.white,),
-                title: Text('Privacy & Policy',style:TextStyle(color:Colors.white),),
-                                                                trailing:Icon(Icons.arrow_forward,color: Colors.white,),
+                leading: Icon(Icons.privacy_tip,color: Color(0xff48555B),),
+                title: Text('Privacy & Policy',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                                                                 
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1247,9 +1282,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40
               ,child:    ListTile(
-              leading: Icon(Icons.settings,color: Colors.white,),
-                                                              trailing:Icon(Icons.arrow_forward,color: Colors.white,),
-              title: Text('Settings',style:TextStyle(color: Colors.white),),
+              leading: Icon(Icons.settings,color: Color(0xff48555B),),
+                                                               
+              title: Text('Settings',style:TextStyle(color: Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
               onTap: () {
                 Navigator.push(
                   context,

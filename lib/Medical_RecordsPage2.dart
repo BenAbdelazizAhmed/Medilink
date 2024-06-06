@@ -83,6 +83,79 @@ class _Medical_RecordsPage1State extends State<Medical_RecordsPage1> {
     );
   }
 
+  void _handleAttachmentPressede() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) => SafeArea(
+        child: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(20)) ,color: Colors.white,
+),
+          padding:EdgeInsets.all(10),
+          height: 350.h,
+         
+        child:Column(children: [
+        Icon(Icons.more_horiz),
+          Text('Cancel uploaded',style:TextStyle(fontWeight:FontWeight.w400,fontSize: 20.sp,color: Colors.red),),
+          Text('Your documents were successfully uploaded '),
+       SizedBox(height: 10,),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Row(children: [
+              Expanded(
+                child: Container(height: 150,
+                child:Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset('lib/Images/medfile.png',fit:BoxFit.fill,),
+                ),
+                decoration: BoxDecoration(color: Colors.black.withOpacity(0.02),borderRadius: BorderRadius.circular(10)),),
+              ),
+              SizedBox(width: 20,),
+                Expanded(
+                  child: Container(height: 150,
+                  child:Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Image.asset('lib/Images/medfil.jpg',fit:BoxFit.fill),
+                  ),
+                              decoration: BoxDecoration(color: Colors.black.withOpacity(0.02),borderRadius: BorderRadius.circular(10)),
+                              ),
+                ),
+            ],),
+          ),
+         SizedBox(height: 10,),
+
+   GestureDetector(
+           onTap:(){
+                       Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => medical_record()),
+      );},
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
+              height: MediaQuery.of(context).size.height * 0.08,
+              decoration: BoxDecoration(
+                color: Color(0xff0099E5),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  'Confirm',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+          ),
+      
+        ],),
+        ),
+      ),
+    );
+  }
+
 void _showSuccessDialog(String message) {
     showDialog(
       context: context,
@@ -140,8 +213,7 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
     );
 
     if (result != null && result.files.single.path != null) {
-                  _showSuccessDialog('Photo sélectionnée avec succès');
-
+_handleAttachmentPressede();
       final message = types.FileMessage(
         author: _user,
         createdAt: DateTime.now().millisecondsSinceEpoch,
@@ -164,8 +236,7 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
     );
 
     if (result != null) {
-            _showSuccessDialog('Photo sélectionnée avec succès');
-
+_handleAttachmentPressede();
       final bytes = await result.readAsBytes();
       final image = await decodeImageFromList(bytes);
 
@@ -289,11 +360,7 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
   ),
   body: Container(
     decoration: BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Colors.white, Color(0xffC5FFD9).withOpacity(0.6)],
-      ),
+    color:Colors.white
     ),
     height: MediaQuery.of(context).size.height,
     width: MediaQuery.of(context).size.width,
@@ -304,19 +371,19 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           CircleAvatar(
             radius: MediaQuery.of(context).size.width * 0.3,
-            backgroundColor: Color(0xffC6EFE5),
-            child: Image.asset('lib/Images/Group.png'),
+            backgroundColor:Color(0xff0099E5),
+            child: Image.asset('lib/Images/gcap.png'),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           Text(
             'Add a medical record.',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w700,
               color: Color(0xff222222),
-              fontSize: 25,
+              fontSize: 22.sp,
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
             child: Text(
@@ -328,7 +395,19 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+          SizedBox(height: 10,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
+            child: Text(
+              "Only JPEG, PNG, And PDF FILES with max size 15 MB.",
+              style: TextStyle(
+                color: Color(0xff0B8FAC),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
           GestureDetector(
             onTap: _handleAttachmentPressed,
             child: Container(
@@ -340,13 +419,19 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
               ),
               width: double.infinity,
               child: Center(
-                child: Text(
-                  'Add a record',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 20,
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add,color: Colors.white,),
+                    Text(
+                      'Add a new record',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18.sp,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -32,16 +32,14 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             ),
           ),
         child: Padding(
-          padding: const EdgeInsets.only(top: 50,bottom: 30,left: 30,right: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment:MainAxisAlignment.start,
+          padding: const EdgeInsets.only(left: 30,right: 30),
+          child: ListView(
                         children: [
-            Center(child: CircleAvatar(radius: 100,backgroundImage:AssetImage('lib/Images/imo.png'),)),
+            Center(child: CircleAvatar(radius:70.w,backgroundImage:AssetImage('lib/Images/imo.png'),)),
             SizedBox(height: 20.h,),
             Text('Medical name',style:TextStyle(color:Color(0xff050551),fontSize: 16,fontFamily: 'Roboto',fontWeight: FontWeight.w600),textAlign: TextAlign.left,)
-          ,SizedBox(height: 20,)
-          ,Container(height: 70,width: double.infinity,
+          ,SizedBox(height: 20.h,)
+          ,Container(height: 50.h,width: double.infinity,
           
           decoration: BoxDecoration(
             border: Border.all(

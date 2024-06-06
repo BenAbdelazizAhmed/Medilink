@@ -48,6 +48,7 @@ dependencies:
   uuid: ^4.4.0
   fluttertoast: ^8.2.5
   responsive_framework: ^1.4.0
+  fl_chart: ^0.68.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -75,6 +76,13 @@ flutter:
   assets:
     - lib/Images/l1.jpeg
     - lib/Images/imagd.png
+    - lib/Images/pharmacy.png
+    - lib/Images/patient.png
+    - lib/Images/medfile.png 
+    - lib/Images/medLoga.png
+    - lib/Images/medfil.jpg
+    - lib/Images/doctor.png
+    - lib/Images/gcap.png
     - lib/Images/Groupmap.png
     - lib/Images/immmmmmm.png
     - lib/Images/stethoscop.png
@@ -141,6 +149,7 @@ flutter:
     - lib/Images/icon1.png
     - lib/Images/facebook.png
     - lib/Images/pngegg.png
+    - lib/Images/lg.png
     - lib/Images/icon2.png
     - lib/Images/l4.jpeg
     - lib/Images/pexels-andrea-piacquadio-733872.jpg
@@ -177,6 +186,10 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Manrope
+      fonts:
+        - asset: lib/Images/fonts/Manrope-VariableFont_wght.ttf
+
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
