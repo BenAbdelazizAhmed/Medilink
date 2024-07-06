@@ -154,7 +154,7 @@ class _SearchDoctState extends State<SearchDoct> {
                   itemCount: 6,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      height: 140.h, // Using ScreenUtil for height
+                      height: 110.h, // Using ScreenUtil for height
                       margin: EdgeInsets.only(bottom: 15.h), // Using ScreenUtil for margin
                       width: 150.w,
                       decoration: BoxDecoration(
@@ -182,7 +182,7 @@ class _SearchDoctState extends State<SearchDoct> {
                             children: [
                               Container(
                                 height: 100.h, // Using ScreenUtil for height
-                                width: 70.w, // Using ScreenUtil for width
+                                width: 90.w, // Using ScreenUtil for width
                                 padding: EdgeInsets.only(top: 15.h), // Using ScreenUtil for padding
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.r), // Using ScreenUtil for border radius
@@ -195,9 +195,9 @@ class _SearchDoctState extends State<SearchDoct> {
                           Column(
                             children: [
                               Container(
-                                padding: EdgeInsets.only(top: 15.h, right: 15.w, left: 15.w, bottom: 10.h), // Using ScreenUtil for padding
-                                width: 220.w, // Using ScreenUtil for width
-                                height: 140.h, // Using ScreenUtil for height
+                                padding: EdgeInsets.only(top: 15.h, right: 5.w, left: 15.w, bottom: 10.h), // Using ScreenUtil for padding
+                                height: 110.h, // Using ScreenUtil for height
+                                width: 250,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15.r), // Using ScreenUtil for border radius
                                   color: Color.fromRGBO(253, 255, 255, 1),
@@ -211,7 +211,7 @@ class _SearchDoctState extends State<SearchDoct> {
                                         Row(
                                           children: [
                                             Text('Dr ', style: TextStyle(color: Colors.black)),
-                                            Text('Ahmed Abdelaziz', style: TextStyle(color: Color(0xff0099E5))),
+                                            Text('Ahmed Abdelaziz', style: TextStyle(color: Color(0xff0099E5),fontWeight: FontWeight.bold)),
                                           ],
                                         ),
                                         Icon(Icons.favorite_border_outlined, color: Color(0xff7BC1B7)),
@@ -242,23 +242,8 @@ class _SearchDoctState extends State<SearchDoct> {
                                         Icon(Icons.place_outlined, color: Colors.black54, size: 15.sp), // Using ScreenUtil for size
                                         SizedBox(width: 4.w), // Using ScreenUtil for width
                                         Text('Monastir', style: TextStyle(color: Colors.black54)),
-                                      ],
-                                    ),
-                                    Expanded(child: Container()), // Expanded to push the next row to the bottom
-                                    Row(
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.symmetric(horizontal: 10.w), // Using ScreenUtil for padding
-                                          height: 25.h, // Using ScreenUtil for height
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            border: Border.all(color: Color(0xff7BC1B7)),
-                                            borderRadius: BorderRadius.circular(5.r), // Using ScreenUtil for border radius
-                                          ),
-                                          child: Center(child: Text('08:30 AM', style: TextStyle(color: Color(0xff7BC1B7), fontWeight: FontWeight.w600),)),
-                                        ),
-                                        SizedBox(width: 15,),
-                                        GestureDetector(
+                                        SizedBox(width: 27.w,),
+                                         GestureDetector(
                                           onTap: () {
                                             Navigator.push(
                                               context,
@@ -278,6 +263,7 @@ class _SearchDoctState extends State<SearchDoct> {
                                         ),
                                       ],
                                     ),
+                                  
                                   ],
                                 ),
                               ),

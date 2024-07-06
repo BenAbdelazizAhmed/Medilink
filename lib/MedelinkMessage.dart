@@ -80,32 +80,17 @@ int _selectedIndex = 0;
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.h),
-        child: AppBar(
-              backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
-          centerTitle:true,
-          title:Text('Messages',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
-fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
-),),
-          bottom: TabBar(
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.black54,
-            
-            controller: _tabController,
-            tabs: const [
-              Tab(text: 'Docteurs'),
-              Tab(text: 'Patients'),
-            ],
-          ),
-        ),
+      appBar: AppBar(
+            backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
+        centerTitle:true,
+        title:Text('Messages',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
+      fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
+      ),),
+             
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          Column(
+           body:    Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
           
@@ -119,8 +104,37 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                   child: Column(
                     children: 
                     [
+                            Container(
+                height: 80.h,
+                width: double.infinity,
+                color: Color(0xfff9f9f9),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      imagePathsClient.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(left: 10.0, bottom: 10),
+                        child: CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Colors.blue,
+                          child: CircleAvatar(
+                            radius: 28,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 26,
+                              backgroundImage: AssetImage(imagePathsClient[index]),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            
                       Padding(
-                        padding: EdgeInsets.only(top: 15, right: 15, left: 15),
+                        padding: EdgeInsets.only(top: 5, right: 15, left: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -254,171 +268,6 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             ],
           ),
 
-          // Patients Tab
-          Column(
-            children: [
-              // Active patients
-              Container(
-                height: 100.h,
-                width: double.infinity,
-                color: Color(0xfff9f9f9),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      imagePathsClient.length,
-                      (index) => Padding(
-                        padding: const EdgeInsets.only(left: 10.0, bottom: 10),
-                        child: CircleAvatar(
-                          radius: 34,
-                          backgroundColor: Colors.blue,
-                          child: CircleAvatar(
-                            radius: 32,
-                            backgroundColor: Colors.white,
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundImage: AssetImage(imagePathsClient[index]),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                height: 390.h,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-                  color: Colors.white,
-                ),
-                width: double.infinity,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 10, right: 15, left: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Find your patient', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.sp)),
-                          Icon(Icons.more_horiz, size: 30),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 15),
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      height: 35.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.05),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(Icons.search),
-                          SizedBox(width: 8.w),
-                          Text('Find Your Patient...', style: TextStyle(color: Colors.black38)),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: imagePathsClient.length,
-                          itemBuilder: (context, index) {
-                            String imagePath = imagePathsClient[index];
-                            return Container(
-                              height: 100.h,
-                              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                              margin: EdgeInsets.only(left: 15, right: 15, top: 10),
-                              decoration: BoxDecoration(
-                                color: index % 2 != 0 ? Color(0xffeffaff) : Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 60.w,
-                                    height: 60.h,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.transparent,
-                                    ),
-                                    child: Stack(
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 30,
-                                          backgroundColor: Colors.transparent,
-                                          backgroundImage: AssetImage(imagePath),
-                                        ),
-                                        index % 2 != 0
-                                            ? Positioned(
-                                                right: 3,
-                                                bottom: 2,
-                                                child: CircleAvatar(
-                                                  radius: 5,
-                                                  backgroundColor: Colors.green,
-                                                ),
-                                              )
-                                            : Container(),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(width: 10.w),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Patient Name',
-                                              style: TextStyle(fontWeight: FontWeight.bold),
-                                            ),
-                                            Expanded(child: Container()),
-                                            Text('18:23', style: TextStyle(color: Colors.black45)),
-                                          ],
-                                        ),
-                                        SizedBox(height: 5.h),
-                                        Row(
-                                          children: [
-                                            Text(
-                                              'Bonjour Dr. Ahmed, voici votre réponse...',
-                                              style: TextStyle(fontWeight: FontWeight.w500, color: Colors.black54),
-                                            ),
-                                            Expanded(child: Container()),
-                                            index == 1
-                                                ? CircleAvatar(
-                                                    radius: 10,
-                                                    backgroundColor: Colors.red,
-                                                    child: Text("1", style: TextStyle(color: Colors.white)),
-                                                  )
-                                                : SizedBox(),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
         bottomNavigationBar:BottomNavigationBar(
               currentIndex: _selectedIndex,
         onTap: _onItemTapped,

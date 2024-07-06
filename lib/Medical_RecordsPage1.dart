@@ -16,7 +16,10 @@ class _Medical_RecordsPage1State extends State<Medical_RecordsPage1> {
         appBar: AppBar(
         backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
+          leading: IconButton(onPressed: (){
+              Navigator.pop(context);
+
+          },icon:Icon(Icons.arrow_back_ios),),
           centerTitle:true,
           title:Text('Medical Records',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
 fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,

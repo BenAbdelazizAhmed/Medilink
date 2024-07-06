@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/All_specialities.dart';
 import 'package:op/MedelinkMessage.dart';
+import 'package:op/Medical_RecordsPage3.dart';
 import 'package:op/MyDoctor.dart';
 import 'package:op/ProfileSettings.dart';
 import 'package:op/Questions.dart';
@@ -115,7 +117,7 @@ int _selectedIndex = 0;
                       return Column(
                         children: [
                           Container(
-                            height: 400.h,
+                            height: 374.h,color: Colors.white,
                             width: double.infinity,
                             child:Column(
                               children: [
@@ -252,10 +254,11 @@ int _selectedIndex = 0;
                                 ),
                                                          
                         Container(
+                          
                           decoration: BoxDecoration(
                             color: Colors.white
                             ,borderRadius: BorderRadius.circular(10)),
-                          height: 160.h,width: double.infinity,
+                          height: 150.h,width: double.infinity,
                           padding: EdgeInsets.symmetric(
                             horizontal: 10.w
                           )
@@ -286,9 +289,12 @@ int _selectedIndex = 0;
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text('Analysis lab',style:TextStyle(color: Colors.black,     fontFamily: 'Roboto',
-                               fontSize: 18.sp),),
+                               fontSize: 14.sp),),
                                         TextButton(onPressed:(){
-                                          
+                                             Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => specialities()),
+      );
                                         },child:Text('See All',style:TextStyle(color: Colors.blue)),)
                                       ],
                                     ),
@@ -429,69 +435,93 @@ int _selectedIndex = 0;
                     }else if (index==2) {
                       return Column(
                         children: [
-                              Divider(                        color:Colors.black.withOpacity(0.2),
-                          height: 15.h,
-)                   ,  
-                          Container(
-                            height: 270.h,
-                            margin: EdgeInsets.only(bottom: 15),
-                          width: double.infinity,
-                          color:Colors.white,
-                          child:Column(children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left:10.0,right: 10,bottom: 10),
-                              
-                                              
-                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text('Sponsorisé'),
-                                  IconButton(onPressed:(){}, icon: Icon(Icons.more_horiz))
-                                ],
-                              ),
-                            ),
+                      
+                          Column(children: [
+                            
                             Container(
-                               height: 200.h,
+                               height: 165.h,
                                   width: double.infinity,
                               child: ListView.builder(
                                 itemCount: 10,
                                 scrollDirection:Axis.horizontal
                                 ,itemBuilder:(context,id){
-                                return Container(
+                                return Container(height: 150,
                                   margin: EdgeInsets.only(left: ScreenUtil().setWidth(10)),
-                                  padding: EdgeInsets.all(10),
-                                  height: 190.h,
-                                  width: 220.w,
+                                  padding: EdgeInsets.only(top: 8,left: 10,right: 10),
+                                  width: 200.w,
+                                  
                                   decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                      
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Colors.white.withOpacity(0.1),
+                                                    offset: Offset(6, 6),
+                                                    blurRadius: 2
+                                                  ),
+                                                   BoxShadow(
+                                                      color: Colors.white.withOpacity(0.1),
+                                                    offset: Offset(-6,-6),
+                                                    blurRadius: 2
+                                                  )
+                                                ],
+                                                color: Colors.blue.withOpacity(0.01),
                                                             border: Border.all(color: Colors.black,width: 0.08.w ),
                                                    ),
                                   child:Column(
                                     crossAxisAlignment: CrossAxisAlignment.start
                                     ,children: [
+                                  
+                                  
+                                  Container(
+                                  child:Column(
+                                    children: [
+                                    
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                           Container(
+                                      padding: EdgeInsets.all(4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.only(bottomRight: Radius.circular(10),topRight: Radius.circular(10))
+                                    ),
+                                    child:Text('15% off',style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 10),),
+                                    ),
+                                     
+                                          Container(
+                                            
+                                            height: 100,
+                                            width: 90
+                                            ,child: Image.asset('lib/Images/pop.png',fit:BoxFit.fill)),
+                                                                          Icon(Icons.favorite_border_outlined, color: Color(0xff7BC1B7)),
+
+                                        ],
+                                      ),
+                                      Text('Panadol Advance 500mg',style:TextStyle(fontWeight: FontWeight.w600,)),                                   
+                                 Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                   children: [
                                     Row(
                                       children: [
-                                      CircleAvatar(radius: 20,
-                                      backgroundImage:AssetImage('lib/Images/sed1.png'),
-                                      ),
-                                      SizedBox(width: 10.w,),
-                                          Text(
-                                              'Dr Albert Ambro',
-                                              style: TextStyle(
-                                                fontSize: 13.sp,
-                                                    fontFamily: 'Poppins',
-                                                    
-                                                fontWeight: FontWeight.bold,
-                                                color: Color(0xff48555B),
+                                        Text('210 D',style:TextStyle(fontWeight: FontWeight.bold,color: Color(0xff0099E5))),
+                                        SizedBox(width: 10,),
+                                        Text('28',style:TextStyle(fontWeight: FontWeight.w600,color: Colors.black38),)
+                                      ],
+                                    ),
+                                     Container(
+                                                height: 25.h, // Using ScreenUtil for height
+                                                width: 80.w, // Using ScreenUtil for width
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xff0099E5),
+                                                  border: Border.all(color: Color(0xff0099E5)),
+                                                  borderRadius: BorderRadius.circular(5.r), // Using ScreenUtil for border radius
+                                                ),
+                                                child: Center(child: Text('Book', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
                                               ),
-                                            ),
-                                       
-                                      Expanded(child:Container()),
-                                      Icon(Icons.more_horiz)
-                                    ],)
-                                  ,  SizedBox(height: 5.h,)
-                                  ,
-                                  Expanded(child: Image.asset( 'lib/Images/raaaa.jpg',fit: BoxFit.fill,))
+                                   ],
+                                 ),
+                                    ])
+                                  )
                                   ]),
                                 );
                               }),
@@ -501,7 +531,6 @@ int _selectedIndex = 0;
                               height: 10.h,
                             )
                           ]),
-                          ),
                         ],
                       );
                     }
@@ -591,17 +620,7 @@ int _selectedIndex = 0;
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                                  boxShadow: [
-                              BoxShadow(
-                                offset: Offset(1, 1),
-                                blurRadius:4,spreadRadius:4,color:Colors.black.withOpacity(0.03)
-                              ),
-                                BoxShadow(
-                                offset: Offset(-1, -1),
-                                blurRadius: 4,spreadRadius: 4,color: Colors.black.withOpacity(0.03)
-                              )
-                            ],
-                              borderRadius: BorderRadius.circular(15),
+                               
                              
                               
                             ),
@@ -636,7 +655,7 @@ int _selectedIndex = 0;
                                                 fontSize: 12.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
-                                                color: Color(0xff48555B),
+                                                color: Colors.black87,
                                               ),
                                             ),
                                             SizedBox(width: 110.w),
@@ -663,7 +682,7 @@ int _selectedIndex = 0;
                               width: double.infinity,
                               decoration:BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color(0xfff9f9f9),
+                                color: Colors.blue.withOpacity(0.01),
                               ),
                               margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
                               child: Column(
@@ -673,8 +692,8 @@ int _selectedIndex = 0;
                                   child: Text(
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
-                                          fontSize: 12.sp,
-                                       fontFamily: 'Poppins',
+                                          fontSize: 14.sp,
+                                      fontFamily: 'Roboto',
                                           color: Colors.black87)),
                                 ),
                                 SizedBox(height: 4.h),
@@ -792,7 +811,7 @@ int _selectedIndex = 0;
                                                 fontSize: 12.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
-                                                color: Color(0xff48555B),
+                                                color: Colors.white,
                                               ),
                                             ),
                                             SizedBox(width: 100.w),
@@ -829,7 +848,7 @@ int _selectedIndex = 0;
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
                                           fontSize: 12.sp,
-                                       fontFamily: 'Poppins',
+                                     fontFamily: 'Roboto',
                                           color: Colors.black87)),
                                 ),
                                 SizedBox(height: 4.h),
@@ -957,7 +976,7 @@ int _selectedIndex = 0;
                                                 fontSize: 12.sp,
                                                     fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.bold,
-                                                color: Color(0xff48555B),
+                                                color: Colors.white,
                                               ),
                                             ),
                                             SizedBox(width: 110.w),
@@ -984,7 +1003,7 @@ int _selectedIndex = 0;
                               width: double.infinity,
                               decoration:BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Color(0xfff9f9f9),
+                                color: Colors.blue.withOpacity(0.01),
                               ),
                               margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
                               child: Column(
@@ -995,7 +1014,7 @@ int _selectedIndex = 0;
                                       "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
                                       style: TextStyle(
                                           fontSize: 13.sp,
-                                       fontFamily: 'Poppins',
+                                       fontFamily: 'Roboto',
                                           color: Colors.black87)),
                                 ),
                                 SizedBox(height: 4.h),
@@ -1104,12 +1123,11 @@ class AppDrawer extends StatelessWidget {
     return SafeArea(
       child: Drawer(
         width: 250,
-        
-        backgroundColor:Colors.white,
+        backgroundColor:Color(0xFF17203A),
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-        SizedBox(height: 130,
+        SizedBox(height: 100,
         child:   UserAccountsDrawerHeader(
               decoration: BoxDecoration(
                   image: DecorationImage(
@@ -1117,13 +1135,28 @@ class AppDrawer extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-            accountName:Text('',style:TextStyle(color:Colors.blueAccent),), accountEmail:Text('AhmedBenAbdelaziz@gmail.com',style:TextStyle(color:Colors.blueAccent))
-          ,currentAccountPicture:CircleAvatar(
-            backgroundColor:Colors.white
-            ,radius: 15,backgroundImage:AssetImage('lib/Images/sed1.png')),
+            accountName:Text('',style:TextStyle(color:Colors.white),), accountEmail:Text(' ',style:TextStyle(color:Colors.blueAccent))
+          ,currentAccountPicture:Text(' '),
           
           ),
           ),
+              SizedBox(
+              height: 45,
+              child: Container(
+                child: Row(
+                  
+               children: [
+              CircleAvatar(radius: 40,
+              backgroundColor:Color(0xFF17203A),
+                  child: Image.asset('lib/Images/sed1.png'),
+                  ),
+                  Text('Dr.Ahmed Abdelaziz',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontFamily: 'Roboto',fontWeight: FontWeight.w600)),
+                
+               ],
+                ),
+              ),
+            ),
+      SizedBox(height: 10,),
           SizedBox(
               height: 45,
               child: Container(
@@ -1135,9 +1168,9 @@ class AppDrawer extends StatelessWidget {
                 child: Center(
                   child: ListTile(
                     
-                    leading: Icon(Icons.person,color:Color(0xff48555B),),
-                    title: Text('Doctors',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontFamily: 'Roboto',fontWeight: FontWeight.w400)),
-                     trailing:Text('+12',style:TextStyle(fontWeight:FontWeight.bold),),
+                    leading: Icon(Icons.person,color:Colors.white,),
+                    title: Text('Doctors',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontFamily: 'Roboto',fontWeight: FontWeight.w400)),
+                     trailing:Text('+12',style:TextStyle(fontWeight:FontWeight.bold,color:Colors.white),),
                     onTap: () {
                          Navigator.push(
                         context,
@@ -1151,9 +1184,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.medical_information,color: Color(0xff48555B),),
+                leading: Icon(Icons.medical_information,color: Colors.white,),
                                  
-                title: Text('Medical Records',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                title: Text('Medical Records',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1165,8 +1198,8 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.local_pharmacy,color: Color(0xff48555B),),
-                title: Text('Pharmacy',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                leading: Icon(Icons.local_pharmacy,color: Colors.white,),
+                title: Text('Pharmacy',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                                trailing:Container(
                   height: 25,width: 50,
                   padding: EdgeInsets.all(5),
@@ -1187,13 +1220,13 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.medical_information_outlined,color:Color(0xff48555B),),
+                leading: Icon(Icons.medical_information_outlined,color:Colors.white,),
                                                  
-                title: Text('Medicine',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                title: Text('Medicine',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+                    MaterialPageRoute(builder: (context) => Medical_RecordsPage3()),
                   );
                 },
               ),
@@ -1201,9 +1234,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.search,color:Color(0xff48555B),),
+                leading: Icon(Icons.search,color:Colors.white,),
                                                  
-                title: Text('Analysis lab',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                title: Text('Analysis lab',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1224,8 +1257,8 @@ class AppDrawer extends StatelessWidget {
                   ),
                   child:Center(child: Text('2 new',style:TextStyle(color:Colors.white),),)
                   ),
-                leading: Icon(Icons.calendar_month,color: Color(0xff48555B),),
-                title: Text('Appointment',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                leading: Icon(Icons.calendar_month,color: Colors.white,),
+                title: Text('Appointmen',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1237,9 +1270,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.chat,color: Color(0xff48555B),),
+                leading: Icon(Icons.chat,color: Colors.white,),
                                                                  
-                title: Text('questions',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                title: Text('questions',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -1249,13 +1282,13 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
  SizedBox(height: 10,),
-            Container(height:10,color:Color(0xff48555B).withOpacity(0.05),),
+            Container(height:10,color:Colors.white.withOpacity(0.05),),
             SizedBox(height: 10,),
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.help,color:Color(0xff48555B),),
-                title: Text('Help Center',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                leading: Icon(Icons.help,color:Colors.white,),
+                title: Text('Help Center',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                                                                  
                 onTap: () {
                   Navigator.push(
@@ -1268,8 +1301,8 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40,
               child: ListTile(
-                leading: Icon(Icons.privacy_tip,color: Color(0xff48555B),),
-                title: Text('Privacy & Policy',style:TextStyle(color:Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+                leading: Icon(Icons.privacy_tip,color: Colors.white,),
+                title: Text('Privacy & Policy',style:TextStyle(color:Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
                                                                  
                 onTap: () {
                   Navigator.push(
@@ -1282,9 +1315,9 @@ class AppDrawer extends StatelessWidget {
             SizedBox(
               height: 40
               ,child:    ListTile(
-              leading: Icon(Icons.settings,color: Color(0xff48555B),),
+              leading: Icon(Icons.settings,color: Colors.white,),
                                                                
-              title: Text('Settings',style:TextStyle(color: Color(0xff48555B),fontSize: 15.sp,fontWeight: FontWeight.w400)),
+              title: Text('Settings',style:TextStyle(color: Colors.white,fontSize: 15.sp,fontWeight: FontWeight.w400)),
               onTap: () {
                 Navigator.push(
                   context,

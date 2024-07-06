@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:op/All_specialities.dart';
-
-import 'Medical_RecordsPage1.dart';
+import 'package:op/medical.dart';
 class Medical_RecordsPage3 extends StatefulWidget {
   const Medical_RecordsPage3({super.key});
 
@@ -17,7 +16,10 @@ class _Medical_RecordsPage3State extends State<Medical_RecordsPage3> {
         appBar: AppBar(
         backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
+          leading: IconButton(onPressed: (){
+              Navigator.pop(context);
+
+          },icon:Icon(Icons.arrow_back_ios),),
           centerTitle:true,
           title:Text('Medical Records',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
 fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
@@ -74,7 +76,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
             onTap:(){
                    Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Medical_RecordsPage1()),
+        MaterialPageRoute(builder: (context) => Medical()),
       );
               
         

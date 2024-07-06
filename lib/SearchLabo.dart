@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'laboo.dart';
+import 'package:op/Laboratoire.dart';
 
 class SearchLabo extends StatefulWidget {
   const SearchLabo({super.key});
@@ -170,7 +169,7 @@ class _SearchLaboState extends State<SearchLabo> {
                    
                           Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => laboos()),
+        MaterialPageRoute(builder: (context) => Laboratoire()),
       );
                     },
                     child: Container(
@@ -201,8 +200,8 @@ class _SearchLaboState extends State<SearchLabo> {
                                   Column(
                     children: [
                       Container(
-                        height: 110,
-                        width: 120,
+                       height: 90.h, // Utilisation de ScreenUtil pour la hauteur
+                              width: 100.w, 
                         padding: EdgeInsets.only(top: 5),
                      decoration:BoxDecoration(
                             borderRadius:BorderRadius.circular(15),

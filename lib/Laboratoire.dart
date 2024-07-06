@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class Pharmaciee extends StatefulWidget {
-  const Pharmaciee({super.key});
+class Laboratoire extends StatefulWidget {
+  const Laboratoire({super.key});
 
   @override
-  State<Pharmaciee> createState() => _PharmacieeState();
+  State<Laboratoire> createState() => _LaboratoireState();
 }
 
-class _PharmacieeState extends State<Pharmaciee> {
+class _LaboratoireState extends State<Laboratoire> {
+      List<String> imagePaths = [
+      'lib/Images/a1.png',
+    'lib/Images/pharm1.jpeg',
+    'lib/Images/a2.jpg',
+    'lib/Images/a3.jpg',
+     'lib/Images/phar.jpg',
+  'lib/Images/pha1.png',
+    'lib/Images/pha2.png',
+  'lib/Images/sed2.png',
+    'lib/Images/pha1.png',
+];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+       return Scaffold(
           backgroundColor:Colors.white,
           appBar: AppBar(
     backgroundColor: Colors.white,
@@ -24,7 +35,7 @@ class _PharmacieeState extends State<Pharmaciee> {
     ),
     centerTitle: true,
     title: Text(
-      'pharmacy Charlez',
+      'laboratoire Charlez Sousse',
       style: TextStyle(
         color: Color(0xff4491f9),
 fontFamily: 'Roboto',
@@ -46,7 +57,7 @@ fontFamily: 'Roboto',
             ,height: 180,width: double.infinity,
             child:ClipRRect(
               borderRadius: BorderRadius.circular(15)
-              ,child: Image.asset('lib/Images/pha2.png',fit: BoxFit.fill,)),
+              ,child: Image.asset(imagePaths[3],fit: BoxFit.fill,)),
             ),
            ],),),
           Positioned(
@@ -68,9 +79,9 @@ fontFamily: 'Roboto',
           ,child:Column(
             crossAxisAlignment: CrossAxisAlignment.start
             ,children: [
-            Text('Pharmacy The Oasis Lagoon Sanur',style:TextStyle(
+            Text('laboratoire Charlez Sousse',style:TextStyle(
               fontFamily: 'Roboto',
-              fontWeight: FontWeight.bold,color:Colors.black.withOpacity(0.6)),)
+              fontWeight: FontWeight.bold,color:Colors.black.withOpacity(0.5)),)
            , Row(children: [
                 RatingBar.builder(
                                                    
@@ -127,7 +138,7 @@ fontFamily: 'Roboto',
             textAlign: TextAlign.left,
             style: TextStyle(
               fontSize: 15,
-              color: Colors.black,
+              color: Colors.black54,
               fontFamily: 'Roboto',
             ),
           ),
@@ -156,14 +167,14 @@ fontFamily: 'Roboto',
             ),
             child: ClipRRect(
               borderRadius:BorderRadius.circular(10),
-              child: Image.asset('lib/Images/pha2.png',fit: BoxFit.fill,))),
+              child: Image.asset(imagePaths[1],fit: BoxFit.fill,))),
               SizedBox(width: 10,),
               Container(height: 90,width: 90,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.red,
             ),
             child: ClipRRect(
               borderRadius:BorderRadius.circular(10),
-              child: Image.asset('lib/Images/pharm.jpg',fit: BoxFit.fill,))), 
+              child: Image.asset(imagePaths[0],fit: BoxFit.fill,))), 
                             SizedBox(width: 10,),
 
                Container(height: 90,width: 90,
@@ -171,7 +182,7 @@ fontFamily: 'Roboto',
             ),
             child: ClipRRect(
               borderRadius:BorderRadius.circular(10),
-              child: Image.asset('lib/Images/pharm.jpg',fit: BoxFit.fill,))),
+              child: Image.asset(imagePaths[2],fit: BoxFit.fill,))),
           ],)),
 
          Positioned(
@@ -233,5 +244,6 @@ fontFamily: 'Roboto',
         ],
       ),
     );
+  
   }
 }

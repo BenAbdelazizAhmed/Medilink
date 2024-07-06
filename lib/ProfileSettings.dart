@@ -50,9 +50,10 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+      backgroundColor: Colors.white,
       appBar:AppBar(
         elevation: 0,
+        toolbarHeight: 40,
                 backgroundColor: Colors.white
         ,actions: [        
       ],
@@ -68,214 +69,190 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
 
       ),
       body:Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [Color.fromRGBO(243, 249, 249, 20), Colors.white],
-                stops: [0.4, 1.0], 
-              ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start
-          ,children: [
-              Container(
-                height: 90,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                                                  borderRadius: BorderRadius.circular(15)
-                    ),
-         margin: const EdgeInsets.only(left: 15.0,right: 15,top: 40),
-
-                    child: Row(
-                      crossAxisAlignment:CrossAxisAlignment.start,
-                      children: [
-                                        Container(height: 80,
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-                                        child: ClipRRect(child: Image.asset('lib/Images/dr.png')
-                                        ,borderRadius: BorderRadius.circular(10),
-                                        ),),
-                                        SizedBox(width: 15,),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start
-                            ,children: [ Text('Ahmed Ben Abdelaziz',style:TextStyle(fontWeight: FontWeight.bold,color:Color(0xff0B8FAC),),)
-                    ,SizedBox(height: 5,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('+216 21050601'),
-                        SizedBox(width: 40,),
-                        Text('Edit',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.blueAccent),)
-                      ],
-                    )],)
-                      ],
-                    ),
-                  ),
-                 
-             Padding(
-         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-         child: Container(height: 160,
-         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start
-          ,children: [
-          Text('Medicine',style:TextStyle(fontWeight: FontWeight.w400,fontSize: 18),),
-          Text('Update your info to keep your account',style:TextStyle(color: Colors.black38),),
-          SizedBox(height: 10,),
-              Container(
-                height: 90,
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                            color:Colors.white,
-                            borderRadius: BorderRadius.circular(15)
-                ),
-                width: double.infinity,
-                child:
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.text_snippet_outlined),
-                SizedBox(width: 10,),
-                        Text('Medical record',style:TextStyle(color:Color(0xff091F44),fontWeight: FontWeight.bold),),
-                        SizedBox(width: 100,),
-                           Container(
-                                 height: 30,
-                            width: 100,
-                              decoration: BoxDecoration(
-                                                            color:Color(0xff0099E5),
-                                                            border: Border.all(
-                                                              color: Color(0xff6db0d0)
-                                                            ),
-                                                                borderRadius:BorderRadius.circular(10)
-                            
-                              ),
-                               
-                              
-                            child:Center(child: Text('Read',style:TextStyle(color:Colors.white,fontWeight: FontWeight.bold),))),
-                         
-                                        
-                      ],
-                    ),
-                    Text('Check your All Medical history',style:TextStyle(color: Color(0xff091F44)))
         
-        
-                  ],
-                ),
-                Expanded(child: Container()),
-                Icon(Icons.arrow_forward_ios),
-        
-              ],
-            ),             
-                ),
-          
-         ],),),
-             ),
-             SizedBox(height: 15,),
-             Padding(
-         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-         
-         child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Text('Account',style:TextStyle(fontWeight: FontWeight.w400,fontSize: 20),),
-               Text('Update your info to keep your account',style:TextStyle(color: Colors.black38),),],
-         ),),
-             ),
-             Container(height: 225,
-          width: double.infinity,
-          
+        color: Colors.white,
+        child: Container(
+          margin: EdgeInsets.only(top: 10,left:10,right: 10),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10)
+          gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Colors.white, Color(0xffC5FFD9).withOpacity(0.8)], // Couleur blanche en bas, couleur bleue en haut
+            ),
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white,
+                offset: Offset(1,1),
+                spreadRadius: 1,
+                blurRadius: 4
+              )
+            ],
+             
           ),
-          padding: EdgeInsets.all(15),
-          margin: EdgeInsets.all(15),
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween
-            ,
-                      crossAxisAlignment: CrossAxisAlignment.start
-        ,
-            children: [           
-           
-              Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start
+            ,children: [
+            Stack(
               children: [
-                Icon(Icons.text_snippet_outlined),
-                SizedBox(width: 10,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('My appointments',style:TextStyle(color:Color(0xff091F44)),),
-                                                                            Text('Make changes To Your Account',style:TextStyle(color: Colors.black45))
-        
-        
-                  ],
+               Column(
+                children: [
+                   Container(height: 140,width: double.infinity,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
+                  ,child: Image.asset('lib/Images/pha1.png',fit:BoxFit.fill,)),
                 ),
-                Expanded(child: Container()),
-                Icon(Icons.arrow_forward_ios),
-        
-              ],
-            ),             
-                              Divider(),
-        
-            Row(
-              children: [
-                Icon(Icons.notifications_outlined),
-                SizedBox(width: 10,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Medicine '),
-                                                          Text('Make changes To Your Account',style:TextStyle(color: Colors.black45))
-        
-                  ],
+                 Container(height: 100,width: double.infinity,
+                decoration: BoxDecoration(
                 ),
-                Expanded(child: Container()),
-                Icon(Icons.arrow_forward_ios),
-        
+                 )
+                ,
+                ],
+               ),
+         Positioned(
+          bottom:0,left: 70
+          ,child: Column(
+            children: [
+        CircleAvatar(
+          radius: 55,
+          backgroundColor: Colors.white,
+          child: CircleAvatar(radius: 50,backgroundColor: Colors.amber,
+          backgroundImage:AssetImage('lib/Images/l1.jpeg'),
+          ),
+        ),
+        Text("Ahmed Abdeaziz",style:TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+          ],
+          )),
               ],
-            ),
-            Divider(),
-              Row(
-                
-              children: [
-                Icon(Icons.privacy_tip),
-                SizedBox(width: 10,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('privacy & security'),
-                                        Text('Make changes To Your Account',style:TextStyle(color: Colors.black45))
-        
-                  ],
-                ),
-                Expanded(child: Container()),
-                Icon(Icons.arrow_forward_ios),
-        
-              ],
-            ),
-            Divider(),
-        
-          
-               Row(
-              children: [
-                Icon(Icons.logout),
-                SizedBox(width: 10,),
-                Text('Logout'),
-                Expanded(child: Container()),
-                Icon(Icons.arrow_forward_ios),
-        
-              ],
-            ),         
-              
-        ],),
-          )
-          ,   
+            ),  
+            SizedBox(height: 20,),
+               Expanded(
+                 child: Container(
+                  decoration: BoxDecoration(
+                                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight:Radius.circular(20))
                
-        ],),
+                  ),
+                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start
+                  ,children: [
+                         SizedBox(
+                      height: 50,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal:15),
+                       decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)
+                       ),
+                        child: Center(
+                          child: ListTile(
+                            
+                            leading: Icon(Icons.person,color:Colors.blue,),
+                            title: Text('Doctors',style:TextStyle(color:Color(0xFF17203A),fontSize: 15.sp,fontFamily: 'Roboto',fontWeight: FontWeight.w500)),
+                             trailing:Text('+12',style:TextStyle(fontWeight:FontWeight.bold,color:Color(0xFF17203A)),),
+                            onTap: () {
+                              
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: Container(
+                        
+                                                margin: EdgeInsets.symmetric(horizontal:15),
+                        decoration: BoxDecoration(
+                                                  color: Colors.white,
+                        ),
+                        child: ListTile(
+                          leading: Icon(Icons.medical_information,color:Colors.blue,),
+                                           
+                          title: Text('Medical Records',style:TextStyle(color:Color(0xFF17203A),fontSize: 15.sp,fontWeight: FontWeight.w500)),
+                          onTap: () {
+                                            
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: ListTile(
+                        leading: Icon(Icons.local_pharmacy,color: Colors.blue,),
+                        title: Text('Pharmacy',style:TextStyle(color:Color(0xFF17203A),fontSize: 15.sp,fontWeight: FontWeight.w500)),
+                                       trailing:Container(
+                          height: 25,width: 50,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(color: Colors.green,
+                          borderRadius:BorderRadius.circular(10)
+                          ),
+                          child:Center(child: Text('8 new',style:TextStyle(color:Color(0xFF17203A))),)
+                          ),    
+                 
+                        onTap: () {
+                        
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: ListTile(
+                        leading: Icon(Icons.medical_information_outlined,color:Colors.blue,),
+                                                         
+                        title: Text('Medicine',style:TextStyle(color:Color(0xFF17203A),fontSize: 15.sp,fontWeight: FontWeight.w500)),
+                        onTap: () {
+                        
+                        },
+                      ),
+                    ),
+                       SizedBox(
+                      height: 40,
+                      child: ListTile(
+                        leading: Icon(Icons.local_pharmacy,color: Colors.blue,),
+                        title: Text('Pharmacy',style:TextStyle(color:Color(0xFF17203A),fontSize: 15.sp,fontWeight: FontWeight.w500)),
+                                       trailing:Container(
+                          height: 25,width: 50,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(color: Colors.green,
+                          borderRadius:BorderRadius.circular(10)
+                          ),
+                          child:Center(child: Text('8 new',style:TextStyle(color:Color(0xFF17203A))),)
+                          ),    
+                 
+                        onTap: () {
+                        
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                      child: ListTile(
+                        leading: Icon(Icons.medical_information_outlined,color:Colors.blue,),
+                                                         
+                        title: Text('Medicine',style:TextStyle(color:Color(0xFF17203A),fontSize: 15.sp,fontWeight: FontWeight.w500)),
+                        onTap: () {
+                        
+                        },
+                      ),
+                    ),
+                  
+                    SizedBox(
+                      height: 40,
+                      child: ListTile(
+                        leading: Icon(Icons.login_outlined,color:Colors.red,),
+                        trailing: Icon(Icons.login_outlined),                          
+                        title: Text('Log out',style:TextStyle(color:Colors.red,fontSize: 15.sp,fontWeight: FontWeight.w500)),
+                        onTap: () {
+                      
+                        },
+                      ),
+                    ),
+                    
+                 ],),),
+               ),
+             
+                 
+          ],),
+        ),
       ),
            bottomNavigationBar:BottomNavigationBar(
               currentIndex: _selectedIndex,

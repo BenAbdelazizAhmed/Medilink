@@ -1,7 +1,6 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:op/Acceuil.dart';
 import 'package:op/MedelinkMessage.dart';
 import 'package:op/ProfileSettings.dart';
@@ -57,18 +56,27 @@ class _makeappoinmentState extends State<makeappoinment> {
     return SafeArea(
       child:Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-        backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(       onPressed: () {
-  Navigator.pop(context);
-},icon:Icon(Icons.arrow_back_ios),),
-          centerTitle:true,
-          title:Text('Appoinment',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
-fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
-),),
-        ),
-      body:Column(
+     appBar: AppBar(
+    backgroundColor: Colors.white,
+    elevation: 0,
+    leading: IconButton(
+      onPressed: () {
+                          Navigator.pop(context);
+
+      },
+      icon: Icon(Icons.arrow_back_ios),
+    ),
+    centerTitle: true,
+    title: Text(
+      'Book Appoinment',
+      style: TextStyle(
+        color: Color(0xff4491f9),
+        fontFamily: 'Manrope',
+        fontWeight: FontWeight.w900,
+        fontSize: 18,
+      ),
+    ),
+  ),  body:Column(
         children: [
           Expanded(
             child: Container(
@@ -79,33 +87,16 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                 child: ListView(
                   children: [
                     SizedBox(height: 5,),
-                  Container(
-                    height: 100,width: double.infinity,decoration:BoxDecoration(borderRadius: BorderRadius.circular(10)
-                    ,color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        spreadRadius: 1,blurRadius: 2,
-                        color: Colors.black.withOpacity(0.05),
-                        offset:Offset(1,1),
-                      ),
-                        BoxShadow(
-                        spreadRadius: 1,blurRadius: 2,
-                        color: Colors.black.withOpacity(0.05),
-                        offset:Offset(-1,-1),
-                      ),
-                    ]
-                    ),
-                  child:Column(
+                  Column(
                     children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start
                         ,children: [
-                        Container(width: 120,height: 100,
-                        decoration:BoxDecoration( color:Color.fromRGBO(243, 249, 249, 1),borderRadius: BorderRadius.circular(10)),
-                        child:ClipRRect(
-                          borderRadius: BorderRadius.circular(15)
-                        ,child:  Image.asset('lib/Images/sed1.png',fit:BoxFit.contain,),
-                        )
+                       Padding(
+                         padding: const EdgeInsets.only(top: 15.0),
+                         child: CircleAvatar(
+                          radius: 35
+                          ,backgroundImage: AssetImage('lib/Images/sed1.png'),),
                        ),
                        SizedBox(width: 15,),
                        Padding(
@@ -113,13 +104,12 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                          child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start
                           ,children: [
-                          Text('Dr.James Gun',style:TextStyle(fontWeight: FontWeight.bold,color: Color(0xff02aeed),     fontFamily: 'Roboto',
-                 fontSize: 15 ),),
+                          Text('Dr.Ahmed ABdelaziz',style:TextStyle(fontWeight: FontWeight.bold,color: Color(0xff4491f9),     fontFamily: 'Roboto',
+                                   fontSize: 15,),),
                            Row(
                             mainAxisAlignment:MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Specialist :',style:TextStyle(color: Colors.black87 )),
-                              SizedBox(width: 5,),
+                             
                               Text('Dermalogiste',style:TextStyle(color: Colors.black54 ))
                             ],
                           ),  
@@ -144,17 +134,13 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                             children: [
                            ],
                           )
-                                       ,SizedBox(height: 10,),
-                                       Row(children: [
-                                       
+
                          
-                                       ],),
                                   ],),
                        ),
                       ]),
-              
+                                
                     ],
-                  ),
                   ),
                              SizedBox(height: 10,),
                        Padding(
@@ -166,10 +152,11 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                             padding: EdgeInsets.all(10),
                             height: 65,width: 110
                             ,decoration: BoxDecoration(
+                              
                               borderRadius: BorderRadius.circular(10),
                                                                 border: Border.all(color: Colors.black, width: 0.05),
                          
-                                       color:Colors.white,
+                                       color:Colors.black.withOpacity(0.02),
                             ),
                             child:Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,9 +165,9 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                                                         fontFamily: 'Poppins',),),
                               Expanded(child: Container()),
                               Row(children: [
-                                Icon(Icons.person,color:Color(0xff02aeed)),
+                                Icon(Icons.person,color:Color(0xff4491f9)),
                                SizedBox(width: 5,),
-                                Text('1000+',style:TextStyle(color: Color(0xff5d6062),fontWeight: FontWeight.bold))
+                                Text('1000+',style:TextStyle(fontWeight: FontWeight.bold))
                               ],)
                             ],),
                             ),
@@ -191,7 +178,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                               borderRadius: BorderRadius.circular(10),
                                                                 border: Border.all(color: Colors.black, width: 0.05),
                          
-                                       color:Colors.white,
+                                       color:Colors.black.withOpacity(0.02),
                             ),
                             child:Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -200,9 +187,9 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                                                         fontFamily: 'Poppins',),),
                               Expanded(child: Container()),
                               Row(children: [
-                                Icon(Icons.work,color:Color(0xff02aeed)),
+                                Icon(Icons.work,color:Color(0xff4491f9)),
                                SizedBox(width: 5,),
-                                Text('5 YEARS',style:TextStyle(fontWeight: FontWeight.bold,  fontSize: 14,color: Colors.black54,
+                                Text('5 YEARS',style:TextStyle(fontWeight: FontWeight.bold,  fontSize: 14,
                                                         fontFamily: 'Poppins',))
                               ],)
                             ],),
@@ -243,7 +230,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                                 },
                                ),
                                SizedBox(width:5,),
-                                Text('5.0',style:TextStyle(color: Color(0xff5d6062),fontWeight: FontWeight.bold,))
+                                Text('5.0',style:TextStyle(fontWeight: FontWeight.bold,))
                                      ],)
                             ],),
                             ),
@@ -259,7 +246,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                       )
                        ,  Padding(
                          padding: const EdgeInsets.symmetric(horizontal:5.0),
-                         child: Text('dr. ahmed is a dental specialist the field of orthonitics with extensive training and experience in the field of orthonitics with extensive training and experience in the field of orthonitics ',style:TextStyle( 
+                         child: Text('dr. ahmed is a dental specialist the field of orthonitics with extensive training and experience in the field',style:TextStyle( 
                                                     fontSize: 14,
                                                         fontFamily: 'Poppins',
                                                     color: Colors.black54,
@@ -278,19 +265,19 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                 initialDate: DateTime.now(),
                 onDateChange: (selectedDate) {
                 },
-                activeColor: Color(0xff02aeed),
+                activeColor: Color(0xff4491f9),
                 dayProps: const EasyDayProps(
                   height: 55,
-                  borderColor: Color(0xff02aeed),
+                  borderColor: Color(0xff4491f9),
                   todayHighlightStyle: TodayHighlightStyle.withBackground,
                   todayHighlightColor: Colors.red,
                   todayMonthStrStyle: TextStyle(color: Colors.white),
                   todayNumStyle: TextStyle(color: Colors.white),
-                  todayStrStyle: TextStyle(color: Colors.white),
+                  todayStrStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                   activeDayNumStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                   activeMothStrStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                   activeDayStrStyle: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
-                  inactiveDayNumStyle: TextStyle(color: Colors.black54)
+                  inactiveDayNumStyle: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold)
                 ),
               )
               
@@ -309,7 +296,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                             height: 40,
                             width: 100,
                             decoration: BoxDecoration(
-                             color:Color(0xff02aeed),
+                             color:Color(0xff4491f9),
                               borderRadius: BorderRadius.circular(10)
                             ),
                             child:Center(child: Text('08:00 PM',style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
@@ -321,11 +308,11 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                             decoration: BoxDecoration(
                               color:Colors.white,
                               border: Border.all(
-                                color:Color(0xff6db0d0)
+                                color:Color(0xff4491f9)
                               ),
                               borderRadius: BorderRadius.circular(10)
                             ),
-                            child:Center(child: Text('10:00 pm',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold),)),
+                            child:Center(child: Text('10:00 pm',style:TextStyle(color:Color(0xff4491f9),fontWeight: FontWeight.bold),)),
                           ),
                                        SizedBox(width: 5,),
                           Container(
@@ -334,11 +321,11 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                             decoration: BoxDecoration(
                               color:Colors.white,
                                 border: Border.all(
-                                color:Color(0xff6db0d0)
+                                color:Color(0xff4491f9)
                               ),
                               borderRadius: BorderRadius.circular(10)
                             ),
-                            child:Center(child: Text('12:00 pm',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold),)),
+                            child:Center(child: Text('12:00 pm',style:TextStyle(color:Color(0xff4491f9),fontWeight: FontWeight.bold),)),
                           ),
                         SizedBox(width: 10,),
                           Container(
@@ -347,11 +334,11 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
                             decoration: BoxDecoration(
                               color:Colors.white,
                                 border: Border.all(
-                                color:Color(0xff6db0d0)
+                                color:Color(0xff4491f9)
                               ),
                               borderRadius: BorderRadius.circular(10)
                             ),
-                            child:Center(child: Text('04:00 PM',style:TextStyle(color:Color(0xff6db0d0),fontWeight: FontWeight.bold)),
+                            child:Center(child: Text('04:00 PM',style:TextStyle(color:Color(0xff4491f9),fontWeight: FontWeight.bold)),
                           ),
                           ),
                        ],
@@ -382,41 +369,33 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
               ),
             ),
           ),
-      Container(
-              margin:EdgeInsets.only(left: 20,right: 20),
-              
-              height: 50,
-              decoration:BoxDecoration(
-                          color:Color(0xff0099E5) ,
-                          borderRadius: BorderRadius.circular(10)
-              ),
-            width: double.infinity,
-            child:Center(child:Text('Make appointment',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
-            )
+        Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                    child: SizedBox(
+                          height: 45,
+                          child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:Color(0xff4491f9),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20), 
+                            ),
+                          ),
+                          onPressed: () {
+                             Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => Med()),
+                                );
+                          },
+                          child: Center(
+                            child: Text('Book Appoinment (50.99D)',style:TextStyle(fontFamily:'Poppins',fontSize: 14,color: Colors.white,fontWeight: FontWeight.bold),),
+                          ),
+                          ),
+                        ),
+                  ),
+SizedBox(height: 15,),
         ],
       ),
-             bottomNavigationBar:BottomNavigationBar(
-              currentIndex: selectedIndex,
-        onTap: _onItemTapped,
-          backgroundColor:Colors.white,
-          elevation: 4,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedItemColor: Color(0xff4789FC),
-          unselectedItemColor:Colors.black,
-          unselectedLabelStyle: TextStyle( color: Colors.black,),
-          selectedLabelStyle:TextStyle( color:  Color(0xff4789FC),
-          
-          )
-          ,items: [
-          BottomNavigationBarItem(icon:Icon(Icons.home),label:"Home",),
-            BottomNavigationBarItem(  icon:Image.asset('lib/Images/diag.png',height: 22.h,),label:"Diagnostics"),
-              BottomNavigationBarItem(icon:Image.asset('lib/Images/chat.png',height: 22.h,),label:"Chat"),
-                BottomNavigationBarItem(
-                  icon:Image.asset('lib/Images/user.png',height: 22.h,),label:"Profile"),
-                  
-        ],),
-    
+      
       ),
       
     );

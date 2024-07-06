@@ -37,59 +37,130 @@ class _VerificationcodeState extends State<Verificationcode> {
           SizedBox(height: 5,),
           Text('Enter code that we have sent to your number 08528188*** ',style:TextStyle(color:Color(0xffA1A8B0),),),
          SizedBox(height: 15,)
-         ,Row(children: [
-          Container(height: 55,width: 55,
-          decoration: BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-            border: Border.all(
-              width: 1,
-              color: Color(0xff4491f9)
-            )
-          ),
-          )
-        ,SizedBox(width: 10,),
-           Container(height: 55,width: 55,
-          decoration: BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-            border: Border.all(
-              width: 1,
-              color: Color(0xff4491f9)
-            )
-          ),
-          ),SizedBox(width: 10,),
-             Container(height: 55,width: 55,
-          decoration: BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-            border: Border.all(
-              width: 1,
-              color: Color(0xff4491f9)
-            )
-          ),
-          )
-      ,SizedBox(width: 10,),
-         Container(height: 55,width: 55,
-          decoration: BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-            border: Border.all(
-              width: 1,
-              color: Color(0xff4491f9)
-            )
-          ),
-          ),
-          SizedBox(width: 10,),
-             Container(height: 55,width: 55,
-          decoration: BoxDecoration(
-            borderRadius:BorderRadius.circular(10),
-            border: Border.all(
-              width: 1,
-              color: Color(0xff4491f9)
-            )
-          ),
-          )
-      
-      
-       ],), 
-               Padding(
+         ,Row(
+  children: [
+    Container(
+      height: 55,
+      width: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff4491f9),
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+        style: TextStyle(fontSize: 18),
+        onChanged: (value) {
+          // Handle onChanged event as needed
+        },
+      ),
+    ),
+    SizedBox(width: 10),
+    Container(
+      height: 55,
+      width: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff4491f9),
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+        style: TextStyle(fontSize: 18),
+        onChanged: (value) {
+          // Handle onChanged event as needed
+        },
+      ),
+    ),
+    SizedBox(width: 10),
+    Container(
+      height: 55,
+      width: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff4491f9),
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+        style: TextStyle(fontSize: 18),
+        onChanged: (value) {
+          // Handle onChanged event as needed
+        },
+      ),
+    ),
+    SizedBox(width: 10),
+    Container(
+      height: 55,
+      width: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff4491f9),
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+        style: TextStyle(fontSize: 18),
+        onChanged: (value) {
+          // Handle onChanged event as needed
+        },
+      ),
+    ),
+    SizedBox(width: 10),
+    Container(
+      height: 55,
+      width: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          width: 1,
+          color: Color(0xff4491f9),
+        ),
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.zero,
+        ),
+        style: TextStyle(fontSize: 18),
+        onChanged: (value) {
+          // Handle onChanged event as needed
+        },
+      ),
+    ),
+  ],
+),
+  Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0,vertical:25),
                     child: SizedBox(
                           height: 45,

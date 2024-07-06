@@ -88,14 +88,17 @@ class _Medical_RecordsPage1State extends State<Medical_RecordsPage1> {
       context: context,
       builder: (BuildContext context) => SafeArea(
         child: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(20)) ,color: Colors.white,
+          decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight:  Radius.circular(40)) ,color: Colors.white,
 ),
           padding:EdgeInsets.all(10),
           height: 350.h,
          
         child:Column(children: [
-        Icon(Icons.more_horiz),
-          Text('Cancel uploaded',style:TextStyle(fontWeight:FontWeight.w400,fontSize: 20.sp,color: Colors.red),),
+ CircleAvatar(
+          radius: 47
+          ,backgroundColor: Colors.blueAccent.withOpacity(0.11),
+          child: Icon(Icons.check,size: 50,color: Colors.blueAccent,),
+          ),          Text('uploaded successfully',style:TextStyle(fontWeight:FontWeight.w700,fontSize: 20.sp,color:Color(0xff0099E5)),),
           Text('Your documents were successfully uploaded '),
        SizedBox(height: 10,),
           Padding(
@@ -343,24 +346,25 @@ _handleAttachmentPressede();
     backgroundColor: Colors.white,
     elevation: 0,
     leading: IconButton(
-      onPressed: () {},
+      onPressed: () {Navigator.pop(context);
+        
+      },
       icon: Icon(Icons.arrow_back_ios),
     ),
     centerTitle: true,
     title: Text(
       'Medical Records',
       style: TextStyle(
-        color: Color(0xff0B8FAC),
-        fontFamily: 'Roboto',
-        fontWeight: FontWeight.w400,
-        fontStyle: FontStyle.italic,
-        fontSize: 20,
+        color: Color(0xff4491f9),
+        fontFamily: 'Manrope',
+        fontWeight: FontWeight.w900,
+        fontSize: 18,
       ),
     ),
   ),
   body: Container(
     decoration: BoxDecoration(
-    color:Colors.white
+    color:Color(0xfffafafa)
     ),
     height: MediaQuery.of(context).size.height,
     width: MediaQuery.of(context).size.width,
@@ -369,18 +373,12 @@ _handleAttachmentPressede();
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-          CircleAvatar(
-            radius: MediaQuery.of(context).size.width * 0.3,
-            backgroundColor:Color(0xff0099E5),
-            child: Image.asset('lib/Images/gcap.png'),
-          ),
+          Image.asset('lib/Images/19834.jpg',height: 240,fit:BoxFit.fill,),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           Text(
             'Add a medical record.',
             style: TextStyle(
-              fontWeight: FontWeight.w700,
-              color: Color(0xff222222),
-              fontSize: 22.sp,
+             fontWeight: FontWeight.w900,fontFamily: 'Manrope',color:Color(0xff4491f9),fontSize: 25.sp
             ),
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.03),
@@ -408,37 +406,50 @@ _handleAttachmentPressede();
               textAlign: TextAlign.center,
             ),
           ),
-          GestureDetector(
-            onTap: _handleAttachmentPressed,
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
-              height: MediaQuery.of(context).size.height * 0.07,
-              decoration: BoxDecoration(
-                color: Color(0xff0099E5),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              width: double.infinity,
-              child: Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.add,color: Colors.white,),
-                    Text(
-                      'Add a new record',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18.sp,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+          
+       Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 40.0,vertical: 10),
+                    child: SizedBox(
+                          height: 45,
+                          child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:Color(0xff4491f9),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20), 
+                            ),
+                          ),
+                          onPressed: () {
+                             _handleAttachmentPressed();
+                          },
+                          child: Center(
+                            child: Text('Add a medical record',style:TextStyle(fontFamily:'Poppins',fontSize: 14,color: Colors.white,fontWeight: FontWeight.bold),),
+                          ),
+                          ),
+                        ),
+                  ),  ],
       ),
     ),
   ),
+        bottomNavigationBar:BottomNavigationBar(
+            
+          backgroundColor:Colors.white,
+          elevation: 4,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: Color(0xff4789FC),
+          unselectedItemColor:Colors.black,
+          unselectedLabelStyle: TextStyle( color: Colors.black,),
+          selectedLabelStyle:TextStyle( color:  Color(0xff4789FC),
+          
+          )
+          ,items: [
+          BottomNavigationBarItem(icon:Icon(Icons.home),label:"Home",),
+            BottomNavigationBarItem(  icon:Image.asset('lib/Images/diag.png',height: 22.h,),label:"Diagnostics"),
+              BottomNavigationBarItem(icon:Image.asset('lib/Images/chat.png',height: 22.h,),label:"Chat"),
+                BottomNavigationBarItem(
+                  icon:Image.asset('lib/Images/user.png',height: 22.h,),label:"Profile"),
+                  
+        ],),
+   
 );
   }}

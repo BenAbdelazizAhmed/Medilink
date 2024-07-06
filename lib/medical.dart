@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/MedicalConfirm.dart';
 
 class Medical extends StatefulWidget {
   const Medical({super.key});
@@ -15,7 +16,9 @@ class _MedicalState extends State<Medical> {
           appBar: AppBar(
         backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
+          leading: IconButton(onPressed: (){
+            Navigator.pop(context);
+          },icon:Icon(Icons.arrow_back_ios),),
           centerTitle:true,
           title:Text('Medicine',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
 fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
@@ -56,15 +59,24 @@ Text(
   textAlign: TextAlign.center,
 )
           ,Expanded(child:Container()),
-              Container(
-                margin:EdgeInsets.only(left: 30,right: 30),
-                height: 55,
-                decoration:BoxDecoration(
-                            color:Color(0xff0099E5) ,
-                            borderRadius: BorderRadius.circular(5)
+              GestureDetector(
+                onTap:(){
+                  
+                   Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MedicalConfirm()),
+      );
+                },
+                child: Container(
+                  margin:EdgeInsets.only(left: 30,right: 30),
+                  height: 55,
+                  decoration:BoxDecoration(
+                              color:Color(0xff0099E5) ,
+                              borderRadius: BorderRadius.circular(5)
+                  ),
+                width: double.infinity,
+                child:Center(child:Text('Add your medicine',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
                 ),
-              width: double.infinity,
-              child:Center(child:Text('Add your medicine',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
               )        ],),
         ),
       ),

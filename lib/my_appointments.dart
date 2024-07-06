@@ -25,19 +25,27 @@ class _MyAppointmentsState extends State<MyAppointments> {
   Widget build(BuildContext context) {
     return Scaffold(
        backgroundColor:Colors.white,
-          appBar: AppBar(
-            toolbarHeight: 35,
-            leading:  IconButton(
-              onPressed: () {
-  Navigator.pop(context);
-}
-              ,icon:Icon(Icons.arrow_back_outlined,color: Colors.black,)),
-            backgroundColor: Colors.white,
-            elevation: 0,
-            centerTitle: true,
-            title:  Text('My Appointments',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
-  fontStyle: FontStyle.italic,fontSize: 20.sp,
-),),       ),
+       appBar: AppBar(
+    backgroundColor: Colors.white,
+    elevation: 0,
+    toolbarHeight: 30,
+    leading: IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      icon: Icon(Icons.arrow_back_ios),
+    ),
+    centerTitle: true,
+    title: Text(
+      'Medical Records',
+      style: TextStyle(
+        color: Color(0xff4491f9),
+        fontFamily: 'Manrope',
+        fontWeight: FontWeight.w900,
+        fontSize: 18,
+      ),
+    ),
+  ),
 body: Padding(
   padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(15)),
   child: Container(  
@@ -52,19 +60,20 @@ body: Padding(
       child: Row(children: [
         Expanded(
           child: Container(
-          decoration:BoxDecoration(borderRadius: BorderRadius.circular(10),color:Color(0xff6db0d0),),
+          decoration:BoxDecoration(borderRadius: BorderRadius.circular(10),  
+                                                                color: Color(0xff4491f9),),
           height: 40.h,
-          child:Center(child: Text('Upcoming',style:TextStyle(fontWeight: FontWeight.bold,color: Colors.white),)),),
+          child:Center(child: Text('Upcoming',style:TextStyle(fontWeight: FontWeight.bold,fontFamily: 'Manrope',color: Colors.white),)),),
         ),
          Expanded(
            child: Container(width: 120.w,
-                 height: 40.h,color:Colors.blueAccent.withOpacity(0.03),
-                 child:Center(child: Text('Canceled',style:TextStyle(color: Colors.black.withOpacity(0.7),fontWeight: FontWeight.w500),)),),
+                 height: 40.h,color:Colors.white,
+                 child:Center(child: Text('Canceled',style:TextStyle(color: Colors.black.withOpacity(0.8),fontFamily: 'Roberto',fontWeight: FontWeight.w500),)),),
          ),
       Expanded(
            child: Container(width: 120.w,
-                 height: 40.h,color:Colors.blueAccent.withOpacity(0.03),
-                 child:Center(child: Text('Completed',style:TextStyle(color: Colors.black.withOpacity(0.7),fontWeight: FontWeight.w500),)),),
+                 height: 40.h,color:Colors.white,
+                 child:Center(child: Text('Completed',style:TextStyle(fontFamily: 'Roberto',color: Colors.black.withOpacity(0.8),fontWeight: FontWeight.w500),)),),
          ),  ],),
       )
     ,Expanded(
@@ -77,6 +86,7 @@ body: Padding(
                     
                 Expanded(
                   child: Container(
+                   padding: EdgeInsets.symmetric(horizontal:4.h),
                     child: ListView.builder(
                     itemCount:3,
                     itemBuilder: (BuildContext context, int index) {
@@ -90,13 +100,13 @@ body: Padding(
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.04),
-                            spreadRadius: 3,
-                            blurRadius: 0,
+                            spreadRadius: 1,
+                            blurRadius: 4,
                             offset: Offset(1,2)
                           ), BoxShadow(
                             color: Colors.black.withOpacity(0.04),
-                            spreadRadius: 3,
-                            blurRadius: 0,
+                            spreadRadius:1,
+                            blurRadius: 4,
                             offset: Offset(-1,-2)
                           )
                         ]
@@ -145,13 +155,13 @@ body: Padding(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                 children: [
-                                                  Text('Dr. Ahmed Ben Abdelaziz',style:TextStyle(color: Color(0xff0099E5),fontWeight: FontWeight.bold,fontSize: 12.sp),),
+                                                  Text('Dr. Ahmed Ben Abdelaziz',style:TextStyle(  color: Color(0xff4491f9),fontWeight: FontWeight.bold,fontSize: 14.sp),),
                                               
                                                       Row(
                                                                             children: [
-                                                                              Icon(Icons.place_outlined,color:Colors.black54,size: 15,),
+                                                                              Icon(Icons.place_outlined,color:Colors.black38,size: 15,),
                                                                               SizedBox(width: 4.w,),
-                                                                              Text('Monastir Avenue bourguiba',style:TextStyle(color:Colors.black54,fontWeight: FontWeight.w200,fontSize: 12.sp),),
+                                                                              Text('Monastir Avenue bourguiba',style:TextStyle(color:Colors.black38,fontWeight: FontWeight.w900,fontFamily: 'Manrope',fontSize: 12.sp),),
                                                                            
                                                                             ],
                                                                           ),
@@ -162,7 +172,7 @@ body: Padding(
                                                       children: [
                                                         Image.asset('lib/Images/agen.png'),
                                                         SizedBox(height: 5.h,),
-                                                        Text('01/05/2024',style:TextStyle(color:Colors.black54,fontSize: 12.sp),)
+                                                        Text('01/05/2024',style:TextStyle(fontSize: 12.sp,color:Colors.black38,fontWeight: FontWeight.w900,fontFamily: 'Manrope',),)
                                                       ],
                                                     ),
                                                     
@@ -177,7 +187,7 @@ body: Padding(
                                                         Row(
                                                           children: [
                                                             SizedBox(width: 10.w,),
-                                                            Text('08-15-10:30',style:TextStyle(color:Colors.black54,fontSize: 12.sp),),
+                                                            Text('08-15-10:30',style:TextStyle(color:Colors.black38,fontWeight: FontWeight.w900,fontFamily: 'Manrope',fontSize: 12.sp),),
                                                           ],
                                                         )
                                                       ],
@@ -193,31 +203,30 @@ body: Padding(
                                     ),
                                       
                                                         ]                          ),
-                                                        Divider(height: 4.h,color: Colors.black.withOpacity(0.09),),
                         
                                                Row(
-                                                                  children: [ 
+                                                                  children: [
                                                                     Expanded(child:Container()),
                                                                     Container(
                                        height: 30.h,
                                   width: 100.w,
-                                    decoration: BoxDecoration(
-                        color:Colors.blueAccent.withOpacity(0.06),
-                                                                  border: Border.all(
-                                                                     color:Colors.blueAccent.withOpacity(0.06),
-                                                                  ),
+                                
+                                                           decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            border: Border.all(color: Color(0xff4491f9)),
                                                                       borderRadius:BorderRadius.circular(10)
+                                          ),
                                   
-                                    ),
-                                     
                                     
-                                  child:Center(child: Text('Cancel',style:TextStyle(color: Colors.black.withOpacity(0.7),fontWeight: FontWeight.w500,fontSize: 12.sp),))),
+                                               
+                                    
+                                  child:Center(child: Text('Cancel',style:TextStyle(color: Color(0xff4491f9),fontWeight: FontWeight.w500,fontSize: 12.sp),))),
                               SizedBox(width: 15.w,),
                               Container(
                                        height: 30.h,
                                   width: 100.w,
                                     decoration: BoxDecoration(
-                                                                  color:Color(0xff6db0d0),
+                                                                color: Color(0xff4491f9),
                                                                   border: Border.all(
                                                                     color: Color(0xff6db0d0)
                                                                   ),
@@ -226,7 +235,8 @@ body: Padding(
                                     ),
                                      
                                     
-                                  child:Center(child: Text('Reschedule',style:TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 12.sp),))),
+                                  child:Center(child: Text('Reschedule',style:TextStyle(color:Colors.white,fontWeight: FontWeight.bold,fontSize: 12.sp,        fontFamily: 'Manrope',
+),))),
                              
                              ],
                                                                  ),                            

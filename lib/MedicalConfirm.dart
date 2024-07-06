@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/MedicalConfirm2.dart';
 
 class MedicalConfirm extends StatefulWidget {
   const MedicalConfirm({super.key});
@@ -15,7 +16,9 @@ class _MedicalConfirmState extends State<MedicalConfirm> {
           appBar: AppBar(
         backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(onPressed: (){},icon:Icon(Icons.arrow_back_ios),),
+          leading: IconButton(onPressed: (){
+            Navigator.of(context).pop();
+          },icon:Icon(Icons.arrow_back_ios),),
           centerTitle:true,
           title:Text('Medicine',style:TextStyle(color:Color(0xff0B8FAC),     fontFamily: 'Roboto',
 fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
@@ -35,7 +38,7 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
           padding: const EdgeInsets.only(left: 30,right: 30),
           child: ListView(
                         children: [
-            Center(child: CircleAvatar(radius:70.w,backgroundImage:AssetImage('lib/Images/imo.png'),)),
+            Center(child: CircleAvatar(radius:100.w,backgroundImage:AssetImage('lib/Images/imo.png'),)),
             SizedBox(height: 20.h,),
             Text('Medical name',style:TextStyle(color:Color(0xff050551),fontSize: 16,fontFamily: 'Roboto',fontWeight: FontWeight.w600),textAlign: TextAlign.left,)
           ,SizedBox(height: 20.h,)
@@ -110,16 +113,26 @@ fontWeight: FontWeight.w400,   fontStyle: FontStyle.italic,fontSize: 20,
 
        ],),
        SizedBox(height: 25,),
-              Container(
-                margin:EdgeInsets.only(left: 20,right: 20),
-                
-                height: 50,
-                decoration:BoxDecoration(
-                            color:Color(0xff0099E5) ,
-                            borderRadius: BorderRadius.circular(10)
+              GestureDetector(
+                onTap:(){
+                   Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => MedicalConfirm2()),
+      );
+                  
+
+                },
+                child: Container(
+                  margin:EdgeInsets.only(left: 20,right: 20),
+                  
+                  height: 50,
+                  decoration:BoxDecoration(
+                              color:Color(0xff0099E5) ,
+                              borderRadius: BorderRadius.circular(10)
+                  ),
+                width: double.infinity,
+                child:Center(child:Text('Confirm',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
                 ),
-              width: double.infinity,
-              child:Center(child:Text('Confirm',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20),),),
               )        ],),
         ),
       ),
