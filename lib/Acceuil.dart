@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:http/http.dart' as http;
 import 'package:op/All_specialities.dart';
 import 'package:op/MedelinkMessage.dart';
+import 'package:op/Medical_RecordsPage2.dart';
 import 'package:op/Medical_RecordsPage3.dart';
+import 'package:op/ModelPosts.dart';
 import 'package:op/MyDoctor.dart';
 import 'package:op/ProfileSettings.dart';
 import 'package:op/Questions.dart';
@@ -11,9 +16,6 @@ import 'package:op/SearchDoctor.dart';
 import 'package:op/SearchLabo.dart';
 import 'package:op/my_appointments.dart';
 import 'package:op/searchpharmac.dart';
-
-import 'Medical_RecordsPage2.dart';
-
 class Med extends StatefulWidget {
   const Med({Key? key}) : super(key: key);
 
@@ -68,6 +70,8 @@ int _selectedIndex = 0;
       break;
   }
   }
+   List<Post> posts = [];
+
  List <String> imgo=[
   'lib/Images/imge.png',
  'lib/Images/l1.jpeg',
@@ -83,6 +87,25 @@ int _selectedIndex = 0;
     'lib/Images/l6.jpeg',
     'lib/Images/l7.jpeg',
   ];
+    @override
+  void initState() {
+    super.initState();
+    fetchPosts();
+    print(posts.length);
+  }
+Future<List<Post>> fetchPosts() async {
+  final url = Uri.parse('http://10.0.2.2:3005/api/posts'); // Remplacez par votre URL backend
+
+  final response = await http.get(url);
+
+  if (response.statusCode == 200) {
+    List jsonResponse = json.decode(response.body);
+    print('fsss');
+    return jsonResponse.map((post) => Post.fromJson(post)).toList();
+  } else {
+    throw Exception('Failed to load posts');
+  }
+}
   @override
   Widget build(BuildContext context) {
  _SelectedTab _selectedTab = _SelectedTab.home;
@@ -608,315 +631,180 @@ int _selectedIndex = 0;
                           }).toList(),
                         ),
                       );
-                    } else if (index==1){
-                      return Column(
+                    }else if (index == 1) {
+  return FutureBuilder<List<Post>>(
+    future: fetchPosts(), // Remplacez fetchPosts par votre fonction de récupération des posts
+    builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(child: CircularProgressIndicator());
+      } else if (snapshot.hasError) {
+        return Center(child: Text('Error: ${snapshot.error}'));
+      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+        return Center(child: Text('No posts found'));
+      } else {
+        return ListView.builder(
+          itemCount: snapshot.data!.length,
+          itemBuilder: (context, index) {
+            final post = snapshot.data![index];
+            print('xxxx');
+            print(post);
+            return Column(
+              children: [
+                SizedBox(height: 15.h),
+                Container(
+                  height: 365.h,
+                  margin: EdgeInsets.only(
+                    bottom: ScreenUtil().setHeight(15),
+                    left: ScreenUtil().setWidth(5),
+                    right: ScreenUtil().setWidth(5),
+                  ),
+                  padding: EdgeInsets.only(
+                    top: ScreenUtil().setHeight(10),
+                    left: ScreenUtil().setWidth(5),
+                    right: ScreenUtil().setWidth(5),
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         children: [
-                              SizedBox(height:15.h,),
-                            Container(
-                            height: 365.h,
-                            margin: EdgeInsets.only(
-                                bottom:ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
-                            padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                               
-                             
-                              
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 25,
-                                      backgroundColor:
-                                          Colors.transparent,
-                                      backgroundImage:
-                                          AssetImage('lib/Images/pexels-andrea-piacquadio-733872.jpg'),
-                                    ),
-                                    SizedBox(width: 15.w),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Dr Albert Ambrose',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                    fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black87,
-                                              ),
-                                            ),
-                                            SizedBox(width: 110.w),
-                                            Icon(
-                                              Icons.more_horiz,
-                                              color: Colors.black87,
-                                              size: 22,
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(width: 10.w),
-                                        Text(
-                                          '10 minutes ag',
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                          
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 8.h), Expanded(child:Container(
-                              width: double.infinity,
-                              decoration:BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.blue.withOpacity(0.01),
-                              ),
-                              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
-                              child: Column(
-                                children: [
-                                Padding(
-                                  padding:EdgeInsets.all(ScreenUtil().setWidth(8)),
-                                  child: Text(
-                                      "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
-                                      style: TextStyle(
-                                          fontSize: 14.sp,
-                                      fontFamily: 'Roboto',
-                                          color: Colors.black87)),
-                                ),
-                                SizedBox(height: 4.h),
-                                Container(
-                                  width: double.infinity,
-                                  height: 160.h,
-                                  padding: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.circular(15),
-                                    child: Image.asset(
-                                imgo[index],
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(15),
-                                    color:
-                                        Colors.black.withOpacity(0.07),
-                                  ),
-                                ),
-                                SizedBox(height: 5.h),
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor:
-                                          Colors.black.withOpacity(0.05),
-                                      child: Center(
-                                          child: Image.asset('lib/Images/icon1.png')),
-                                    ),
-                                    SizedBox(width:5.w),
-                                    Text("2k"),
-                                    SizedBox(width: 15.w),
-                                    CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor:
-                                          Colors.black.withOpacity(0.05),
-                                      child: Center(
-                                          child: Image.asset('lib/Images/icon2.png')),
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    Text("23"),
-                                    SizedBox(width: 15.w),
-                                 
-                                  ],
-                                ),
-                                SizedBox(height: 5.h,),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
-                                  child: Row(children: [
-                              
-                                    SizedBox(width: 10.w,),
-                                    Text('Write your Opinion',style:TextStyle(color:Colors.black54)),
-                          Expanded(child:Container()),                                                            Text('(275 comments)',style:TextStyle(color:Colors.black,fontWeight: FontWeight.bold),),
-                                  ],),
-                                )  
-                                ],
-                              ),
-                             ))
-                                
-                              ],
-                            ),
+                          CircleAvatar(
+                            radius: 25,
+                            backgroundColor: Colors.transparent,
+                            backgroundImage: AssetImage(post.userPicturePath),
                           ),
-                         SizedBox(height: 15.h,),
-                          Container(
-                            height: 365.h,
-                            margin: EdgeInsets.only(
-                                bottom: ScreenUtil().setHeight(15), left: ScreenUtil().setWidth(5), right: ScreenUtil().setWidth(5)),
-                            padding: EdgeInsets.only(top: ScreenUtil().setHeight(10), left: ScreenUtil().setWidth(5), right:ScreenUtil().setWidth(5)),
-                            width: MediaQuery.of(context).size.width,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(15),
-                               boxShadow: [
-                              BoxShadow(
-                                offset: Offset(1, 1),
-                                blurRadius:4,spreadRadius:4,color:Colors.black.withOpacity(0.03)
-                              ),
-                                BoxShadow(
-                                offset: Offset(-1, -1),
-                                blurRadius: 4,spreadRadius: 4,color: Colors.black.withOpacity(0.03)
-                              )
-                            ],
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 25,
-                                      backgroundColor:
-                                          Colors.transparent,
-                                      backgroundImage:
-                                          AssetImage('lib/Images/pexels-andrea-piacquadio-733872.jpg'),
-                                    ),
-                                    SizedBox(width: 15.w),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment
-                                                  .spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Dr Albert Ambrose',
-                                              style: TextStyle(
-                                                fontSize: 12.sp,
-                                                    fontFamily: 'Poppins',
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                            SizedBox(width: 100.w),
-                                            Icon(
-                                              Icons.more_horiz,
-                                              color: Colors.black87,
-                                              size: 22.h,
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(width: 10.w),
-                                        Text(
-                                          '10 minutes ago',
-                                          style: TextStyle(
-                                            color: Colors.black54,
-                          
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(height: 8.h), Expanded(child:Container(
-                              width: double.infinity,
-                              decoration:BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
-                              child: Column(
+                          SizedBox(width: 15.w),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: Text(
-                                      "un état complet de bien-être physique, mental et social, et ne consiste pas seulement en une absence de maladie",
-                                      style: TextStyle(
-                                          fontSize: 12.sp,
-                                     fontFamily: 'Roboto',
-                                          color: Colors.black87)),
-                                ),
-                                SizedBox(height: 4.h),
-                                Container(
-                                  width: double.infinity,
-                                  height: 160.h,
-                                  padding: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
-                                  child: ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.circular(15),
-                                    child: Image.asset(
-                                imgo[index],
-                                      fit: BoxFit.fill,
+                                  Text(
+                                    "dd",
+                                    style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontFamily: 'Poppins',
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
                                     ),
                                   ),
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(15),
-                                    color:
-                                        Colors.black.withOpacity(0.07),
+                                  SizedBox(width: 110.w),
+                                  Icon(
+                                    Icons.more_horiz,
+                                    color: Colors.black87,
+                                    size: 22,
                                   ),
-                                ),
-                                SizedBox(height: 5.h),
-                                Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 15,
-                                      backgroundColor:
-                                          Colors.black.withOpacity(0.05),
-                                      child: Center(
-                                          child: Image.asset('lib/Images/icon1.png')),
-                                    ),
-                                    SizedBox(width:5.w),
-                                    Text("2k"),
-                                    SizedBox(width: 15.w),
-                                    CircleAvatar(
-                                      radius: 13,
-                                      backgroundColor:
-                                          Colors.black.withOpacity(0.05),
-                                      child: Center(
-                                          child: Image.asset('lib/Images/icon2.png')),
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    Text("23"),
-                                    SizedBox(width: 15.w),
-                                 
-                                  ],
-                                ),
-                                SizedBox(height: 5.h,),
-                                Padding(
-                                  padding: EdgeInsets.symmetric(horizontal:ScreenUtil().setWidth(10)),
-                                  child: Row(children: [
-                              
-                                    SizedBox(width: 10.w,),
-                                    Text('Write your Opinion',style:TextStyle(color:Colors.black54)),
-                          Expanded(child:Container()),                                                            Text('(275 comments)',style:TextStyle(color:Colors.black,fontWeight: FontWeight.bold),),
-                                  ],),
-                                )  
                                 ],
                               ),
-                             ))
-                                
-                              ],
-                            ),
+                              SizedBox(width: 10.w),
+                              Text(
+                                "ee",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
-                      );
-                    }else {
+                      ),
+                      SizedBox(height: 8.h),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.blue.withOpacity(0.01),
+                        ),
+                        margin: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(5)),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(ScreenUtil().setWidth(8)),
+                              child: Text(
+                                "eec",
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontFamily: 'Roboto',
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 4.h),
+                            Container(
+                              width: double.infinity,
+                              height: 160.h,
+                              padding: EdgeInsets.only(right: ScreenUtil().setWidth(5)),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(15),
+                                child: Image.asset(
+                                  "ddd",
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.black.withOpacity(0.07),
+                              ),
+                            ),
+                            SizedBox(height: 5.h),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 15,
+                                  backgroundColor: Colors.black.withOpacity(0.05),
+                                  child: Center(
+                                    child: Image.asset('lib/Images/icon1.png'),
+                                  ),
+                                ),
+                                SizedBox(width: 5.w),
+                                Text("2k"),
+                                SizedBox(width: 15.w),
+                                CircleAvatar(
+                                  radius: 13,
+                                  backgroundColor: Colors.black.withOpacity(0.05),
+                                  child: Center(
+                                    child: Image.asset('lib/Images/icon2.png'),
+                                  ),
+                                ),
+                                SizedBox(width: 5.w),
+                                Text("23"),
+                                SizedBox(width: 15.w),
+                              ],
+                            ),
+                            SizedBox(height: 5.h),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(10)),
+                              child: Row(
+                                children: [
+                                  SizedBox(width: 10.w),
+                                  Text('Write your Opinion', style: TextStyle(color: Colors.black54)),
+                                  Expanded(child: Container()),
+                                  Text('(275 comments)', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    },
+  );
+}
+
+else {
                       return Column(
                         children: [
                           Divider(                        color:Colors.black.withOpacity(0.2),

@@ -1,7 +1,8 @@
+// main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:op/Inscription.dart';
+import 'package:op/SplashScreen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
@@ -27,9 +28,10 @@ class MyApp extends StatelessWidget {
               const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
             ],
           ),
-          home: Inscri(),
+          home: IntroductionScreen(),
         );
       },
     );
   }
 }
+

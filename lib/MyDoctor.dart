@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:op/MakeAppoinment.dart';
 
 class MyDoctor extends StatefulWidget {
   const MyDoctor({super.key});
@@ -247,7 +248,11 @@ color: Color(0xfff1fafa),
                   SizedBox(height: 10.h),
                   GestureDetector(
                     onTap: () {
-                      // Action on tap
+
+                       Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => makeappoinment()),
+                                            );
                     },
                     child: Container(
                       height: 25.h,

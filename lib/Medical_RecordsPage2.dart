@@ -1,18 +1,10 @@
-import 'dart:convert';
-import 'dart:io';
+import 'dart:io'; // Necessary for File operations
 
-import 'package:file_picker/file_picker.dart';
+import 'package:file_picker/file_picker.dart'; // Import du package file_picker
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
-import 'package:mime/mime.dart';
 import 'package:op/Medical_Record.dart';
-import 'package:open_filex/open_filex.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:uuid/uuid.dart';
 
 class Medical_RecordsPage1 extends StatefulWidget {
   const Medical_RecordsPage1({super.key});
@@ -22,14 +14,16 @@ class Medical_RecordsPage1 extends StatefulWidget {
 }
 
 class _Medical_RecordsPage1State extends State<Medical_RecordsPage1> {
-   List<types.Message> _messages = [];
-  final _user = const types.User(
-    id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
-  );
-   void _addMessage(types.Message message) {
-    setState(() {
-      _messages.insert(0, message);
-    });
+  File? selectedFile;
+
+  Future<void> _selectFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result != null && result.files.isNotEmpty) {
+      setState(() {
+        selectedFile = File(result.files.single.path!);
+        _uploadFile(selectedFile!);
+      });
+    }
   }
 
   void _handleAttachmentPressed() {
@@ -42,39 +36,20 @@ class _Medical_RecordsPage1State extends State<Medical_RecordsPage1> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _handleImageSelection();
-                },
-                child:  Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Row(
-                    children: [
-                      Icon(Icons.camera_alt),
-                      SizedBox(width: 15.w,),
-                      Text('Photo'),
-                      
-                    ],
-                  ),
+                onPressed: _selectFile,
+                child: Row(
+                  children: [
+                    Icon(Icons.file_copy),
+                    SizedBox(width: 15.w),
+                    Text('Select File'),
+                  ],
                 ),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
-                  _handleFileSelection();
-
                 },
-                child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('File'),
-                ),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: Text('Cancel'),
-                ),
+                child: Text('Cancel'),
               ),
             ],
           ),
@@ -83,125 +58,62 @@ class _Medical_RecordsPage1State extends State<Medical_RecordsPage1> {
     );
   }
 
-  void _handleAttachmentPressede() {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) => SafeArea(
-        child: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight:  Radius.circular(40)) ,color: Colors.white,
-),
-          padding:EdgeInsets.all(10),
-          height: 350.h,
-         
-        child:Column(children: [
- CircleAvatar(
-          radius: 47
-          ,backgroundColor: Colors.blueAccent.withOpacity(0.11),
-          child: Icon(Icons.check,size: 50,color: Colors.blueAccent,),
-          ),          Text('uploaded successfully',style:TextStyle(fontWeight:FontWeight.w700,fontSize: 20.sp,color:Color(0xff0099E5)),),
-          Text('Your documents were successfully uploaded '),
-       SizedBox(height: 10,),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Row(children: [
-              Expanded(
-                child: Container(height: 150,
-                child:Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Image.asset('lib/Images/medfile.png',fit:BoxFit.fill,),
-                ),
-                decoration: BoxDecoration(color: Colors.black.withOpacity(0.02),borderRadius: BorderRadius.circular(10)),),
-              ),
-              SizedBox(width: 20,),
-                Expanded(
-                  child: Container(height: 150,
-                  child:Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Image.asset('lib/Images/medfil.jpg',fit:BoxFit.fill),
-                  ),
-                              decoration: BoxDecoration(color: Colors.black.withOpacity(0.02),borderRadius: BorderRadius.circular(10)),
-                              ),
-                ),
-            ],),
-          ),
-         SizedBox(height: 10,),
-
-   GestureDetector(
-           onTap:(){
-                       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => medical_record()),
-      );},
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
-              height: MediaQuery.of(context).size.height * 0.08,
-              decoration: BoxDecoration(
-                color: Color(0xff0099E5),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              width: double.infinity,
-              child: Center(
-                child: Text(
-                  'Confirm',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-            ),
-          ),
-      
-        ],),
-        ),
-      ),
-    );
-  }
-
-void _showSuccessDialog(String message) {
+  void _showSuccessDialog(String message) {
     showDialog(
       context: context,
-      
       builder: (BuildContext context) {
         return AlertDialog(
-          
-          backgroundColor: Colors.white, 
-          
+          backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
           content: Container(
             height: 300.h,
             width: 450.w,
-            child:Column(children: [
-              Text('Thank you!'),
-SizedBox(height:ScreenUtil().setHeight(20),),
-Text('On your computer, go to drive.google.com. At the left, click Shared drives and double-click one of your shared drives. At the top left,')
-             , 
-             
-             SizedBox(height:ScreenUtil().setHeight(30),),
-
-              GestureDetector(
-                onTap:(){
-                       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => medical_record()),
-      );
-                },
-                child: Container(
-                    margin:EdgeInsets.only(left: ScreenUtil().setWidth(20),right: ScreenUtil().setWidth(20)),
-                    
-                    height: 50.h,
-                    decoration:BoxDecoration(
-                                color:Color(0xff0099E5) ,
-                                borderRadius: BorderRadius.circular(10)
-                    ),
-                  width: 300.w,
-                  child:Center(child:Text('Done',style:TextStyle(color:Colors.white,fontWeight: FontWeight.w500,fontSize:20.sp),),),
+            child: Column(
+              children: [
+                Text(
+                  'Thank you!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20.sp,
+                    color: Color(0xff0099E5),
                   ),
-              ),
-            ],)
+                ),
+                SizedBox(height: ScreenUtil().setHeight(20)),
+                Text(message),
+                SizedBox(height: ScreenUtil().setHeight(30)),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => medical_record()),
+                    );
+                  },
+                  child: Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: ScreenUtil().setWidth(20),
+                    ),
+                    height: 50.h,
+                    decoration: BoxDecoration(
+                      color: Color(0xff0099E5),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    width: 300.w,
+                    child: Center(
+                      child: Text(
+                        'Done',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20.sp,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
@@ -210,246 +122,162 @@ Text('On your computer, go to drive.google.com. At the left, click Shared drives
     Future.delayed(Duration(seconds: 10), () {
       Navigator.of(context).pop();
     });
-  }void _handleFileSelection() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.any,
-    );
-
-    if (result != null && result.files.single.path != null) {
-_handleAttachmentPressede();
-      final message = types.FileMessage(
-        author: _user,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        id: const Uuid().v4(),
-        mimeType: lookupMimeType(result.files.single.path!),
-        name: result.files.single.name,
-        size: result.files.single.size,
-        uri: result.files.single.path!,
-      );
-
-      _addMessage(message);
-    }
   }
 
-  void _handleImageSelection() async {
-    final result = await ImagePicker().pickImage(
-      imageQuality: 70,
-      maxWidth: 1440,
-      source: ImageSource.gallery,
-    );
-
-    if (result != null) {
-_handleAttachmentPressede();
-      final bytes = await result.readAsBytes();
-      final image = await decodeImageFromList(bytes);
-
-      final message = types.ImageMessage(
-        author: _user,
-        createdAt: DateTime.now().millisecondsSinceEpoch,
-        height: image.height.toDouble(),
-        id: const Uuid().v4(),
-        name: result.name,
-        size: bytes.length,
-        uri: result.path,
-        width: image.width.toDouble(),
+  Future<void> _uploadFile(File file) async {
+    print('Uploading file: ${file.path}');
+    try {
+      final request = http.MultipartRequest(
+        'POST',
+        Uri.parse('http://10.0.2.2:3005/api/files/upload'),
       );
+      request.files.add(await http.MultipartFile.fromPath('file', file.path));
+      final response = await request.send();
 
-      _addMessage(message);
-    }
-  }
-
-  void _handleMessageTap(BuildContext _, types.Message message) async {
-    if (message is types.FileMessage) {
-      var localPath = message.uri;
-
-      if (message.uri.startsWith('http')) {
-        try {
-          final index =
-              _messages.indexWhere((element) => element.id == message.id);
-          final updatedMessage =
-              (_messages[index] as types.FileMessage).copyWith(
-            isLoading: true,
-          );
-
-          setState(() {
-            _messages[index] = updatedMessage;
-          });
-
-          final client = http.Client();
-          final request = await client.get(Uri.parse(message.uri));
-          final bytes = request.bodyBytes;
-          final documentsDir = (await getApplicationDocumentsDirectory()).path;
-          localPath = '$documentsDir/${message.name}';
-
-          if (!File(localPath).existsSync()) {
-            final file = File(localPath);
-            await file.writeAsBytes(bytes);
-          }
-        } finally {
-          final index =
-              _messages.indexWhere((element) => element.id == message.id);
-          final updatedMessage =
-              (_messages[index] as types.FileMessage).copyWith(
-            isLoading: null,
-          );
-
-          setState(() {
-            _messages[index] = updatedMessage;
-          });
-        }
+      if (response.statusCode == 200) {
+        print("File uploaded successfully");
+        _showSuccessDialog('File uploaded successfully');
+      } else {
+        print('Failed to upload file: ${response.statusCode}');
+        _showSuccessDialog('Failed to upload file. Please try again.');
       }
-
-      await OpenFilex.open(localPath);
+    } catch (e) {
+      print('Error uploading file: $e');
+      _showSuccessDialog('Error uploading file. Please try again.');
     }
-  }
-
-  void _handlePreviewDataFetched(
-    types.TextMessage message,
-    types.PreviewData previewData,
-  ) {
-    final index = _messages.indexWhere((element) => element.id == message.id);
-    final updatedMessage = (_messages[index] as types.TextMessage).copyWith(
-      previewData: previewData,
-    );
-
-    setState(() {
-      _messages[index] = updatedMessage;
-    });
-  }
-
-  void _handleSendPressed(types.PartialText message) {
-    final textMessage = types.TextMessage(
-      author: _user,
-      createdAt: DateTime.now().millisecondsSinceEpoch,
-      id: const Uuid().v4(),
-      text: message.text,
-    );
-
-    _addMessage(textMessage);
-  }
-
-  void _loadMessages() async {
-    final response = await rootBundle.loadString('assets/messages.json');
-    final messages = (jsonDecode(response) as List)
-        .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
-        .toList();
-
-    setState(() {
-      _messages = messages;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
- return Scaffold(
-  appBar: AppBar(
-    backgroundColor: Colors.white,
-    elevation: 0,
-    leading: IconButton(
-      onPressed: () {Navigator.pop(context);
-        
-      },
-      icon: Icon(Icons.arrow_back_ios),
-    ),
-    centerTitle: true,
-    title: Text(
-      'Medical Records',
-      style: TextStyle(
-        color: Color(0xff4491f9),
-        fontFamily: 'Manrope',
-        fontWeight: FontWeight.w900,
-        fontSize: 18,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
+        centerTitle: true,
+        title: Text(
+          'Medical Records',
+          style: TextStyle(
+            color: Color(0xff4491f9),
+            fontFamily: 'Manrope',
+            fontWeight: FontWeight.w900,
+            fontSize: 18,
+          ),
+        ),
       ),
-    ),
-  ),
-  body: Container(
-    decoration: BoxDecoration(
-    color:Color(0xfffafafa)
-    ),
-    height: MediaQuery.of(context).size.height,
-    width: MediaQuery.of(context).size.width,
-    child: SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-          Image.asset('lib/Images/19834.jpg',height: 240,fit:BoxFit.fill,),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-          Text(
-            'Add a medical record.',
-            style: TextStyle(
-             fontWeight: FontWeight.w900,fontFamily: 'Manrope',color:Color(0xff4491f9),fontSize: 25.sp
-            ),
-          ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
-            child: Text(
-              "A detailed health history helps a doctor diagnose you better.",
-              style: TextStyle(
-                color: Color(0xff677294),
-                fontSize: 16,
+      body: Container(
+        decoration: BoxDecoration(
+          color: Color(0xfffafafa),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              Image.asset(
+                'lib/Images/19834.jpg',
+                height: 240,
+                fit: BoxFit.fill,
               ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          SizedBox(height: 10,),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
-            child: Text(
-              "Only JPEG, PNG, And PDF FILES with max size 15 MB.",
-              style: TextStyle(
-                color: Color(0xff0B8FAC),
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w500
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+              Text(
+                'Add a medical record.',
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontFamily: 'Manrope',
+                  color: Color(0xff4491f9),
+                  fontSize: 25.sp,
+                ),
               ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          
-       Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0,vertical: 10),
-                    child: SizedBox(
-                          height: 45,
-                          child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor:Color(0xff4491f9),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20), 
-                            ),
-                          ),
-                          onPressed: () {
-                             _handleAttachmentPressed();
-                          },
-                          child: Center(
-                            child: Text('Add a medical record',style:TextStyle(fontFamily:'Poppins',fontSize: 14,color: Colors.white,fontWeight: FontWeight.bold),),
-                          ),
-                          ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: Text(
+                  "A detailed health history helps a doctor diagnose you better.",
+                  style: TextStyle(
+                    color: Color(0xff677294),
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: Text(
+                  "Only JPEG, PNG, And PDF FILES with max size 15 MB.",
+                  style: TextStyle(
+                    color: Color(0xff0B8FAC),
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 10),
+                child: SizedBox(
+                  height: 45,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff4491f9),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: _handleAttachmentPressed,
+                    child: Center(
+                      child: Text(
+                        'Add a medical record',
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                  ),  ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-    ),
-  ),
-        bottomNavigationBar:BottomNavigationBar(
-            
-          backgroundColor:Colors.white,
-          elevation: 4,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedItemColor: Color(0xff4789FC),
-          unselectedItemColor:Colors.black,
-          unselectedLabelStyle: TextStyle( color: Colors.black,),
-          selectedLabelStyle:TextStyle( color:  Color(0xff4789FC),
-          
-          )
-          ,items: [
-          BottomNavigationBarItem(icon:Icon(Icons.home),label:"Home",),
-            BottomNavigationBarItem(  icon:Image.asset('lib/Images/diag.png',height: 22.h,),label:"Diagnostics"),
-              BottomNavigationBarItem(icon:Image.asset('lib/Images/chat.png',height: 22.h,),label:"Chat"),
-                BottomNavigationBarItem(
-                  icon:Image.asset('lib/Images/user.png',height: 22.h,),label:"Profile"),
-                  
-        ],),
-   
-);
-  }}
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        elevation: 4,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedItemColor: Color(0xff4789FC),
+        unselectedItemColor: Colors.black,
+        unselectedLabelStyle: TextStyle(color: Colors.black),
+        selectedLabelStyle: TextStyle(color: Color(0xff4789FC)),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+            icon: Image.asset('lib/Images/diag.png', height: 22.h),
+            label: "Diagnostics",
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('lib/Images/chat.png', height: 22.h),
+            label: "Chat",
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('lib/Images/user.png', height: 22.h),
+            label: "Profile",
+          ),
+        ],
+      ),
+    );
+  }
+}

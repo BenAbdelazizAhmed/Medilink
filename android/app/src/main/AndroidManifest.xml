@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="votre.package.name">
 
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -6,7 +7,8 @@
     <application
         android:label="op"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        tools:replace="android:label">
         
         <!-- Votre activité principale -->
         <activity

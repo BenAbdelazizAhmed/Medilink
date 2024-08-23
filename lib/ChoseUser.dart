@@ -40,10 +40,7 @@ class _ChoseuserState extends State<Choseuser> {
                  SizedBox(height: 20,),
                   GestureDetector(
                     onTap:(){
-                            Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => Inscri()),
-                                );
+                         
                     },
                     child: Container(
                                   height: 100,

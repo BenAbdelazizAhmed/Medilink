@@ -97,11 +97,7 @@ class _HealthPredictionState extends State<HealthPrediction> {
           height: 350.h,
          
         child:Column(children: [
- CircleAvatar(
-          radius: 47
-          ,backgroundColor: Colors.blueAccent.withOpacity(0.11),
-          child: Icon(Icons.check,size: 50,color: Colors.blueAccent,),
-          ),          Text('uploaded successfully',style:TextStyle(fontWeight:FontWeight.w700,fontSize: 20.sp,color:Color(0xff0099E5)),),
+        Text('uploaded successfully',style:TextStyle(fontWeight:FontWeight.w700,fontSize: 20.sp,color:Color(0xff0099E5)),),
           Text('Your documents were successfully uploaded '),
        SizedBox(height: 10,),
           Padding(
